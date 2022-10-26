@@ -1,6 +1,11 @@
+import React from "react";
+import Rgeister from "./pages/register";
+
 function App() {
   return (
-      <h1>hello</h1>
+    <React.Fragment>
+      <Rgeister />
+    </React.Fragment>
   );
 }
 
