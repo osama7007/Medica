@@ -1,0 +1,32 @@
+
+.text{
+    color: var(--main-color);
+    font-size: 4em;
+    letter-spacing: 2.5px;
+}
+.content{
+    margin: 0 auto;
+    width: 40em;
+}
+
+@media (max-width:1200px){
+    .all{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-300px);
+        margin-left: 5em;
+        }
+       
+}
+@media (max-width:600px){
+    .all{
+        position: absolute;
+        top: 50%;
+    transform: translateY(-100px);
+    margin-left: 0em;
+    }
+    .img{
+        margin-left: 2em;
+    }
+    
+}

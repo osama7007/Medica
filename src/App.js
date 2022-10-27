@@ -1,10 +1,12 @@
 import React from "react";
 import Rgeister from "./pages/register";
+import Welcome from "./pages/welcome";
 
 function App() {
   return (
     <React.Fragment>
-      <Rgeister />
+      {/* <Rgeister /> */}
+     <Welcome/>
     </React.Fragment>
   );
 }
