@@ -1,0 +1,18 @@
+.secondaryBtn{
+    background-color: var(--main-color);
+    /* letter-spacing: 0px; */
+  }
+  .secondaryBtn:hover{
+    background-color: #1d58ce;
+
+  }
+  
+  .primaryBtn {
+    color: var(--main-color);
+    /* letter-spacing: 0px; */
+    background-color: var(--light-color);
+  }
+  .primaryBtn:hover{
+    background-color: var(--main-color);
+    color: white;
+  }

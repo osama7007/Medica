@@ -4,6 +4,7 @@ import { auth, googleProvider } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setActiveUser } from "../../redux/authSlice";
 import { Link } from "react-router-dom";
+import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 
 const Google = () => {
   const dispatch = useDispatch();
@@ -24,22 +25,14 @@ const Google = () => {
   return (
     <div className=" text-center container-fluid">
       <p
-        className={`${styles.paragraph} fw-bold text-uppercase mb-3  mt-5 position-relative text-center`}
+        className={`${styles.paragraph} fw-bold text-uppercase   my-2 position-relative text-center`}
       >
         or
       </p>
-
-      <button
-        className={`${styles.btn} mb-4 border-0 secondaryBtn
-         text-uppercase  fw-bold
-          shadow my-4 me-4
-          rounded-pill
-          px-4 py-2`}
-        onClick={handleGoogleSignup}
-      >
-        <FcGoogle className="fs-4 me-2" />
-        continue with Google
-      </button>
+      <PrimaryBtn
+        title={[ <FcGoogle className="fs-4 me-2" />,"continue with Google"]}
+        action={handleGoogleSignup}
+      />
 
       <p className="text-black-50">
         Already have an account? <Link to="/signin">Sign in</Link>

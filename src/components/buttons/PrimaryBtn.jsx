@@ -1,21 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import styles from "./buttons.module.css";
+const PrimaryBtn = (props ) => {
 
-const PrimaryBtn = ({ title }) => {
-  const navigate = useNavigate();
 
-  const signInNavigate = () => {
-    navigate("/signin");
-  };
+  let { action, title } = props;
 
   return (
     <button
-      onClick={signInNavigate}
-      className="primaryBtn  border-0 text-uppercase 
-      fw-bold shadow my-4 me-4 shadow
+      className={`${styles.primaryBtn} border-0 text-uppercase 
+      fw-bold shadow mt-4 mb-1 me-4 
       rounded-pill
-        px-5 py-2 text-light"
-    >
-      {title}
+        px-5 py-2`}
+        onClick={action}>{title}
     </button>
   );
 };
