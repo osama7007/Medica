@@ -1,18 +1,24 @@
-import styles from "./bottons.module.css";
+import { useNavigate } from "react-router-dom";
 
-const SecondaryBtn = (props) => {
-  let { action, title } = props;
+const SecondaryBtn = ({ title }) => {
+  const navigate = useNavigate();
+
+  const signUpNavigate = () => {
+    navigate("/signup");
+  };
 
   return (
-    <>
-      <button className={`${styles.sBtn} btn btn-outline-primary border-0
-         text-uppercase text-white fw-bold
+    <button
+      className="secondaryBtn  border-0
+         text-uppercase  fw-bold
           shadow my-4 me-4
           rounded-pill
-          px-5 py-2 `} onClick={action}>{title}</button>
-
-    </>
-  )
+          px-5 py-2 "
+      onClick={signUpNavigate}
+    >
+      {title}
+    </button>
+  );
 };
 
 export default SecondaryBtn;

@@ -2,6 +2,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 import Select from "react-select";
 import styles from "./form.module.css";
 import "antd/dist/antd.css";
+import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 
 const RegisterForm = () => {
   const options = [
@@ -146,7 +147,7 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-between ps-5 pe-5 ">
+      <div className="d-flex align-items-center justify-content-between ps-5 pe-5 ">
         <Form.Item
           rules={[{ required: true, message: "checkBox is Requierd" }]}
           name="accept"
@@ -156,9 +157,7 @@ const RegisterForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button block type="primary" htmlType="submit">
-            Sign Up
-          </Button>
+          <PrimaryBtn title={"SignUp"} htmlType="submit" />
         </Form.Item>
       </div>
     </Form>

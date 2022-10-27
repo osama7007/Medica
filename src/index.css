@@ -16,3 +16,13 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.primaryBtn {
+  background-color: var(--main-color);
+  letter-spacing: 2px;
+}
+
+.secondaryBtn {
+  color: var(--main-color);
+  letter-spacing: 2px;
+  background-color: var(--light-color);
+}
