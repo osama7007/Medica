@@ -1,0 +1,23 @@
+.paragraph {
+  color: #66a1ff;
+}
+
+.paragraph::before,
+.paragraph::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 45%;
+  background-color: var(--light-color);
+}
+
+.paragraph::before {
+  left: 0;
+}
+
+.paragraph::after {
+  right: 0;
+}
+
+
