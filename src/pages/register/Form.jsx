@@ -1,8 +1,8 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Checkbox, Form, Input } from "antd";
 import Select from "react-select";
 import styles from "./form.module.css";
 import "antd/dist/antd.css";
-import PrimaryBtn from "../../components/buttons/PrimaryBtn";
+import SecondaryBtn from "../../components/buttons/SecondaryBtn";
 
 const RegisterForm = () => {
   const options = [
@@ -147,7 +147,7 @@ const RegisterForm = () => {
         </div>
       </div>
 
-      <div className="d-flex align-items-center justify-content-between ps-5 pe-5 ">
+      <div className="d-flex align-items-center justify-content-between pb-0 mb-0 ps-5 pe-5 ">
         <Form.Item
           rules={[{ required: true, message: "checkBox is Requierd" }]}
           name="accept"
@@ -157,14 +157,7 @@ const RegisterForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <button
-            className="primaryBtn border-0 text-uppercase 
-                     fw-bold shadow shadow rounded-pill
-                    px-5 py-2 text-light"
-            htmlType="submit"
-          >
-            Sign Up
-          </button>
+          <SecondaryBtn title={"Sign Up"} />
         </Form.Item>
       </div>
     </Form>
