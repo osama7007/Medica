@@ -10,7 +10,7 @@ const Thanks = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
-  return <Lottie options={defaultOptions} height={500} width={500} />;
+  return <Lottie options={defaultOptions} height={600} width={700} />;
 };
 
 export default Thanks;
