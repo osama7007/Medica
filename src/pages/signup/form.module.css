@@ -1,0 +1,9 @@
+@media screen and (max-width: 600px) {
+  .inputWrapper {
+    flex-direction: column;
+  }
+
+  .imgWrapper {
+    display: none;
+  }
+}

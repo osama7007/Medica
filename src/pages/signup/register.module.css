@@ -3,12 +3,8 @@
   padding: 20px 0;
 }
 
-.thanks {
-    position: absolute;
-    top: 0;
-}
-@media(max-width:600px){
-  img{
+@media screen and (max-width: 600px) {
+  .imgWrapper {
     display: none;
   }
 }

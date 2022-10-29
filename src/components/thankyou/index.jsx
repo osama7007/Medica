@@ -3,7 +3,7 @@ import animationData from "../../assets/images/register.json";
 
 const Thanks = () => {
   const defaultOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: animationData,
     rendererSettings: {

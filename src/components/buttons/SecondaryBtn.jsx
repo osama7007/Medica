@@ -9,10 +9,10 @@ const SecondaryBtn = (props) => {
       text-uppercase
       border-0
       fw-bold
-      mt-4 mb-1 me-4 shadow
+      me-4 shadow
        rounded-pill
          px-5 py-2
-       text-white  `}
+         `}
       onClick={action}
     >
       {title}
@@ -21,9 +21,3 @@ const SecondaryBtn = (props) => {
 };
 
 export default SecondaryBtn;
-
-
-// btn btn-outline-primary  border-0 text-uppercase 
-//       fw-bold shadow my-4 me-4 shadow
-//       rounded-pill
-//         px-5 py-2 text-white

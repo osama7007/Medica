@@ -1,18 +1,15 @@
-import { Button, Form, Input } from "antd";
+import { Form, Input, Checkbox } from "antd";
 import login from "../../assets/images/loginPic.gif";
-import { Checkbox } from "antd";
-import React from "react";
 import "antd/dist/antd.css";
-// import { useEffect } from "react";
-// import { useState } from "react";
-// import { FaFacebook } from "react-icons/fa";
+import PrimaryBtn from "../../components/buttons/PrimaryBtn";
+import FormInput from "../../components/input";
+import { Link } from "react-router-dom";
 
 const onChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
 };
 
-const Login = ({ history }) => {
-  // const [accountService, setAccountService] = useState(0);
+const Login = () => {
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -21,88 +18,53 @@ const Login = ({ history }) => {
     console.log("Failed:", errorInfo);
   };
 
-  // const facebookLogin = ({ history }) => {
-  //   if (accountService.accountValue) {
-  //     history.push("/");
-  //   }
-  // };
-
   return (
-    <section className={"  row vh-100 container-fluid align-items-center"}>
-      <div className="col w-100">
-        <img src={login} alt="login" className="w-100 ms-5" />
+    <section className="row container align-items-center pt-5">
+      <div className="col-md-8 text-center">
+        <img src={login} alt="login" />
       </div>
-      <div className={" col"}>
+      <div className="col-md-4 shadow rounded-2 ps-5 py-4">
         <Form
-          className="ms-4"
           name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <div>
-            <div>
-              <form-label> Username</form-label>
+            <FormInput
+              label="Email Address"
+              name="Email Address"
+              type="email"
+            />
+
+            <div className="mb-5">
+              <form-label>password</form-label>
 
               <Form.Item
-                hasFeedback
-                name="username"
-                className="text-danger  fs-6 w-75"
-                rules={[
-                  { required: true, message: "Please enter your username!" },
-                ]}
-              >
-                <Input className="mb-2 form-control" />
-              </Form.Item>
-            </div>
-
-            <div>
-              <form-label> Password</form-label>
-              <Form.Item
-                hasFeedback
                 name="password"
-                className="text-danger fs-6 w-75 "
-                rules={[
-                  {
-                    required: true,
-                    minLength: 8,
-                    message: "Please enter your password!",
-                  },
-                ]}
+                hasFeedback
+                rules={[{ required: true }, { min: 8 }]}
+                style={{ width: "300px" }}
               >
-                <Input.Password className="mb-2  form-control " />
+                <Input.Password />
               </Form.Item>
             </div>
 
-            {/* <div className="card-body mb-3">
-              <button className="btn btn-facebook" onClick={facebookLogin}>
-                <i>
-                  <FaFacebook />
-                </i>
-                Login with Facebook
-              </button>
-            </div> */}
-
-            <div>
-              <Checkbox className="mb-2 fs-6" onChange={onChange}>
+            <div className="d-flex mb-3">
+              <Checkbox className="me-5 mt-2" onChange={onChange}>
                 Remember me
               </Checkbox>
+              <Form.Item>
+                <PrimaryBtn title={"Log in"} />
+              </Form.Item>
             </div>
-
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-              <Button
-                className="btn btn-primary  px-4 "
-                type="primary"
-                htmlType="submit"
-              >
-                Submit
-              </Button>
-            </Form.Item>
           </div>
         </Form>
+
+        <p className="text-black-50 ms-5">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </div>
     </section>
   );
