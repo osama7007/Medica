@@ -16,3 +16,28 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+
+.text-blue {
+  color: var(--main-color);
+}
+
+.text-white {
+  color: var(--white-color);
+}
+
+.text-black {
+  color: var(--black-color);
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  color: black;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
+  color: var(--main-color);
+}
+
+.ant-layout-header{
+  line-height: 0px !important;
+  height: auto !important;
+  padding: 0px !important;  
+}
