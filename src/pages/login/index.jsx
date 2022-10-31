@@ -1,5 +1,5 @@
 import { Form, Input, Checkbox } from "antd";
-import login from "../../assets/images/loginPic.gif";
+import login from "../../assets/images/loginnn.gif";
 import "antd/dist/antd.css";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import FormInput from "../../components/input";
@@ -19,11 +19,11 @@ const Login = () => {
   };
 
   return (
-    <section className="row container align-items-center pt-5">
-      <div className="col-md-8 text-center">
-        <img src={login} alt="login" />
+    <section className="row container mx-3 align-items-center pt-5 mt-0">
+      <div className="col-md-8  text-center ">
+        <img src={login} alt="login" className="" />
       </div>
-      <div className="col-md-4 shadow rounded-2 ps-5 py-4">
+      <div className="col-md-4 shadow  rounded-2 mt-5 px-4 py-5">
         <Form
           name="basic"
           initialValues={{ remember: true }}
@@ -52,7 +52,7 @@ const Login = () => {
             </div>
 
             <div className="d-flex mb-3">
-              <Checkbox className="me-5 mt-2" onChange={onChange}>
+              <Checkbox className="me-4 mt-2" onChange={onChange}>
                 Remember me
               </Checkbox>
               <Form.Item>
