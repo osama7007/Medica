@@ -1,5 +1,9 @@
+import DoctorProfile from "../../components/dotctorProfile";
+
 const Home = () => {
-  return <div>Home</div>;
+  return <div>
+    <DoctorProfile/>
+  </div>;
 };
 
 export default Home;
