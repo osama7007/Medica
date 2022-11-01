@@ -4,6 +4,7 @@ import Welcome from "./pages/welcome";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Patient from "./pages/patient";
+import ProfilePatient from "./pages/profilePatient";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
+        <Route path="/profilePatient" element={<ProfilePatient />} />
       </Routes>
     </BrowserRouter>
   );
