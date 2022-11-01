@@ -54,7 +54,6 @@ const FollowDoctor = () => {
                   onClick={() => handleClick(doc.id)}
                 >
                   {buttonText}
-
                   {/* {doc.id !== id ? (
                     //  {buttonText}
                   "follow"
