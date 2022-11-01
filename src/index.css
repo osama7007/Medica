@@ -15,4 +15,21 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--light-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:var(--main-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#1b4599 ;
+}
