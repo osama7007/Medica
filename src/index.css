@@ -15,3 +15,10 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
+.text-blue {
+  color: var(--main-color);
+}
+.ant-layout-sider-trigger {
+  background-color: var(--main-color) !important;
+
+}
