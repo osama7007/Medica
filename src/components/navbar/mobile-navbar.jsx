@@ -5,7 +5,7 @@ const MobileNavbar = ({ isOpen, setIsOpen,pageInView }) => {
   const closeMenu = () => setIsOpen(false);
   
   return (
-    <div className={`${classes.container} ${isOpen ? classes.open : ""}`}>
+    <div className={`${classes.container} ${isOpen ? classes.open : ""} shadow-sm `}>
       <nav className={`${classes.navbar} mb-5`}>
         <ul className={classes.links}>
           <li

@@ -1,0 +1,8 @@
+.content {
+  min-height: calc(100vh - 69px);
+}
+@media screen and (max-width: 768px) {
+  .content {
+    min-height: calc(100vh - 77px - 45px);
+  }
+}

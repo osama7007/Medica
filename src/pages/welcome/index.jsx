@@ -22,10 +22,6 @@ const Welcome = () => {
         <h1 className={`${styles.text} fw-bold text-uppercase mb-4`}>
           Welcome to Medica!👋
         </h1>
-        {/* <h5>
-          The best online doctor appointment & consultation website of the
-          century for your health and medical needs!
-        </h5> */}
         <div className={styles.Btn}>
           <PrimaryBtn title={"LogIn"} action={signInNavigate} />
           <SecondaryBtn title={"SignUp"} action={signUpNavigate} />
