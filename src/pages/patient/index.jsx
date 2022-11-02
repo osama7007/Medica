@@ -3,19 +3,19 @@ import React, { useState } from "react";
 import strip from "../../assets/images/strip-tablet.gif";
 import capsula from "../../assets/images/capsule.gif";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
-
+import "./patient.module.css";
 const Patient = () => {
   const [componentSize, setComponentSize] = useState("default");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
   return (
-    <div className=" container  d-flex justify-content-center align-items-center">
-      <div className="w-25">
+    <div className=" container formBody  d-flex justify-content-center align-items-center">
+      <div className=" w-25">
         <img className="w-100" src={strip}></img>
       </div>
       <Form
-        className=" mb-5 ms-5 mt-4 w-75 fw-bold shadow rounded-2 "
+        className=" mb-5 ms-5 mt-4    w-75 fw-bold shadow rounded-2 "
         labelCol={{
           span: 4,
         }}
@@ -33,34 +33,19 @@ const Patient = () => {
           {" "}
           Manage Profile
         </h2>
-
         <Form.Item label="Form Size" name="size">
           <Radio.Group>
             <Radio.Button value="default">Default</Radio.Button>
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        <Form.Item label="First name">
+        {/* <Form.Item label="First name">
           <Input />
         </Form.Item>
         <Form.Item label="Last name">
           <Input />
-        </Form.Item>
+        </Form.Item> */}
 
-        <Form.Item label="Gender">
-          <TreeSelect
-            treeData={[
-              {
-                title: "Female",
-                value: "Female",
-              },
-              {
-                title: "Male",
-                value: "Male",
-              },
-            ]}
-          />
-        </Form.Item>
         <Form.Item label="Weight">
           <TreeSelect
             treeData={[
@@ -113,7 +98,6 @@ const Patient = () => {
             ]}
           />
         </Form.Item>
-
         <Form.Item label="Blood Type">
           <TreeSelect
             treeData={[
@@ -136,11 +120,9 @@ const Patient = () => {
             ]}
           />
         </Form.Item>
-
         <Form.Item className="mb-5" label="Birthday">
           <DatePicker />
         </Form.Item>
-
         <form className=" ms-5 w-100 ">
           <h4 className="mb-3 fw-bold text-primary">
             Important Questions ...?{" "}
@@ -161,7 +143,7 @@ const Patient = () => {
             />
           </Form.Item>
 
-          <Form.Item className="ms-3">
+          <Form.Item className="ms-3 ">
             <label className="fs-6 fw-bold">
               What are the genetic diseases in your family?
             </label>
@@ -176,7 +158,6 @@ const Patient = () => {
             <Input />
           </Form.Item>
         </form>
-
         <Form.Item className="ms-5 d-flex align-items-center justify-content-center">
           <PrimaryBtn title={"Save"} />
         </Form.Item>
