@@ -4,13 +4,18 @@ import Welcome from "./pages/welcome";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Patient from "./pages/patient";
+
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
+
 import ProfilePatient from "./pages/profilePatient";
+
+
 function App() {
   useDoctors();
   return (
     <BrowserRouter>
+
       <Layout>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -21,6 +26,7 @@ function App() {
           <Route path="/profilePatient" element={<ProfilePatient />} />
         </Routes>
       </Layout>
+
     </BrowserRouter>
   );
 }
