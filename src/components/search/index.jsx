@@ -49,6 +49,8 @@ const Search = ({ className }) => {
         placeholder="Search..."
         value={value}
         onChange={(value) => setValue(value)}
+        showSearch
+        showArrow={false}
         tokenSeparators={[","]}
         options={options}
       />
