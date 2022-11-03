@@ -4,6 +4,8 @@ import { randomNums } from "../../utils/randomNums";
 import { Link } from "react-router-dom";
 import Trending from "../../components/trending";
 import { useSelector } from "react-redux";
+import SkeletonComponent from "../../components/skeleton";
+import { Skeleton } from "antd";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
@@ -25,6 +27,8 @@ const Articles = () => {
         <Trending />
         <h2 className="text-start my-4  p-3">Articles</h2>
         <div className="row">
+        {articles.length === 0 ? <Skeleton active /> : ""}
+
           {articles.map((article) => {
             return (
               <div className="col-md-12 mb-5 ">

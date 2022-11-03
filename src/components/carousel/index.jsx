@@ -7,7 +7,6 @@ import doctor4 from "../../assets/images/doctor4.png";
 import doctor3 from "../../assets/images/doctor3.png";
 import doctor2 from "../../assets/images/doctor2.png";
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   SwiperCore.use([Autoplay]);
 
@@ -18,14 +17,14 @@ export default () => {
       loop
       spaceBetween={50}
       slidesPerView={1}
-      className={`${styles.swiperContainer} mb-5 shadow rounded-3 text-white p-4`}
+      className={`${styles.swiperContainer} mb-5 shadow text-white p-4`}
     >
-      <SwiperSlide className="d-flex align-items-center  ">
+      <SwiperSlide className="d-flex align-items-center px-5 ">
         <div className={styles.contentContainer}>
           <h2 className="text-white text-capitalize mb-3">
             Choose the service and set the appropriate date
           </h2>
-          <p>
+          <p className="w-75">
             Book using the website, start your recovery journey now, no need to
             wait, choose the type of service and the appropriate time and get
             the full care
@@ -33,30 +32,28 @@ export default () => {
         </div>
 
         <div className={styles.imgContainer}>
-          <img src={doctor1} alt="doctorphoto" className="mt-2 w-100" />
+          <img src={doctor1} alt="doctor photo" className="mt-2 w-100" />
         </div>
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
-        <img src={doctor2} alt="doctorphoto" className=" w-50" />
+      <SwiperSlide className="d-flex align-items-center px-5">
+        <img src={doctor2} alt="doctor photo" className=" w-50" />
 
         <h2 className="text-white text-capitalize">
           thousands of doctors & experts to help your health!
         </h2>
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
+      <SwiperSlide className="d-flex align-items-center px-5">
         <h2 className="text-white text-capitalize">
           health checks & consultations easily anywhere anytime
         </h2>
 
-        <img src={doctor3} alt="doctorphoto" className=" w-50 mt-5" />
+        <img src={doctor3} alt="doctor photo" className=" w-50 mt-5" />
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
-        <div className={styles.imgContainer}>
-          <img src={doctor4} alt="doctorphoto" className=" w-100 mt-4" />
-        </div>
+      <SwiperSlide className="d-flex align-items-center px-5 ">
+        <img src={doctor4} alt="doctor photo" className=" w-25 mt-4" />
 
         <h2 className="text-white text-capitalize ms-5">
           let's start living healthy and well with us right now!
@@ -65,5 +62,3 @@ export default () => {
     </Swiper>
   );
 };
-
-// export default Swi;

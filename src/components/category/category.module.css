@@ -1,0 +1,25 @@
+.container {
+  width: 30rem;
+  height: 35rem;
+  overflow: hidden;
+  gap: 80px;
+  background-color: var(--white-color);
+  transition: all 0.4s ease-in-out;
+}
+
+.container:hover {
+  background: linear-gradient(208.18deg, #67c3f3 9.05%, #498cef 76.74%);
+}
+
+.container:hover h4 {
+  color: var(--white-color);
+}
+
+.img {
+  object-fit: contain;
+}
+
+.container h4 {
+  color: var(--main-color);
+  transition: all 0.2s ease-in-out;
+}

@@ -18,6 +18,20 @@ body {
 .text-blue {
   color: var(--main-color);
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+  ::-webkit-scrollbar-track {
+  background: var( --light-colo); 
+}
+  ::-webkit-scrollbar-thumb {
+  background: var(--main-color); 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: #155dc9; 
+} 
 .ant-layout-sider-trigger {
   background-color: var(--main-color) !important;
 
@@ -33,4 +47,3 @@ body {
   width: 68%;
 
 }
-
