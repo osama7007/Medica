@@ -1,13 +1,17 @@
-.secondaryBtn{
+
+
+.primaryBtn {
+  background-color: var(--main-color);
+}
+.primaryBtn:hover {
+  background-color: var(--main-color);
+}
+.btn {
   color: var(--main-color);
   background-color: var(--light-color);
-  }
-  .secondaryBtn:hover{
-    background-color: var(--main-color);
-    color: var(--white-color);
-  }
-  
-  .primaryBtn {
-    background-color: var(--main-color);
-  }
- 
+}
+.btn:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
