@@ -1,3 +1,8 @@
+/* .transform {
+  transform: translateY(100%);
+  transition: all 1s ease-in-out;
+} */
+
 .text {
   color: var(--main-color);
   font-size: 4em;
@@ -26,4 +31,17 @@
   .img {
     margin-left: 2em;
   }
+}
+
+.navbar {
+  background-color: var(--light-color);
+}
+
+.navbar img {
+  width: 50px;
+}
+
+.navbar button {
+  color: var(--main-color);
+  font-size: 18px;
 }

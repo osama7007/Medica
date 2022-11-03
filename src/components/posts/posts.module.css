@@ -1,0 +1,66 @@
+.inputContainer {
+  border-radius: 11px;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.profileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.formContainer input {
+  margin-right: 10px;
+  border: 0;
+  outline: 0;
+  background-color: #eff2f5;
+  padding: 10px;
+  border-radius: 11px;
+}
+
+.formContainer input:first-child {
+  width: 300px;
+}
+
+.formContainer input:nth-child(2) {
+  width: 100px;
+}
+
+.label {
+  position: relative;
+  left: -8%;
+}
+
+.imgUploaded {
+  width: 300px;
+  margin: 10px auto;
+}
+
+.postContainer {
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 11px;
+  margin-top: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+}
+
+.itemContainer {
+  width: 600px;
+  margin: 10px auto 20px auto;
+}
+
+.heart {
+  cursor: pointer;
+  color: #e81224;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.toastContainer {
+  top: 88% !important;
+  text-transform: uppercase;
+}

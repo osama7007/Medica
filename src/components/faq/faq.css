@@ -1,0 +1,36 @@
+.faqContent {
+  color: var(--main-color);
+}
+
+.Collapse {
+  overflow: hidden;
+  position: relative;
+}
+
+.ant-collapse-header {
+  background: linear-gradient(208.18deg, #7cc7ef 9.05%, #5593f1 76.74%);
+  margin-bottom: 5px;
+}
+
+.ant-collapse-header[aria-expanded="true"] {
+  background-color: var(--light-color);
+}
+
+.ant-collapse-header-text {
+  font-weight: 600;
+  color: var(--white-color);
+  padding: 10px 0;
+}
+
+.ant-collapse > .ant-collapse-item {
+  border-color: var(--light-color);
+}
+
+.Collapse svg {
+  color: var(--white-color);
+  font-size: 15px;
+  position: absolute;
+  right: 20px;
+  top: 45%;
+  transform: rotate(180deg);
+}
