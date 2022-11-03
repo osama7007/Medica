@@ -1,16 +1,14 @@
-import Slider from "../../components/carousel";
-import Category from "./Category";
 import FollowDoctor from "../../components/followDoctor";
+import Posts from "../../components/posts";
+
+import Search from "../../components/search";
 
 const Home = () => {
   return (
-    <section className="row pt-5">
-      <div className="col-md-3"></div>
-      <div className="col-md-6">
-        <Slider />
-        <Category />
-      </div>
-      <div className="col-md-3">
+    <section className="py-5 w-100 d-flex justify-content-between">
+      <Posts />
+
+      <div className="me-4">
         <FollowDoctor />
       </div>
     </section>

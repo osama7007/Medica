@@ -17,14 +17,14 @@ export default () => {
       loop
       spaceBetween={50}
       slidesPerView={1}
-      className={`${styles.swiperContainer} mb-5 shadow rounded-3 text-white p-4`}
+      className={`${styles.swiperContainer} mb-5 shadow text-white p-4`}
     >
-      <SwiperSlide className="d-flex align-items-center  ">
+      <SwiperSlide className="d-flex align-items-center px-5 ">
         <div className={styles.contentContainer}>
           <h2 className="text-white text-capitalize mb-3">
             Choose the service and set the appropriate date
           </h2>
-          <p>
+          <p className="w-75">
             Book using the website, start your recovery journey now, no need to
             wait, choose the type of service and the appropriate time and get
             the full care
@@ -36,7 +36,7 @@ export default () => {
         </div>
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
+      <SwiperSlide className="d-flex align-items-center px-5">
         <img src={doctor2} alt="doctor photo" className=" w-50" />
 
         <h2 className="text-white text-capitalize">
@@ -44,7 +44,7 @@ export default () => {
         </h2>
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
+      <SwiperSlide className="d-flex align-items-center px-5">
         <h2 className="text-white text-capitalize">
           health checks & consultations easily anywhere anytime
         </h2>
@@ -52,10 +52,8 @@ export default () => {
         <img src={doctor3} alt="doctor photo" className=" w-50 mt-5" />
       </SwiperSlide>
 
-      <SwiperSlide className="d-flex align-items-center ">
-        <div className={styles.imgContainer}>
-          <img src={doctor4} alt="doctor photo" className=" w-100 mt-4" />
-        </div>
+      <SwiperSlide className="d-flex align-items-center px-5 ">
+        <img src={doctor4} alt="doctor photo" className=" w-25 mt-4" />
 
         <h2 className="text-white text-capitalize ms-5">
           let's start living healthy and well with us right now!

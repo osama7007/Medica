@@ -1,0 +1,9 @@
+.brand {
+  color: var(--main-color);
+}
+.active {
+  color: var(--main-color) !important;
+}
+.navLink{
+  line-height: 0;
+}
