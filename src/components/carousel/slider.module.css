@@ -1,8 +1,11 @@
 .swiperContainer {
   background: linear-gradient(208.18deg, #67c3f3 9.05%, #498cef 76.74%);
-  height: 450px;
+  height: 570px;
+  overflow: hidden;
 }
 
 .imgContainer {
-  width: 300px;
+  width: 600px;
 }
+
+

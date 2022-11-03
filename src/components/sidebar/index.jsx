@@ -59,7 +59,7 @@ const SideBar = () => {
     >
       <Link
         to="/home"
-        className="d-flex align-items-center py-2 mb-4 text-decoration-none "
+        className="d-flex align-items-center py-2 mb-4 text-decoration-none mt-4 "
         onClick={() => !collapsed && setCollapsed(true)}
       >
         <img src="/logo.png" alt="logo" height="35" className={classes.logo} />

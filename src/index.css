@@ -20,5 +20,18 @@ body {
 }
 .ant-layout-sider-trigger {
   background-color: var(--main-color) !important;
+}
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--light-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--main-color);
 }
