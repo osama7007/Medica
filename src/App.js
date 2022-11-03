@@ -5,17 +5,19 @@ import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Patient from "./pages/patient";
 import ProfilePatient from "./pages/profilePatient";
+import AllDoctors from "./pages/allDoctors";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        {/* <Route path="/" element={<Welcome />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/patient" element={<Patient />} />
-        <Route path="/profilePatient" element={<ProfilePatient />} />
+        <Route path="/profilePatient" element={<ProfilePatient />} /> */}
+        <Route path="/allDoctors" element={<AllDoctors />} />
       </Routes>
     </BrowserRouter>
   );
