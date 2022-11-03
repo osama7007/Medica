@@ -7,7 +7,7 @@ import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
-import AllDoctors from "./pages/allDoctors";
+import TopRated from './pages/top_rated'
 
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   return (
 
     <BrowserRouter>
-
       <Layout>
         <Routes>
           <Route path="/" element={<Welcome />} />
