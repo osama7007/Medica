@@ -15,10 +15,17 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-.text-blue {
-  color: var(--main-color);
+::-webkit-scrollbar {
+  width: 10px;
 }
-.ant-layout-sider-trigger {
-  background-color: var(--main-color) !important;
-
+  ::-webkit-scrollbar-track {
+  background: var( --light-colo); 
 }
+  ::-webkit-scrollbar-thumb {
+  background: var(--main-color); 
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  
+  background: #155dc9; 
+} 

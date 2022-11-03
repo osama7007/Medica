@@ -118,7 +118,7 @@ const RegisterForm = ({ userAuth }) => {
         </Form.Item>
 
         <Form.Item>
-          <PrimaryBtn title={"Sign Up"} />
+          <PrimaryBtn title={"Sign Up"}  />
         </Form.Item>
       </div>
     </Form>
