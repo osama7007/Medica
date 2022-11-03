@@ -20,8 +20,8 @@ body {
 }
 .ant-layout-sider-trigger {
   background-color: var(--main-color) !important;
-
 }
+
 .ant-select{
   width: 13em;
 }
@@ -31,6 +31,5 @@ body {
 }
 .swiper-slide:nth-child(n){
   width: 68%;
-
 }
 
