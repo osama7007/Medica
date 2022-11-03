@@ -1,0 +1,21 @@
+.paragraph::before,
+.paragraph::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 45%;
+  background-color: var(--light-color);
+}
+
+.paragraph::before {
+  left: 0;
+}
+
+.paragraph::after {
+  right: 0;
+}
+
+.btn {
+  letter-spacing: 0;
+}

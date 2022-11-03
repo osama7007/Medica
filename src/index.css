@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,7 @@
 }
 
 :root {
-  --main-color: #3879fe;
+  --main-color: #1a75ff;
   --white-color: #fff;
   --black-color: #35383f;
   --light-color: #eaf0ff;
@@ -14,6 +13,24 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+.text-blue {
+  color: var(--main-color);
+}
+.ant-layout-sider-trigger {
+  background-color: var(--main-color) !important;
+
+}
+.ant-select{
+  width: 13em;
 }
 
+.swiper-slide {
+  width: 60%;
+}
+.swiper-slide:nth-child(n){
+  width: 68%;
+
+}
 

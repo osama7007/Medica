@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay, Navigation } from "swiper";
+import { Link } from "react-router-dom";
 import styles from "./trending.module.css";
 
-const Trending=()=> {
-    const [index, setIndex] = useState(0);
-    const [articles, setArticles] = useState([]);
-    useEffect(() => {
+export default function App() {
+  const [articles, setArticles] = useState([]);
 
+  useEffect(() => {
     getArticles();
   }, []);
   const getArticles = () => {
@@ -16,56 +18,40 @@ const Trending=()=> {
       .then((json) => setArticles(json));
     console.log(articles);
   };
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
-
   return (
-    <section className={`${styles.trendWidth} m-auto my-4`}>
-      <Carousel activeIndex={index} onSelect={handleSelect} 
+    <>
+      <Swiper
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+        }}
+        slidesPerView={"auto"}
+        spaceBetween={30}
+       
+        modules={[Autoplay, Navigation]}
+        className={`${styles.trendWidth} text-center m-auto my-4`}
       >
-          {articles.map((article) => {
-              return (
-                <Carousel.Item>
-                      <div >
-                      <img
-                  className={`${styles.trending} d-block w-100 rounded-5`}
-                  src={article.image}
-                  alt="trending article"
-                />
-               </div>
-                
-                      <Carousel.Caption>
-                    <Link
-                      to={`/articles/${article.id}`} key={article.id}
-
-                      className='text-white text-decoration-none  fw-bold fs-2'>{article.title}</Link>
-                </Carousel.Caption>
-                      </Carousel.Item>
-                  
-              )
-          })}
-
-      </Carousel>
-      
-
-      {/* <div className="d-flex">
         {articles.map((article) => {
           return (
-          
-        <div className='me-2' >
-                      <img
-                  className={`${styles.trending} d-block w-100 rounded-5`}
+            <>
+              <SwiperSlide>
+                <img
                   src={article.image}
+                  className={`${styles.trending} w-100 mb-3 rounded-5`}
                   alt="trending article"
                 />
-               </div>
-        )
-      })} 
-      </div>*/}
-      </section>
+                <Link
+                  to={`/articles/${article.id}`}
+                  key={article.id}
+                  className="text-dark text-decoration-none   fw-bold fs-5"
+                >
+                  {article.title}
+                </Link>
+              </SwiperSlide>
+            </>
+          );
+        })}
+      </Swiper>
+    </>
   );
 }
-
-export default Trending;

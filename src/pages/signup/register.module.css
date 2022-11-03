@@ -1,0 +1,10 @@
+.form {
+  border: 1px solid var(--light-color);
+  padding: 20px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .imgWrapper {
+    display: none;
+  }
+}
