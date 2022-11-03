@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Lottie from 'react-lottie';
 import rateGif from '../../assets/images/lf30_editor_eivhekn3.json';
 import PrimaryBtn from '../../components/buttons/PrimaryBtn';
+import SecondaryBtn from '../../components/buttons/SecondaryBtn';
 function TopRated() {
 	const [topRated, seTopRated] = useState([]);
 
@@ -71,7 +72,7 @@ function TopRated() {
 										<span className='fw-bold fs-5'> Waiting Time: </span>
 										{doctor.waiting}
 									</h5>
-									<PrimaryBtn title=' View Profile' />
+									<SecondaryBtn title=' View Profile' />
 								</div>
 							</div>
 						</>
