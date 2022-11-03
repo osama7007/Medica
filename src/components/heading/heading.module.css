@@ -1,0 +1,14 @@
+.heading {
+    width: fit-content;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  width: 30%;
+  height: 2px;
+  background-color: var(--main-color);
+}

@@ -1,37 +1,45 @@
 import WelcomeLottie from "../../components/welcomeLotie";
-import PrimaryBtn from "../../components/buttons/PrimaryBtn";
-import SecondaryBtn from "../../components/buttons/SecondaryBtn";
 import styles from "./welcome.module.css";
-import { useNavigate } from "react-router-dom";
+import Loader from "../../components/loader";
+import { useState } from "react";
+import WelcomeContent from "./WelcomeContent";
 
 const Welcome = () => {
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [transform, setTransform] = useState(false);
 
-  const signInNavigate = () => {
-    navigate("/login");
-  };
-  const signUpNavigate = () => {
-    navigate("/signup");
-  };
+  const transformClass = transform ? styles.transform : "";
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 3000);
+
+  setTimeout(() => {
+    setTransform(true);
+  }, 6000);
+
   return (
-    <div className={`${styles.all} container pt-4`}>
-      <div className={styles.img}>
-        <WelcomeLottie />
-      </div>
-      <div className={`${styles.content} text-center`}>
-        <h1 className={`${styles.text} fw-bold text-uppercase mb-4`}>
-          Welcome to Medica!👋
-        </h1>
-        {/* <h5>
-          The best online doctor appointment & consultation website of the
-          century for your health and medical needs!
-        </h5> */}
-        <div className={styles.Btn}>
-          <PrimaryBtn title={"LogIn"} action={signInNavigate} />
-          <SecondaryBtn title={"SignUp"} action={signUpNavigate} />
+    <>
+      {!loading &&  <WelcomeContent />}
+      {loading && <Loader />}
+
+      {/* {!loading && (
+        <div className={`${transformClass} container pt-4`}>
+          <div className={styles.img}>
+            <WelcomeLottie />
+          </div>
+          <div className={`${styles.content} text-center`}>
+            <h1 className={`${styles.text} fw-bold text-uppercase mb-4`}>
+              Welcome to Medica!👋
+            </h1>
+            <h5>
+              The best online doctor appointment & consultion website of the
+              century for your health and medical needs!
+            </h5>
+          </div>
         </div>
-      </div>
-    </div>
+      )} */}
+    </>
   );
 };
 

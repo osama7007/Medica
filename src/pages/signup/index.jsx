@@ -6,11 +6,11 @@ import Thanks from "../../components/thankyou";
 import { useState } from "react";
 
 const SignUp = () => {
-  const [auth, setAuth] = useState(false);
+  const [userAuth, setUserAuth] = useState(false);
 
   return (
     <section className=" row  container-fluid vh-100 align-items-center ">
-      {auth ? (
+      {userAuth ? (
         <Thanks className={styles.thanks} />
       ) : (
         <>
@@ -18,7 +18,7 @@ const SignUp = () => {
             <img src={register} alt="register" className="w-100" />
           </div>
           <div className={`${styles.form} col shadow-sm ms-3 rounded-2 `}>
-            <RegisterForm auth={setAuth} />
+            <RegisterForm userAuth={setUserAuth} />
             <Google />
           </div>
         </>

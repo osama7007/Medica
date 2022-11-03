@@ -1,0 +1,10 @@
+.container {
+    background-color: var(--light-color);
+    margin: 100px 0;
+}
+
+
+
+.icon {
+    color: var(--main-color);
+}

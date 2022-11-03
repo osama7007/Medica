@@ -9,7 +9,7 @@ const SecondaryBtn = (props) => {
       text-uppercase
       border-0
       fw-bold
-      me-4 shadow
+      me-4 shadow-sm
        rounded-pill
          px-5 py-2
          `}

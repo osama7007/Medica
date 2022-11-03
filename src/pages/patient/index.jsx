@@ -1,3 +1,4 @@
+
 import { DatePicker, Form, Input, Radio, TreeSelect } from "antd";
 import React, { useState } from "react";
 import strip from "../../assets/images/strip-tablet.gif";
@@ -172,3 +173,4 @@ const Patient = () => {
   );
 };
 export default Patient;
+
