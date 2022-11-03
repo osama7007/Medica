@@ -1,0 +1,18 @@
+.reedMore:hover .arrow {
+  transform: translateX(5px);
+}
+
+.arrow {
+  color: var(--main-color);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.category {
+  background-color: var(--light-color);
+  color: var(--main-color);
+  padding: 5px;
+  width: fit-content;
+  border-radius: 6px;
+  font-weight: 600;
+}

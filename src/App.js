@@ -7,12 +7,15 @@ import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
+import AllDoctors from "./pages/allDoctors";
 
 
 function App() {
   useDoctors();
   return (
+
     <BrowserRouter>
+
       <Layout>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -21,11 +24,12 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/patient" element={<Patient />} />
           <Route path="/profilePatient" element={<ProfilePatient />} />
+          <Route path='/topRated' element={<TopRated />} />
         </Routes>
       </Layout>
-
     </BrowserRouter>
   );
+
 }
 
 export default App;

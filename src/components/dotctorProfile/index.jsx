@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './DoctorProfile.module.css';
+import Lottie from 'react-lottie';
+import arrow from '../../assets/images/doctor_profile/84738-arrow.json'
 import { useState } from 'react';
 import DoctorDefaultImg from '../../assets/images/doctor_profile/default_profile_img.png';
 import CoverImg from '../../assets/images/doctor_profile/default_cover.jpg';
@@ -8,7 +10,6 @@ import {
 	HiPhotograph,
 	HiLocationMarker,
 	HiMail,
-	HiChatAlt,
 } from 'react-icons/hi';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 
@@ -48,7 +49,18 @@ function DoctorProfile() {
 			setCover(URL.createObjectURL(event.target.files[0]));
 		}
 	};
-
+const defaultOptions = {
+	loop: true,
+	autoplay: true,
+	animationData: arrow,
+	rendererSettings: {
+		preserveAspectRatio: 'xMidYMid slice',
+	},
+};
+const showContact =()=>{
+	const contact = document.getElementById('doc_contact');
+	contact.className ='d-block';
+}
 	return (
 		<div>
 			<div
@@ -77,83 +89,75 @@ function DoctorProfile() {
 					<h2>{name}</h2>
 				</div>
 			</div>
-			<div className='biography text-center w-50 m-auto'>
-				<h3 className={`${styles.profile_title} mb-2`}>{title}</h3>
-				<p className='mb-5'>{biography}</p>
+			<div
+				className={`${styles.social_links} d-flex justify-content-center mb-5`}>
+				<ul className='d-flex p-0'>
+					<li>
+						<a href='#'>
+							{' '}
+							<FaTwitter />
+						</a>
+					</li>
+					<li>
+						<a href='#'>
+							{' '}
+							<FaLinkedinIn />
+						</a>
+					</li>
+					<li>
+						<a href='#'>
+							{' '}
+							<FaFacebookF />
+						</a>
+					</li>
+				</ul>
 			</div>
-			<div className='doctorInfo row container-fluid m-auto'>
-				<div className='personalInfo text-center col-md-6'>
-					<div className={`${styles.education_experience_section} row`}>
-						<h4 className={`${styles.education_experience_header} mb-2`}>
-							Education
-						</h4>
-						<div className='graduationYear col-4'>
-							<p className='fw-bold'>Year</p>
-							<p>{graduationYear}</p>
-						</div>
-						<div className='degree col-4'>
-							<p className='fw-bold'>Degree</p>
-							<p>{degree}</p>
-						</div>
-						<div className='institute col-4'>
-							<p className='fw-bold'>Institute</p>
-							<p>{institute}</p>
-						</div>
-					</div>
+			<div className='biography_experience row container w-75 m-auto  mb-5'>
+				<div className='biography col-md-6 '>
+					<h3 className={`${styles.profile_title} mb-2 `}>{title}</h3>
+					<p className={`${styles.biography} mb-4 `}>{biography}</p>
 				</div>
-				<div className='experience text-center col-md-6 '>
-					<div className={`${styles.education_experience_section} row`}>
-						<h4 className={`${styles.education_experience_header} mb-2`}>
-							Experience
-						</h4>
-						<div className='graduationYear col-4'>
-							<p className='fw-bold'>Year</p>
-							<p>{experienceYears}</p>
-						</div>
-						<div className='degree col-4'>
-							<p className='fw-bold'>Department</p>
-							<p>{department}</p>
-						</div>
-						<div className='institute col-4'>
-							<p className='fw-bold'>Position</p>
-							<p>{position}</p>
-						</div>
+				<div className='experience col-md-6'>
+					<div className={`${styles.experienceYears}`}>
+						<table>
+							<tr>
+								<th>Experience</th>
+								<th>Department</th>
+								<th>Position</th>
+							</tr>
+							<tr>
+								<td>{experienceYears}</td>
+								<td>{department}</td>
+								<td>{position}</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 			</div>
 			<div
-				className={`${styles.contact} d-flex align-items-center justify-content-center container-fluid m-auto text-light  fw-bold`}>
-				<div
-					className={`${styles.contact_info}col-md-6 text-light p-5 fw-bold`}>
-					<span className='p-4'>
-						<HiPhone /> {phone}
-					</span>
-					<span className='p-4'>
-						<HiMail /> {email}
-					</span>
-					<span className='p-4'>
-						<HiLocationMarker /> {address}
-					</span>
-				</div>
-				<div className='social_contact w-25 col-md-6'>
-					<ul
-						className={`${styles.social_media_icons} text-light d-flex gap-5 flex-wrap`}>
-						<li>
-							<a href={doctorFacebook}>
-								<FaFacebookF />
-							</a>
-						</li>
-						<li>
-							<a href={doctorTwitter}>
-								<FaLinkedinIn />
-							</a>
-						</li>
-						<li>
-							<a href={doctorLinkedIn}>
-								<FaTwitter />
-							</a>
-						</li>
-					</ul>
+				className={`${styles.booking_examination} w-75 m-auto text-center p-2`}>
+				<div className='booking_icons d-flex align-items-center justify-content-center'>
+					<div className='booking_lottie'>
+						<Lottie options={defaultOptions} height={100} width={100} />
+					</div>
+					<div className='booking_icon'>
+						<button
+							className={`${styles.booking_button} mx-4`}
+							onClick={showContact}>
+							Booking
+						</button>
+					</div>
+						<div id='doc_contact' className='d-none'>
+							<span>
+								<HiPhone /> {phone}
+							</span>
+							<span className='mx-4'>
+								<HiMail /> {email}
+							</span>
+							<span>
+								<HiLocationMarker /> {address}
+							</span>
+						</div>
 				</div>
 			</div>
 		</div>
