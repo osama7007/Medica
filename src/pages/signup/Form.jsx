@@ -5,8 +5,9 @@ import FormInput from "../../components/input";
 import FormSelect from "../../components/input/Select";
 import { useNavigate } from "react-router-dom";
 import styles from "./form.module.css";
+import { db } from "../../firebase/firebase";
 
-const RegisterForm = ({ auth }) => {
+const RegisterForm = ({ userAuth }) => {
   const navigate = useNavigate();
 
   const options = [
@@ -20,15 +21,20 @@ const RegisterForm = ({ auth }) => {
   ];
 
   const onFinish = (values) => {
-    console.log("Success:", values);
-    auth(true);
+    const { FirstName, LastName, EmailAddress, UserName, password } = values;
+    db.collection("users").add({
+      firstName: FirstName,
+      lastNAme: LastName,
+      email: EmailAddress,
+      userName: UserName,
+      password: password,
+      gender: values.Gender.value,
+      category: values.Category.value,
+    });
+    userAuth(true);
     setTimeout(() => {
       navigate("/home");
     }, 3000);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -36,21 +42,20 @@ const RegisterForm = ({ auth }) => {
       name="basic"
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
       autoComplete="off"
     >
       <div
         className={`${styles.inputWrapper} d-flex align-items-center justify-content-between ps-5 pe-5`}
       >
-        <FormInput label="First Name" name="First Name" />
-        <FormInput label="Last Name" name="Last Name" />
+        <FormInput label="First Name" name="FirstName" />
+        <FormInput label="Last Name" name="LastName" />
       </div>
 
       <div
         className={`${styles.inputWrapper} d-flex align-items-center justify-content-between ps-5 pe-5`}
       >
-        <FormInput label="Email Address" name="Email Address" type="email" />
-        <FormInput label="User Name" name="User Name" />
+        <FormInput label="Email Address" name="EmailAddress" type="email" />
+        <FormInput label="User Name" name="UserName" />
       </div>
 
       <div

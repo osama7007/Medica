@@ -5,16 +5,28 @@ import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Patient from "./pages/patient";
 
+import Layout from "./layout";
+import useDoctors from "./hooks/useDoctors";
+
+import ProfilePatient from "./pages/profilePatient";
+
+
 function App() {
+  useDoctors();
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/patient" element={<Patient />} />
-      </Routes>
+
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/patient" element={<Patient />} />
+          <Route path="/profilePatient" element={<ProfilePatient />} />
+        </Routes>
+      </Layout>
+
     </BrowserRouter>
   );
 }

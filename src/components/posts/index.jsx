@@ -77,7 +77,7 @@ const Posts = () => {
   };
 
   return (
-    <section className={`${styles.wrapper}`}>
+    <section className={`${styles.wrapper} w-100`}>
       <div
         className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-4`}
       >

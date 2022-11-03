@@ -1,0 +1,55 @@
+.menuBtn {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  width: 40px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  border: 3px solid var(--main-color);
+}
+.menuBtnBurger {
+  width: 40px;
+  height: 3px;
+  background: var(--main-color);
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.4s ease-in-out;
+}
+.menuBtnBurger::before,
+.menuBtnBurger::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: var(--main-color);
+  /* border-radius: 5px; */
+  box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+  transition: all 0.4s ease-in-out;
+}
+.menuBtnBurger::before {
+  transform: translateY(-12px);
+}
+.menuBtnBurger::after {
+  transform: translateY(12px);
+}
+/* ANIMATION */
+.menuBtn.open .menuBtnBurger {
+  transform: translateX(-50px);
+  background: transparent;
+  box-shadow: none;
+}
+.menuBtn.open .menuBtnBurger::before {
+  transform: translate(90px, -12px);
+  background-color: var(--main-color);
+  opacity: 0;
+}
+.menuBtn.open .menuBtnBurger::after {
+  transform: translate(50px, 0px);
+  background-color: var(--main-color);
+}
+@media only screen and (max-width: 925px) {
+  .menuBtn {
+    display: flex;
+  }
+}
+
