@@ -14,8 +14,6 @@ import AllDoctors from './pages/allDoctors'
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
 
-
-
 function App() {
   useDoctors();
   useArticles();

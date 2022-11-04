@@ -32,58 +32,58 @@ return (
 TOP DOCTORS
 </h2>
 <div className='booking_lottie mb-4'>
-	<Lottie options={defaultOptions} height={50} width={300} />
+<Lottie options={defaultOptions} height={50} width={300} />
 </div>
 {topRated.map((doctor) => {
-	if (doctor.rate > 3) {
-		return (
-			<>
-				<div className=' container border shadow rounded px-3 py-3 mb-4 w-50 d-flex justify-content-center align-items-center'>
-					<div className='w-50 ms-2'>
-						<div className='w-75 h-75 mb-3 doctorPic'>
-							<img
-								src={doctor.pImage}
-								alt='doctor'
-								className='w-100 h-100 rounded'
-							/>
-						</div>
-						<h4 className='fw-bold'>{doctor.name}</h4>
-						<h5>
-							<span className='fw-bold fs-5'>Rate: </span> {doctor.rate}/5
-						</h5>
-						<h5>
-							<span className='fw-bold fs-5'>Grade: </span>
-							{doctor.graduation.grade}
-						</h5>
-					</div>
-					<div className='w-50  mt-2 '>
-						<h5 className='mb-4'>
-							<span className='fw-bold fs-5'> Specialty: </span>
-							{doctor.specialty}
-						</h5>
-						<h5 className='mb-4'>
-							<span className='fw-bold fs-5'> Address: </span>
-							{doctor.aAddress.city}
-						</h5>
-						<h5 className='mb-4'>
-							<span className='fw-bold fs-5'> Experience: </span>
-							{doctor.experience}
-						</h5>
-						<h5 className='mb-4'>
-							<span className='fw-bold fs-5'> Waiting Time: </span>
-							{doctor.waiting}
-						</h5>
-						<Link
-							className='fw-bold text-uppercase'
-							to={`/doctor-profile/${doctor.id}`}
-							key={doctor.id}>
-							<SecondaryBtn title=' View Profile' />
-						</Link>
-					</div>
-				</div>
-			</>
-		);
-	}
+if (doctor.rate > 3) {
+return (
+<>
+	<div className=' container border shadow rounded px-3 py-3 mb-4 w-50 d-flex justify-content-center align-items-center'>
+		<div className='w-50 ms-2'>
+			<div className='w-75 h-75 mb-3 doctorPic'>
+				<img
+					src={doctor.pImage}
+					alt='doctor'
+					className='w-75 rounded'
+				/>
+			</div>
+			<h4 className='fw-bold'>{doctor.name}</h4>
+			<h5>
+				<span className='fw-bold fs-5'>Rate: </span> {doctor.rate}/5
+			</h5>
+			<h5>
+				<span className='fw-bold fs-5'>Grade: </span>
+				{doctor.graduation.grade}
+			</h5>
+		</div>
+		<div className='w-50  mt-2 '>
+			<h5 className='mb-4'>
+				<span className='fw-bold fs-5'> Specialty: </span>
+				{doctor.specialty}
+			</h5>
+			<h5 className='mb-4'>
+				<span className='fw-bold fs-5'> Address: </span>
+				{doctor.aAddress.city}
+			</h5>
+			<h5 className='mb-4'>
+				<span className='fw-bold fs-5'> Experience: </span>
+				{doctor.experience}
+			</h5>
+			<h5 className='mb-4'>
+				<span className='fw-bold fs-5'> Waiting Time: </span>
+				{doctor.waiting}
+			</h5>
+			<Link
+				className='fw-bold text-uppercase'
+				to={`/doctor-profile/${doctor.id}`}
+				key={doctor.id}>
+				<SecondaryBtn title=' View Profile' />
+			</Link>
+		</div>
+	</div>
+</>
+);
+}
 })}
 </div>
 );

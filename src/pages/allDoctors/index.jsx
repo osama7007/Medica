@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Btn from '../../components/buttons/btn';
 import PrimaryBtn from '../../components/buttons/PrimaryBtn';
 import './allDoctors.module.css';
@@ -58,11 +58,25 @@ function AllDoctors() {
 						<div className=' container border shadow rounded px-3 py-3 mb-4 w-50 d-flex justify-content-center align-items-center'>
 							<div className='w-50 ms-2'>
 								<div className='w-50 mb-3 doctorPic'>
-									<img src={doctor.pImage} alt='doctor' className='w-75 ' />
+									<Link
+										className='fw-bold text-decoration-none text-dark'
+										to={`/doctor-profile/${doctor.id}`}
+										key={doctor.id}>
+										<img
+											src={doctor.pImage}
+											alt='doctor'
+											className='w-75 rounded'
+										/>
+									</Link>
 								</div>
-								<h4 className='fw-bold' action={docProfileNavigate}>
-									{doctor.name}{' '}
-								</h4>
+								<Link
+									className='fw-bold  text-decoration-none text-dark'
+									to={`/doctor-profile/${doctor.id}`}
+									key={doctor.id}>
+									<h4 className='fw-bold' action={docProfileNavigate}>
+										{doctor.name}
+									</h4>
+								</Link>
 								<h5>
 									<span className='fw-bold fs-5'>Rate:</span> {doctor.rate}/5
 								</h5>

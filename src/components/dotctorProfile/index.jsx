@@ -23,11 +23,11 @@ const params = useParams();
 useEffect(() => {
 	getDoctor();
 }, []);
+
 	const getDoctor = () => {
 		fetch(`https://doctor4.herokuapp.com/all/${params.id}`)
 			.then((res) => res.json())
 			.then((json) => setDoctor(json));
-		console.log(doctor);
 	};
 const [image, setImage] = useState(DoctorDefaultImg); // img src will be loaded from firebase when finished
 const [cover, setCover] = useState(CoverImg); // same ↑↑↑
