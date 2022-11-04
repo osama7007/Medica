@@ -1,3 +1,4 @@
+import { Skeleton } from "antd";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from './articleDetails.module.css';
@@ -16,6 +17,7 @@ const ArticleDetailes = () => {
   const [articles, setArticles] = useState([]);
   return (
     <>
+      {articles.length === 0 ? <Skeleton active /> : ""}
       <div className="container p-3 w-75 text-center">
         <div className="w-75  m-auto">
           <img src={articles?.image} alt="" className={`${styles.imgHeight} w-100 mb-3`} />

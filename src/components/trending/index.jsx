@@ -1,10 +1,10 @@
-
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import styles from "./trending.module.css";
+import { Skeleton } from "antd";
 
 export default function App() {
   const [articles, setArticles] = useState([]);
@@ -31,6 +31,8 @@ export default function App() {
         modules={[Autoplay, Navigation]}
         className={`${styles.trendWidth} text-center m-auto my-4`}
       >
+                {articles.length === 0 ? <Skeleton active /> : ""}
+
         {articles.map((article) => {
           return (
             <>
