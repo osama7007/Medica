@@ -38,6 +38,8 @@ const Posts = () => {
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         image: url,
+        likes: 0,
+        comments: 0,
       });
       setInput("");
       setUrl("");
@@ -76,6 +78,16 @@ const Posts = () => {
       });
   };
 
+  const likesHandler = (id) => {
+    // db.collection("posts")
+    //   .doc(id)
+    //   .update({
+    //     likes: 'hello',
+    //   });
+
+    console.log(id);
+  };
+
   return (
     <section className={`${styles.wrapper} w-100`}>
       <div
@@ -109,7 +121,7 @@ const Posts = () => {
       </div>
 
       {url && (
-        <div className={styles.imgUploaded}>
+        <div className={`${styles.imgUploaded}`}>
           <img src={url} className="img-fluid" />
         </div>
       )}
@@ -135,9 +147,13 @@ const Posts = () => {
           postImg={post.data.image}
           profileImg={post.data.profileImg}
           message={post.data.message}
+          likes={post.data.likes}
+          updateLikes={likesHandler}
+          comments={post.data.comments}
           deletePostHandler={deletePostHandler}
         />
       ))}
+
       <ToastContainer className={styles.toastContainer} />
     </section>
   );

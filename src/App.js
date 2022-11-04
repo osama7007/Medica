@@ -4,7 +4,7 @@ import Welcome from "./pages/welcome";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Articles from "./pages/articles";
-import ArticleDetailes from "./pages/articleDetaits";
+import ArticleDetailes from "./pages/articleDetails";
 import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
@@ -18,7 +18,6 @@ function App() {
   useDoctors();
   useArticles();
   return (
-
     <BrowserRouter>
       <Layout>
         <Routes>

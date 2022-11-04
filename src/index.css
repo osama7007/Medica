@@ -29,14 +29,8 @@ body {
   width: 13em;
 }
 
-.swiper-slide {
-  width: 60%;
-}
-.swiper-slide:nth-child(n){
-  width: 68%;
-}
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--light-color);
@@ -47,4 +41,8 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--main-color);
+}
+
+.pointer {
+  cursor: pointer;
 }

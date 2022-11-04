@@ -7,13 +7,16 @@
 .btn {
   color: var(--main-color);
   background-color: var(--light-color);
-  }
-  .secondaryBtn:hover{
-    background-color: var(--main-color);
-    color: var(--white-color);
-  }
-  
-  .primaryBtn {
-    background-color: var(--main-color);
-  }
- 
+}
+.secondaryBtn {
+  background-color: var(--light-color);
+  color: var(--main-color);
+}
+.secondaryBtn:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.primaryBtn {
+  background-color: var(--main-color);
+}

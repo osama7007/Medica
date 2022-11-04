@@ -1,6 +1,3 @@
-.trendWidth{
-    max-width: 80%;
+.trendingImg {
+    min-height: 150px;
 }
-.trending{
-    max-height: 250px;
-    }
