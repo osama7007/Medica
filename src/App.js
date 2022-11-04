@@ -16,7 +16,7 @@ import useArticles from "./hooks/useArticles";
 
 function App() {
   useDoctors();
-  useDoctors();
+  useArticles();
   return (
 
     <BrowserRouter>
@@ -29,6 +29,8 @@ function App() {
           <Route path="/patient" element={<Patient />} />
           <Route path="/profilePatient" element={<ProfilePatient />} />
           <Route path='/topRated' element={<TopRated />} />
+          <Route path='/articles' element={<Articles />} />
+          <Route path='/articles/:id' element={<ArticleDetailes />} />
         </Routes>
       </Layout>
     </BrowserRouter>
