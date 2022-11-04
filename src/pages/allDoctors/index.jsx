@@ -95,7 +95,7 @@ function AllDoctors() {
 									{doctor.experience}
 								</h5>
 								<h5 className='mb-4'>
-									{' '}
+								
 									<span className='fw-bold fs-5'> Waiting Time:</span>{' '}
 									{doctor.waiting}
 								</h5>
