@@ -10,6 +10,7 @@ import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
 import TopRated from './pages/top_rated';
+import AllDoctors from './pages/allDoctors'
 import useArticles from "./hooks/useArticles";
 
 
@@ -26,8 +27,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/patient" element={<Patient />} />
-          <Route path="/profilePatient" element={<ProfilePatient />} />
-          <Route path='/topRated' element={<TopRated />} />
+          <Route path="/patient-profile" element={<ProfilePatient />} />
+          <Route path='/top-rated' element={<TopRated />} />
+          <Route path='/doctors' element={<AllDoctors />} />
           <Route path='/articles' element={<Articles />} />
           <Route path='/articles/:id' element={<ArticleDetailes />} />
         </Routes>
