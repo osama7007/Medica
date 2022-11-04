@@ -20,7 +20,7 @@ const index = () => {
           <h2 className="mb-4 text-capitalize fw-bold">Verified  patient reviews and rating</h2>
           <p className="text-black-50" >
             Doctor ratings are from patients who booked and visited the doctor
-            through Vezeeta.
+            through Medica.
           </p>
         </div>
         <div className="col">
