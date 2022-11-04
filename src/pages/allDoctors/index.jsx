@@ -9,36 +9,48 @@ function AllDoctors() {
   const navigate = useNavigate();
   const [topDoctor, setTopDoctor] = useState([]);
   const [btnVal, setBtnVal] = useState("");
+
   const docProfileNavigate = () => {
     navigate("/patient");
   };
+
+  window.addEventListener("load", () => {
+    allDoctorsView();
+  });
 
   let getSpecialty = (e) => {
     setBtnVal(e.target.innerHTML);
     getDoctor();
   };
+
+  let getAllDoctors = () => {
+    allDoctorsView();
+  };
+
+  const allDoctorsView = () => {
+    fetch(`https://doctor4.herokuapp.com/all`)
+      .then((res) => res.json())
+      .then((json) => setTopDoctor(json));
+  };
+
   const getDoctor = () => {
     fetch(`https://doctor4.herokuapp.com/${btnVal}`)
       .then((res) => res.json())
       .then((json) => setTopDoctor(json));
   };
+
   return (
     <>
       <div className="text-center mt-5 container w-75 mb-5">
+        {" "}
+        <Btn action={(e) => getAllDoctors(e)} title="All Doctors" />
         <Btn action={(e) => getSpecialty(e)} title="Dermatology" />
-
         <Btn action={(e) => getSpecialty(e)} title="Pulmonologist" />
-
         <Btn action={(e) => getSpecialty(e)} title="Otolaryngology" />
-
         <Btn action={(e) => getSpecialty(e)} title="Pediatrics" />
-
         <Btn action={(e) => getSpecialty(e)} title="InternalMedicine" />
-
         <Btn action={(e) => getSpecialty(e)} title="Psychiatry" />
-
         <Btn action={(e) => getSpecialty(e)} title="PlasticSurgery" />
-
         <Btn title="More" />
       </div>
       <div className="specialty_content">
