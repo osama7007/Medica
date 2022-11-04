@@ -1,18 +1,33 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { randomNums } from "../../utils/randomNums";
 import SkeletonComponent from "../skeleton";
 import styles from "./followDoctor.module.css";
 const FollowDoctor = () => {
   // state
   const [doctor, setDoctor] = useState([]);
-  const [Alldoctor, setAllDoctor] = useState([]);
+  const Alldoctor = useSelector((state) => state.doctors.doctors);
   const [res, setRes] = useState([]);
-  const [buttonText, setButtonText] = useState("follow");
+  const [disable, setDisable] = useState(false);
+  const [buttonText, setButtonText] = useState([
+    "Follow",
+    "Follow",
+    "Follow",
+    "Follow",
+    "Follow",
+  ]);;
   // handleClick
-  function handleClick(id) {
-    setButtonText("following");
+  function handleFollowClick(index) {
+    setButtonText((prevState) => {
+      const array = [...prevState];
+      array[index] = "Following";
+      // setDisable(true)
+      return array;
+    });
   }
 
+
+  
   useEffect(() => {
     if (res.length > 0 && Alldoctor.length > 0)
       setDoctor(Alldoctor.filter((doc, i) => res.includes(i)));
@@ -20,22 +35,16 @@ const FollowDoctor = () => {
 
   useEffect(() => {
     setRes(randomNums(40, 5));
-    getDoctor();
   }, []);
-
-  const getDoctor = () => {
-    fetch("https://doctor4.herokuapp.com/all")
-      .then((res) => res.json())
-      .then((json) => setAllDoctor(json));
-  };
   return (
-    <>
+    <section className={styles.following}>
       <h4 className="mb-3 ms-2" >You may also like</h4>
       <section
-        className={`${styles.conWidth}  shadow ms-auto mx-2 px-3 py-4 rounded-3`}
+        className={`${styles.conWidth}  shadow  px-3 py-4 rounded-3`}
       >
         {doctor.length === 0 ? <SkeletonComponent /> : ""}
         {doctor.map((doc, id) => {
+       
           return (
             <div className="row mb-2 " key={doc.id}>
               <div className=" col-2 ">
@@ -52,21 +61,24 @@ const FollowDoctor = () => {
               <div className="col-2">
                 <button
                   className="btn btn-primary"
-                  onClick={() => handleClick(doc.id)}
+                  disabled={disable}
+                  key={`button-${id}`}
+                  onClick={() => { handleFollowClick(id)}}
                 >
-                  {buttonText}
-                  {/* {doc.id !== id ? (
-                    //  {buttonText}
-                  "follow"
-
-                 ):("following")}  */}
+                  
+                  {buttonText[id]}
                 </button>
+                {/* <button
+                  onClick={() => toggleText(id)}
+                  key={`button-${id}`}
+                                  >{textState[id]}</button> */}
+
               </div>
             </div>
           );
         })}
       </section>
-    </>
+    </section>
   );
 };
 export default FollowDoctor;

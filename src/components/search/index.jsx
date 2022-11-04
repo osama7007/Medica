@@ -46,7 +46,7 @@ const Search = ({ className }) => {
     <div className={`w-100 d-flex   ${className}`}>
       <Select
         defaultActiveFirstOption={false}
-        className={`${className}  m-1`}
+        className={`${className} mt-2 py-1 mx-1`}
         placeholder="Search..."
         value={value}
         onChange={(value) => setValue(value)}
@@ -68,7 +68,7 @@ const Search = ({ className }) => {
         className="border-0 bg-white"
       >
       <BiSearchAlt
-          className='fs-2 text-blue mx-2 '
+          className='fs-2 text-blue  mx-1 '
         />
       </button>
                 </div>
