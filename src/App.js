@@ -3,14 +3,19 @@ import Home from "./pages/home";
 import Welcome from "./pages/welcome";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
+import Articles from "./pages/articles";
+import ArticleDetailes from "./pages/articleDetaits";
 import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
-import TopRated from './pages/top_rated'
+import TopRated from './pages/top_rated';
+import useArticles from "./hooks/useArticles";
+
 
 
 function App() {
+  useDoctors();
   useDoctors();
   return (
 

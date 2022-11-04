@@ -1,16 +1,28 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { randomNums } from "../../utils/randomNums";
 import SkeletonComponent from "../skeleton";
 import styles from "./followDoctor.module.css";
 const FollowDoctor = () => {
   // state
   const [doctor, setDoctor] = useState([]);
-  const [Alldoctor, setAllDoctor] = useState([]);
+  const Alldoctor = useSelector((state) => state.doctors.doctors);
+  console.log(Alldoctor);
   const [res, setRes] = useState([]);
-  const [buttonText, setButtonText] = useState("follow");
+  const [text, setText] = useState([
+    "Follow",
+    "Follow",
+    "Follow",
+    "Follow",
+    "Follow",
+  ]);
   // handleClick
-  function handleClick(id) {
-    setButtonText("following");
+  function handleClick(index) {
+    setText((prevState) => {
+      const array = [...prevState];
+      array[index] = "Following";
+      return array;
+    });
   }
 
   useEffect(() => {
@@ -20,14 +32,7 @@ const FollowDoctor = () => {
 
   useEffect(() => {
     setRes(randomNums(40, 5));
-    getDoctor();
   }, []);
-
-  const getDoctor = () => {
-    fetch("https://doctor4.herokuapp.com/all")
-      .then((res) => res.json())
-      .then((json) => setAllDoctor(json));
-  };
   return (
     <>
       <h4 className="mb-3 ms-2" >You may also like</h4>
@@ -52,14 +57,10 @@ const FollowDoctor = () => {
               <div className="col-2">
                 <button
                   className="btn btn-primary"
-                  onClick={() => handleClick(doc.id)}
+                  key={`button-${id}`}
+                  onClick={() => handleClick(id)}
                 >
-                  {buttonText}
-                  {/* {doc.id !== id ? (
-                    //  {buttonText}
-                  "follow"
-
-                 ):("following")}  */}
+                  {text[id]}
                 </button>
               </div>
             </div>

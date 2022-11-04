@@ -1,6 +1,7 @@
 import { Select } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useDoctors from "../../hooks/useDoctors";
@@ -42,10 +43,10 @@ const Search = ({ className }) => {
 
   const handleSearch = () => navigate(`/${slugify(value)}`);
   return (
-    <div className={`w-50 d-flex py-4  ${className}`}>
+    <div className={`w-100 d-flex   ${className}`}>
       <Select
         defaultActiveFirstOption={false}
-        className={`${className} w-100 me-1`}
+        className={`${className}  m-1`}
         placeholder="Search..."
         value={value}
         onChange={(value) => setValue(value)}
@@ -54,14 +55,23 @@ const Search = ({ className }) => {
         tokenSeparators={[","]}
         options={options}
       />
-      <button
+      {/* <button
         className="btn btn-primary"
         disabled={!options.find((option) => option.value === value)}
         onClick={handleSearch}
       >
         Go
+      </button> */}
+      <button
+        disabled={!options.find((option) => option.value === value)}
+        onClick={handleSearch}
+        className="border-0 bg-white"
+      >
+      <BiSearchAlt
+          className='fs-2 text-blue mx-2 '
+        />
       </button>
-    </div>
+                </div>
   );
 };
 export default Search;
