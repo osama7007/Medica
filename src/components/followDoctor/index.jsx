@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { randomNums } from "../../utils/randomNums";
 import SkeletonComponent from "../skeleton";
 import styles from "./followDoctor.module.css";
@@ -37,33 +38,42 @@ const FollowDoctor = () => {
         {doctor.length === 0 ? <SkeletonComponent /> : ""}
         {doctor.map((doc, id) => {
           return (
-            <div className="row mb-2 " key={doc.id}>
-              <div className=" col-2 ">
-                <img
-                  src={doc.pImage}
-                  className={`${styles.img} rounded-circle`}
-                  alt="img of doctor"
-                />
-              </div>
-              <div className="col-5 offset-1">
-                <p className="fw-bold">{doc.name}</p>
-                <p>{doc.specialty}</p>
-              </div>
-              <div className="col-2">
-                <button
-                  className="btn btn-primary"
-                  onClick={() => handleClick(doc.id)}
-                >
-                  {buttonText}
-                  {/* {doc.id !== id ? (
+						<div className='row mb-2 ' key={doc.id}>
+							<div className=' col-2 '>
+								<Link
+									className='fw-bold text-uppercase'
+									to={`/doctor-profile/${doc.id}`}
+									key={doc.id}>
+									<img
+										src={doc.pImage}
+										className={`${styles.img} rounded-circle`}
+										alt='img of doctor'
+									/>
+								</Link>
+							</div>
+							<div className='col-5 offset-1'>
+								<Link
+									className='fw-bold text-uppercase text-decoration-none text-dark'
+									to={`/doctor-profile/${doc.id}`}
+									key={doc.id}>
+									<p className='fw-bold'>{doc.name}</p>
+								</Link>
+								<p>{doc.specialty}</p>
+							</div>
+							<div className='col-2'>
+								<button
+									className='btn btn-primary'
+									onClick={() => handleClick(doc.id)}>
+									{buttonText}
+									{/* {doc.id !== id ? (
                     //  {buttonText}
                   "follow"
 
                  ):("following")}  */}
-                </button>
-              </div>
-            </div>
-          );
+								</button>
+							</div>
+						</div>
+					);
         })}
       </section>
     </>
