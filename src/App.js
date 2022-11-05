@@ -12,30 +12,30 @@ import ProfilePatient from "./pages/profilePatient";
 import TopRated from './pages/top_rated';
 import AllDoctors from './pages/allDoctors'
 import useArticles from "./hooks/useArticles";
-
-
+import DoctorProfile from "./components/dotctorProfile";
 
 function App() {
   useDoctors();
   useArticles();
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/patient" element={<Patient />} />
-          <Route path="/patient-profile" element={<ProfilePatient />} />
-          <Route path='/top-rated' element={<TopRated />} />
-          <Route path='/doctors' element={<AllDoctors />} />
-          <Route path='/articles' element={<Articles />} />
-          <Route path='/articles/:id' element={<ArticleDetailes />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  );
+		<BrowserRouter>
+			<Layout>
+				<Routes>
+					<Route path='/' element={<Welcome />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/home' element={<Home />} />
+					<Route path='/patient' element={<Patient />} />
+					<Route path='/patient-profile' element={<ProfilePatient />} />
+					<Route path='/top-rated' element={<TopRated />} />
+					<Route path='/doctors' element={<AllDoctors />} />
+					<Route path='/articles' element={<Articles />} />
+					<Route path='/articles/:id' element={<ArticleDetailes />} />
+					<Route path='/doctor-profile/:id' element={<DoctorProfile />} />
+				</Routes>
+			</Layout>
+		</BrowserRouter>
+	);
 
 }
 
