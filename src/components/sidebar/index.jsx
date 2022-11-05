@@ -7,8 +7,7 @@ import { CgProfile } from "react-icons/cg";
 import { FiBookmark } from "react-icons/fi";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import classes from "./sidebar.module.css";
-const SideBar = () => {
-  const [collapsed, setCollapsed] = useState(true);
+const SideBar = ({ collapsed, setCollapsed }) => {
   const [pageInView, setPageInView] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
