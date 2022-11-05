@@ -27,8 +27,9 @@ body {
 }
 
 .ant-select{
-  width: 13em;
+  width: 20em;
 }
+
 
 ::-webkit-scrollbar {
   width: 8px;

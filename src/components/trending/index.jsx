@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+// import "swiper/css";
 import { Autoplay, Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import styles from "./trending.module.css";
@@ -14,7 +14,7 @@ export default function App() {
   }, []);
 
   const getArticles = () => {
-    fetch("https://medical-articles.herokuapp.com/articles?_limit=8")
+    fetch("https://medical-articles.herokuapp.com/articles?_limit=6")
       .then((res) => res.json())
       .then((json) => setArticles(json));
   };
@@ -25,7 +25,14 @@ export default function App() {
         delay: 3000,
         disableOnInteraction: false,
       }}
-      slidesPerView={4}
+      // slidesPerView={4}
+      breakpoints={{
+        300: {
+          width: 300,
+          slidesPerView: 1,
+        },
+      
+      }}
       spaceBetween={30}
       modules={[Autoplay, Navigation]}
       className={`${styles.trendWidth} text-center m-auto my-4`}

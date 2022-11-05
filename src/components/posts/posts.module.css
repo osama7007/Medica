@@ -1,8 +1,15 @@
+.wrapper{
+  max-width: 100%;
+  /* width: 800px; */
+}
+
 .inputContainer {
   border-radius: 11px;
   width: fit-content;
   margin: 0 auto;
   padding: 10px;
+  max-width: 100%;
+
 }
 
 .profileImg {
@@ -10,7 +17,10 @@
   height: 50px;
   border-radius: 50%;
 }
-
+.formContainer{
+  width: 100%;
+  display: flex;
+}
 .formContainer input {
   margin-right: 10px;
   border: 0;
@@ -23,9 +33,16 @@
 .formContainer input:first-child {
   width: 300px;
 }
-
+@media (max-width:800px){
+  .formContainer{
+    max-width: 90%;
+  }
+  .formContainer input:first-child {
+    max-width: 200px;
+  }
+}
 .formContainer input:nth-child(2) {
-  width: 100px;
+  max-width: 100px;
 }
 
 .label {
@@ -48,7 +65,7 @@
 }
 
 .itemContainer {
-  width: 600px;
+  max-width: 600px;
   margin: 10px auto 20px auto;
 }
 
