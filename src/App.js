@@ -13,7 +13,7 @@ import TopRated from './pages/top_rated';
 import AllDoctors from './pages/allDoctors'
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
-
+import DoctorForm from "./components/doctor-form";
 function App() {
   useDoctors();
   useArticles();
@@ -32,6 +32,7 @@ function App() {
 					<Route path='/articles' element={<Articles />} />
 					<Route path='/articles/:id' element={<ArticleDetailes />} />
 					<Route path='/doctor-profile/:id' element={<DoctorProfile />} />
+					<Route path='/doctor-form' element={<DoctorForm />} />
 				</Routes>
 			</Layout>
 		</BrowserRouter>

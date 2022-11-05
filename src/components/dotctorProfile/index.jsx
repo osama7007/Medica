@@ -13,15 +13,17 @@ HiMail,
 } from 'react-icons/hi';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 import DoctorImg from '../doctor_image';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Skeleton } from 'antd';
-
+import DoctorForm from '../doctor-form';
+import Search from 'antd/lib/transfer/search';
 function DoctorProfile() {
 	const [doctor, setDoctor] = useState({});
 
 const params = useParams();
 useEffect(() => {
 	getDoctor();
+	console.log(doctor);
 }, []);
 
 	const getDoctor = () => {
@@ -30,7 +32,6 @@ useEffect(() => {
 			.then((json) => setDoctor(json));
 	};
 const [image, setImage] = useState(DoctorDefaultImg); // img src will be loaded from firebase when finished
-const [cover, setCover] = useState(CoverImg); // same ↑↑↑
 
 // upload image functions
 const onImageChange = (event) => {
@@ -38,11 +39,7 @@ const onImageChange = (event) => {
 		setImage(URL.createObjectURL(event.target.files[0]));
 	}
 };
-const onCoverChange = (event) => {
-	if (event.target.files && event.target.files[0]) {
-		setCover(URL.createObjectURL(event.target.files[0]));
-	}
-};
+
 const defaultOptions = {
 loop: true,
 autoplay: true,
@@ -66,29 +63,25 @@ return (
 			''
 		)}
 		<div
-			className={`${styles.profile_header} d-flex justify-content-center align-items-center position-relative`}>
-			<label
-				class={`${styles.custom_file_upload} position-absolute`}
-				title='Upload image'>
-				<HiPhotograph className='text-light' />
-				<input type='file' onChange={onCoverChange} className='filetype' />
-			</label>
-			<img src={cover} alt='cover' className={`${styles.coverImg} w-100`} />
-			<div className={`${styles.doctorImg} position-absolute text-center`}>
-				<div className='doctor_img_wrapper w-100 h-100  position-relative  rounded-circle mb-2'>
+			className={`${styles.profile_header} d-flex flex-column justify-content-center align-items-center position-relative`}>
+			<div className='searchBar w-50  m-auto p-2'>
+				<Search />
+			</div>
+			<div className={`${styles.doctorImg} text-center`}>
+				<div className='doctor_img_wrapper w-100 h-100  rounded-circle mb-2   position-relative '>
 					<label
 						class={`${styles.doctor_img_select} position-absolute`}
 						title='Upload image'>
 						<HiPhotograph className='text-dark' />
 						<input type='file' onChange={onImageChange} className='filetype' />
 					</label>
-					<DoctorImg src={image} />
+					<DoctorImg src={doctor?.pImage} />
 				</div>
 				<h3>{doctor?.name}</h3>
 			</div>
 		</div>
 		<div
-			className={`${styles.social_links} d-flex justify-content-center mb-5`}>
+			className={`${styles.social_links} d-flex justify-content-center mb-5 mt-5`}>
 			<ul className='d-flex p-0'>
 				<li>
 					<a href='#'>
@@ -108,8 +101,10 @@ return (
 			</ul>
 		</div>
 		<div className='biography_experience row container w-75 m-auto  mb-5'>
-			<div className='biography col-md-6 '>
-				<h3 className={`${styles.profile_title} mb-2 `}>{doctor?.experience}</h3>
+			<div className='biography col-md-5 ms-5 '>
+				<h3 className={`${styles.profile_title} mb-2 `}>
+					{doctor?.experience}
+				</h3>
 				<p className={`${styles.biography} mb-4 `}>{doctor?.specialty}</p>
 			</div>
 			<div className='experience col-md-6'>
@@ -119,6 +114,9 @@ return (
 							<th>Experience</th>
 							<th>Department</th>
 							<th>Position</th>
+							<th>
+								<Link to='/doctor-form'>Add details</Link>
+							</th>
 						</tr>
 						<tr>
 							<td>{doctor?.experience}</td>
