@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <AntLayout className="bg-transparent position-relative">
         <SideBar />
         <Navbar />
-        {/* <TopBar /> */}
+        <TopBar />
         <Content className={`${classes.content}`}>{children}</Content>
         <Footer />
       </AntLayout>
