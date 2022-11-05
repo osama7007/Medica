@@ -51,7 +51,7 @@ const SideBar = () => {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      className={`bg-white shadow-sm text-blue h-100 d-none d-md-block overflow-hidden ${
+      className={` bg-white shadow-sm text-blue h-100 d-none d-md-block overflow-hidden ${
         classes.sidebar
       } ${
         ["", "login", "signup"].includes(pageInView) ? "d-none d-md-none" : ""

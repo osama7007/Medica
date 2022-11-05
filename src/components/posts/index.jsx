@@ -89,7 +89,7 @@ const Posts = () => {
   };
 
   return (
-    <section className={`${styles.wrapper} w-100`}>
+    <section className={`${styles.wrapper} w-100 ms-auto`}>
       <div
         className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-4`}
       >

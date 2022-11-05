@@ -18,24 +18,26 @@ function App() {
   useDoctors();
   useArticles();
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/patient" element={<Patient />} />
-          <Route path="/patient-profile" element={<ProfilePatient />} />
-          <Route path="/top-rated" element={<TopRated />} />
-          <Route path="/doctors" element={<AllDoctors />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/articles/:id" element={<ArticleDetailes />} />
-          <Route path="/doctor-profile" element={<DoctorProfile />} />
-        </Routes>
-      </Layout>
-    </BrowserRouter>
-  );
+
+		<BrowserRouter>
+			<Layout>
+				<Routes>
+					<Route path='/' element={<Welcome />} />
+					<Route path='/signup' element={<SignUp />} />
+					<Route path='/login' element={<Login />} />
+					<Route path='/home' element={<Home />} />
+					<Route path='/patient' element={<Patient />} />
+					<Route path='/patient-profile' element={<ProfilePatient />} />
+					<Route path='/top-rated' element={<TopRated />} />
+					<Route path='/doctors' element={<AllDoctors />} />
+					<Route path='/articles' element={<Articles />} />
+					<Route path='/articles/:id' element={<ArticleDetailes />} />
+					<Route path='/doctor-profile/:id' element={<DoctorProfile />} />
+				</Routes>
+			</Layout>
+		</BrowserRouter>
+	);
+
 }
 
 export default App;
