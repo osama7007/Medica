@@ -9,20 +9,18 @@ const FollowDoctor = () => {
   const [doctor, setDoctor] = useState([]);
   const Alldoctor = useSelector((state) => state.doctors.doctors);
   const [res, setRes] = useState([]);
-  const [disable, setDisable] = useState(false);
   const [buttonText, setButtonText] = useState([
-    "Follow",
-    "Follow",
-    "Follow",
-    "Follow",
-    "Follow",
-  ]);;
+		false,
+		false,
+		false,
+		false,
+		false,
+	]);;
   // handleClick
   function handleFollowClick(index) {
     setButtonText((prevState) => {
       const array = [...prevState];
-      array[index] = "Following";
-      // setDisable(true)
+      array[index] = !array[index];
       return array;
     });
   }
@@ -47,36 +45,30 @@ const FollowDoctor = () => {
         {doctor.map((doc, id) => {
        
           return (
-            <div className="row mb-2 " key={doc.id}>
-              <div className=" col-2 ">
-                <img
-                  src={doc.pImage}
-                  className={`${styles.img} rounded-circle`}
-                  alt="img of doctor"
-                />
-              </div>
-              <div className="col-5 offset-1">
-                <p className="fw-bold">{doc.name}</p>
-                <p>{doc.specialty}</p>
-              </div>
-              <div className="col-2">
-                <button
-                  className="btn btn-primary"
-                  disabled={disable}
-                  key={`button-${id}`}
-                  onClick={() => { handleFollowClick(id)}}
-                >
-                  
-                  {buttonText[id]}
-                </button>
-                {/* <button
-                  onClick={() => toggleText(id)}
-                  key={`button-${id}`}
-                                  >{textState[id]}</button> */}
-
-              </div>
-            </div>
-          );
+						<div className='row mb-2 ' key={doc.id}>
+							<div className=' col-2 '>
+								<img
+									src={doc.pImage}
+									className={`${styles.img} rounded-circle`}
+									alt='img of doctor'
+								/>
+							</div>
+							<div className='col-5 offset-1'>
+								<p className='fw-bold'>{doc.name}</p>
+								<p>{doc.specialty}</p>
+							</div>
+							<div className='col-2'>
+								<button
+									className='btn btn-primary'
+									key={`button-${id}`}
+									onClick={() => {
+										handleFollowClick(id);
+									}}>
+									{buttonText[id] ? 'following' : 'follow' }
+								</button>
+							</div>
+						</div>
+					);
         })}
       </section>
     </section>

@@ -1,14 +1,10 @@
+
 .doctorImg{
     width: 200px;
     height: 200px;
-    top: 50%;
 }
 
-.coverImg{
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
+
 input[type="file"] {
     display: none;
 }
@@ -21,13 +17,10 @@ input[type="file"] {
     bottom: 0px;
     border-radius: 50%;
 }
-.doctor_img_select{
-    cursor: pointer;
-    bottom: 5px;
-    right: 40px;
-}
-.profile_header {
-    margin-bottom: 10rem;
+.doctor_img_select {
+  cursor: pointer;
+  bottom: 0rem;
+  right: 2.5rem;
 }
 .profile_title{
     color: var(--main-color);
@@ -91,6 +84,7 @@ input[type="file"] {
 .experienceYears tr ,.experienceYears th {
     padding: 5px;
     margin: 5px;
+    width: 250px;
 }
 .booking_button{
     background-color: var(--main-color);
