@@ -25,6 +25,7 @@ body {
 .text-blue {
   color: var(--main-color);
 }
+
 .ant-select{
   width: 13em;
 }
