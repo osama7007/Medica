@@ -2,6 +2,8 @@ import Search from "../../components/search";
 import { BiSearchAlt } from 'react-icons/bi';
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import styles from '../followDoctor/followDoctor.module.css';
+import style from './topBar.module.css';
+
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
 import React from 'react';
@@ -14,9 +16,12 @@ const TopBar = () => {
     
     return (
         <>
-            <section className=" p-3 w-25  ms-auto">
-                <div className="d-flex justify-content-evenly">
-                    <Dropdown
+            <section className= {`${style.container} p-3 ms-auto`}>
+                <div className="d-flex justify-content-between">
+                        {/* <BiSearchAlt className='fs-2 text-blue mx-2 ' /> */}
+                        <Search className="mt-1 text-start  "/>
+            <div className="d-flex">
+            <Dropdown
                         className="me-2 "
                 menu={{
                   items,
@@ -25,16 +30,12 @@ const TopBar = () => {
               >
                 <Link onClick={(e) => e.preventDefault()}>
                   <Space>
-                  <IoMdNotificationsOutline className='fs-2 text-blue mt-2 ' />
-                    <DownOutlined />
+                  <IoMdNotificationsOutline className='fs-2 text-blue mt-3 ' />
+                    {/* <DownOutlined /> */}
                   </Space>
                 </Link>
               </Dropdown>
                    
-                <div className="mt-2">
-                {/* <BiSearchAlt className='fs-2 text-blue mx-2 ' /> */}
-                <Search className=" text-start "/>
-                </div>
                 <div >
                 <img
                   src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1"
@@ -42,6 +43,7 @@ const TopBar = () => {
                   alt="your img"
                 />
                 </div>
+                    </div>
                </div>
             </section>
         </>

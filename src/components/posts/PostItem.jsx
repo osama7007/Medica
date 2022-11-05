@@ -15,7 +15,7 @@ const PostItem = ({
   id,
 }) => {
   return (
-    <div className={`${styles.itemContainer} shadow-sm rounded-4  `}>
+    <div className={`${styles.itemContainer} shadow-sm rounded-4  `} >
       <div className="p-4">
         <div className="d-flex align-items-center mb-3 justify-content-between">
           <div className="d-flex align-items-center">

@@ -22,9 +22,9 @@ const Articles = () => {
   }, []);
 
   return (
-    <section className='w-50 container py-5'>
+    <section className='w-75 container py-5'>
       <Heading text="trending" />
-      <Trending />
+      <Trending className={styles.trendingCard} />
 
       <Heading text="Articles" />
       <div className="row my-5">
