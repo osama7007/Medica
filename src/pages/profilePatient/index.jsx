@@ -7,12 +7,11 @@ import PatientImg from "../patientImg";
 import { HiPhotograph } from "react-icons/hi";
 import patientIcon from "../../assets/images/patienticon.png";
 import { useNavigate } from "react-router-dom";
-// import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import SecondaryBtn from "../../components/buttons/SecondaryBtn";
 import "./profilePatient.module.css";
 const PatientProfile = () => {
   const [image, setImage] = useState(PatientDefaultImg); // img src will be loaded from firebase when finished
-  const [cover, setCover] = useState(CoverImgPatient); // same ↑↑↑
+  // const [cover, setCover] = useState(CoverImgPatient); // same ↑↑↑
   const [name, setName] = useState("Patient Name"); // name will load from fire base ...
   const navigate = useNavigate();
 
@@ -59,17 +58,15 @@ const PatientProfile = () => {
   ];
 
   return (
-    <div>
+    <div className="w-75 container  mx-auto mt-5">
       <div>
-        <div className={`${styles.profile_header}   position-relative`}>
-          <img
+        <div className={`${styles.profile_header}   `}>
+          {/* <img
             src={cover}
             alt="cover"
             className={`${styles.CoverImgPatient} w-100`}
-          />
-          <div
-            className={`${styles.PatientImg} position-absolute  text-center`}
-          >
+          /> */}
+          <div className={`${styles.PatientImg} mt-5  text-center`}>
             <div className="   position-relative   rounded-circle ">
               <label
                 class={`${styles.patient_img_select}   position-absolute`}
@@ -82,19 +79,18 @@ const PatientProfile = () => {
                   className="filetype "
                 />
               </label>
-              <PatientImg className="mt-3 " src={image} />
+              <PatientImg className="mt-3  " src={image} />
             </div>
           </div>
           <div>
-            <div className="container-fluid  mt-5 d-flex justify-content-between   ">
+            <div className="container-fluid  d-flex justify-content-between   ">
               <div className="d-flex container   ms-5">
                 <h2 className="fw-bold mt-5 me-2  patientName ">{name}</h2>
-                <button className="btn mt-5 countFollow  btn-primary me-2">
+                <button className="btn mt-5  btn-primary me-2">
                   Following
                 </button>
-                {/* <PrimaryBtn title={"Following"} className="w-25 follow " /> */}
               </div>
-              <div>
+              <div className="mt-5">
                 <SecondaryBtn title={"Edit"} action={editProfileNavigate} />
               </div>
             </div>
