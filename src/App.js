@@ -9,8 +9,8 @@ import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
-import TopRated from './pages/top_rated';
-import AllDoctors from './pages/allDoctors'
+import TopRated from "./pages/top_rated";
+import AllDoctors from "./pages/allDoctors";
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
 
@@ -18,6 +18,7 @@ function App() {
   useDoctors();
   useArticles();
   return (
+
 		<BrowserRouter>
 			<Layout>
 				<Routes>

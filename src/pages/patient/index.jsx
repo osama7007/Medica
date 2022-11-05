@@ -1,21 +1,30 @@
-
 import { DatePicker, Form, Input, Radio, TreeSelect } from "antd";
 import React, { useState } from "react";
 import strip from "../../assets/images/strip-tablet.gif";
 import capsula from "../../assets/images/capsule.gif";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import "./patient.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Patient = () => {
   const [componentSize, setComponentSize] = useState("default");
+  const [save, setSaved] = useState("Save");
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+
+  let onFinish = () => {
+    setSaved("Saved");
+    if (save === "Save") toast.success("Saved successfully");
+  };
+
   return (
     <div className=" container formBody  d-flex justify-content-center align-items-center">
       <div className=" w-25">
         <img className="w-100" src={strip}></img>
       </div>
       <Form
+        onFinish={onFinish}
         className=" mb-5 ms-5 mt-4    w-75 fw-bold shadow rounded-2 "
         labelCol={{
           span: 4,
@@ -40,12 +49,6 @@ const Patient = () => {
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        {/* <Form.Item label="First name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Last name">
-          <Input />
-        </Form.Item> */}
 
         <Form.Item label="Weight">
           <TreeSelect
@@ -160,9 +163,11 @@ const Patient = () => {
           </Form.Item>
         </form>
         <Form.Item className="ms-5 d-flex align-items-center justify-content-center">
-          <PrimaryBtn title={"Save"} />
+          <PrimaryBtn title={save} />
         </Form.Item>
       </Form>
+      <ToastContainer />
+
       <div className="w-25 position-relative ms-3">
         <img
           className="w-100 position-absolute bottom-0 start-50 translate-middle"
@@ -173,4 +178,3 @@ const Patient = () => {
   );
 };
 export default Patient;
-
