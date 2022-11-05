@@ -1,9 +1,7 @@
-
-import React from "react";
 import styles from "./DoctorProfile.module.css";
 import Lottie from "react-lottie";
 import arrow from "../../assets/images/doctor_profile/84738-arrow.json";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import DoctorDefaultImg from "../../assets/images/doctor_profile/default_profile_img.png";
 import CoverImg from "../../assets/images/doctor_profile/default_cover.jpg";
 import {
