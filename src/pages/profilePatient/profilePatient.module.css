@@ -1,19 +1,19 @@
 .PatientImg {
-  width: 300px;
-  height: 300px;
+  width: 290px;
+  /* height: 120px; */
   top: 50%;
   left: 2%;
 }
 
-.CoverImgPatient {
+/* .CoverImgPatient {
   width: 100%;
   height: 300px;
   object-fit: cover;
-}
+} */
 input[type="file"] {
   display: none;
 }
-.custom_file_upload {
+/* .custom_file_upload {
   border: none;
   display: inline-block;
   padding: 6px 12px;
@@ -21,7 +21,7 @@ input[type="file"] {
   left: 0;
   bottom: 0px;
   border-radius: 50%;
-}
+} */
 .patient_img_select {
   cursor: pointer;
   bottom: 1.5rem;

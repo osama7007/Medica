@@ -9,11 +9,10 @@ import Patient from "./pages/patient";
 import Layout from "./layout";
 import useDoctors from "./hooks/useDoctors";
 import ProfilePatient from "./pages/profilePatient";
-import TopRated from './pages/top_rated';
-import AllDoctors from './pages/allDoctors'
+import TopRated from "./pages/top_rated";
+import AllDoctors from "./pages/allDoctors";
 import useArticles from "./hooks/useArticles";
-
-
+import DoctorProfile from "./components/dotctorProfile";
 
 function App() {
   useDoctors();
@@ -28,15 +27,15 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/patient" element={<Patient />} />
           <Route path="/patient-profile" element={<ProfilePatient />} />
-          <Route path='/top-rated' element={<TopRated />} />
-          <Route path='/doctors' element={<AllDoctors />} />
-          <Route path='/articles' element={<Articles />} />
-          <Route path='/articles/:id' element={<ArticleDetailes />} />
+          <Route path="/top-rated" element={<TopRated />} />
+          <Route path="/doctors" element={<AllDoctors />} />
+          <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/:id" element={<ArticleDetailes />} />
+          <Route path="/doctor-profile" element={<DoctorProfile />} />
         </Routes>
       </Layout>
     </BrowserRouter>
   );
-
 }
 
 export default App;
