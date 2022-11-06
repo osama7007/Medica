@@ -1,8 +1,6 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 import "firebase/compat/firestore";
- 
-
 
 const firebaseAuth = firebase.initializeApp({
   apiKey: "AIzaSyDH8ahvPhe138oZFhHbrcG19m3n0jnAYuk",
@@ -14,7 +12,27 @@ const firebaseAuth = firebase.initializeApp({
 });
 
 export const auth = firebaseAuth.auth();
-export const db = firebaseAuth.firestore()
+export const db = firebaseAuth.firestore();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 export default firebaseAuth;
 
+export const createUserDocument = async (user, additionalData) => {
+  if (!user) return;
+  const userRef = db.doc(`users/${user.uid}`);
+  const snapshot = await userRef.get();
+  if (!snapshot.exists) {
+    const { email } = user;
+    const { FirstName, LastName, UserName } = additionalData;
+    try {
+      await userRef.set({
+        FirstName,
+        LastName,
+        UserName,
+        email,
+        createdAt: new Date(),
+      });
+    } catch (error) {
+      console.log("Error in creating user", error);
+    }
+  }
+};

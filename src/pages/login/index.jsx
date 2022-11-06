@@ -4,18 +4,29 @@ import "antd/dist/antd.css";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import FormInput from "../../components/input";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase/firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
 
 const onChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
 };
 
 const Login = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const navigate = useNavigate();
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = async (values) => {
+    const { EmailAddress, Password } = values;
+    try {
+      await auth.signInWithEmailAndPassword(EmailAddress, Password);
+      navigate("/home");
+
+    }
+     catch (error) {
+      toast.error("Invalid Email or Password");
+    }
   };
 
   return (
@@ -28,21 +39,16 @@ const Login = () => {
           name="basic"
           initialValues={{ remember: true }}
           onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
           <div>
-            <FormInput
-              label="Email Address"
-              name="Email Address"
-              type="email"
-            />
+            <FormInput label="Email Address" name="EmailAddress" type="email" />
 
             <div className="mb-5">
               <form-label>password</form-label>
 
               <Form.Item
-                name="password"
+                name="Password"
                 hasFeedback
                 rules={[{ required: true }, { min: 8 }]}
                 style={{ width: "300px" }}
@@ -66,6 +72,19 @@ const Login = () => {
           Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        limit={3}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 };

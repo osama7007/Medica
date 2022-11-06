@@ -1,6 +1,7 @@
 import styles from "./posts.module.css";
 import { BsTrash } from "react-icons/bs";
 import Comment from "./Comment";
+import { motion } from "framer-motion";
 
 const PostItem = ({
   name,
@@ -9,13 +10,25 @@ const PostItem = ({
   profileImg,
   message,
   deletePostHandler,
-  likes,
-  comments,
-  updateLikes,
+  addingCommentHandler,
+  addingLikeHandler,
+  setComment,
+  comment,
+  allComment,
+  allLikes,
   id,
 }) => {
+  const animations = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    exit: { scale: 0 },
+  };
+
   return (
-    <div className={`${styles.itemContainer} shadow-sm rounded-4  `} >
+    <motion.div
+      {...animations}
+      className={`${styles.itemContainer} shadow-sm rounded-4  `}
+    >
       <div className="p-4">
         <div className="d-flex align-items-center mb-3 justify-content-between">
           <div className="d-flex align-items-center">
@@ -44,8 +57,16 @@ const PostItem = ({
           {postImg && <img src={postImg} className="w-100" alt="post image" />}
         </div>
       </div>
-      <Comment likes={likes} comments={comments} updateLikes={updateLikes} id={id} />
-    </div>
+      <Comment
+        setComment={setComment}
+        addingCommentHandler={addingCommentHandler}
+        comment={comment}
+        id={id}
+        allComment={allComment}
+        allLikes={allLikes}
+        addingLikeHandler={addingLikeHandler}
+      />
+    </motion.div>
   );
 };
 

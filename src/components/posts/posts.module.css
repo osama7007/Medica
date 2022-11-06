@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
   max-width: 100%;
   /* width: 800px; */
 }
@@ -9,7 +9,6 @@
   margin: 0 auto;
   padding: 10px;
   max-width: 100%;
-
 }
 
 .profileImg {
@@ -17,7 +16,7 @@
   height: 50px;
   border-radius: 50%;
 }
-.formContainer{
+.formContainer {
   width: 100%;
   display: flex;
 }
@@ -33,8 +32,8 @@
 .formContainer input:first-child {
   width: 300px;
 }
-@media (max-width:800px){
-  .formContainer{
+@media (max-width: 800px) {
+  .formContainer {
     max-width: 90%;
   }
   .formContainer input:first-child {
@@ -104,4 +103,31 @@
   100% {
     transform: scale(1) rotate(0deg);
   }
+}
+
+.commentBtn {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.commentBtn:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.commentForm input {
+  border: 0;
+  outline: 0;
+  background-color: #eff2f5;
+  padding: 8px;
+  border-radius: 11px;
+  width: 100%;
+}
+
+.commentContainer {
+  background-color: #eff2f5;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 9px;
+  margin-bottom: 10px;
 }

@@ -11,9 +11,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton } from "antd";
 
+
 const Posts = () => {
   const [input, setInput] = useState("");
   const [image, setImage] = useState("");
+  const [comment, setComment] = useState([]);
   const [url, setUrl] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -38,8 +40,8 @@ const Posts = () => {
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         image: url,
-        likes: 0,
-        comments: 0,
+        comments: [],
+        likes: [],
       });
       setInput("");
       setUrl("");
@@ -78,15 +80,31 @@ const Posts = () => {
       });
   };
 
-  const likesHandler = (id) => {
-    // db.collection("posts")
-    //   .doc(id)
-    //   .update({
-    //     likes: 'hello',
-    //   });
-
-    console.log(id);
+  const addingCommentHandler = (id) => {
+    if (comment) {
+      db.collection("posts")
+        .doc(id)
+        .update({
+          comments: firebase.firestore.FieldValue.arrayUnion({
+            userName: "mohamed",
+            comment: comment,
+            createdAt: new Date(),
+          }),
+        });
+    } else return;
   };
+
+  const addingLikeHandler = (id) => {
+    db.collection("posts")
+    .doc(id)
+    .update({
+      likes: firebase.firestore.FieldValue.arrayUnion({
+        userName: "mohamed",
+        likes: 1,
+        createdAt: new Date()
+      }),
+    });
+  }
 
   return (
     <section className={`${styles.wrapper} w-100 ms-auto`}>
@@ -114,7 +132,7 @@ const Posts = () => {
               onChange={handleImg}
               accept=".jpg,.png,.jpeg"
             />
-            <FcGallery className="fs-5" />
+            <FcGallery className="fs-3 mt-2 pe-2" />
           </label>
           <PrimaryBtn title="Post" />
         </form>
@@ -148,12 +166,15 @@ const Posts = () => {
           profileImg={post.data.profileImg}
           message={post.data.message}
           likes={post.data.likes}
-          updateLikes={likesHandler}
-          comments={post.data.comments}
           deletePostHandler={deletePostHandler}
+          addingCommentHandler={addingCommentHandler}
+          addingLikeHandler={addingLikeHandler}
+          allComment={post.data.comments}
+          allLikes = {post.data.likes}
+          setComment={setComment}
+          comment={comment}
         />
       ))}
-
       <ToastContainer className={styles.toastContainer} />
     </section>
   );
