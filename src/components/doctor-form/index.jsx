@@ -34,7 +34,7 @@ const DoctorForm = () => {
     toast.success('Saved successfully');
     //postData(`https://doctor4.herokuapp.com/all/`);
 }
-const options = {
+/* const options = {
     method: 'PUT',
     body: JSON.stringify( params )  
 };
@@ -44,7 +44,7 @@ let postData = (url)=>{
         .then( response => {
             console.log('response =>' , response);
         } );
-}
+} */
 	return (
 		<div className=' container formBody  d-flex justify-content-center align-items-center'>
 			<div className=' w-25'>
