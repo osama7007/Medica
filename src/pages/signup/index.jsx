@@ -15,7 +15,7 @@ const SignUp = () => {
       ) : (
         <>
           <div className={`${styles.imgWrapper} col`}>
-            <img src={register} alt="register" className="w-100" />
+            <img src={register}  loading="lazy" alt="register" className="w-100" />
           </div>
           <div className={`${styles.form} col shadow-sm ms-3 rounded-2 `}>
             <RegisterForm userAuth={setUserAuth} />

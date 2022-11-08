@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <section className="row container mx-3 align-items-center pt-5 mt-0">
       <div className="col-md-8  text-center ">
-        <img src={login} alt="login" className="" />
+        <img src={login}  loading="lazy" alt="login" className="" />
       </div>
       <div className="col-md-4 shadow  rounded-2 mt-5 px-4 py-5">
         <Form
