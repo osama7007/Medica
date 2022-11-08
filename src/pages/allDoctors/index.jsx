@@ -1,22 +1,23 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Appointment from "../../components/appointment";
 import Btn from "../../components/buttons/btn";
+import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import style from "./allDoctors.module.css";
 
 function AllDoctors() {
   const navigate = useNavigate();
   const [topDoctor, setTopDoctor] = useState([]);
   const [btnVal, setBtnVal] = useState("");
+  useEffect(()=>{
+	    allDoctorsView();
+  },[])
 
   const docProfileNavigate = () => {
     navigate("/patient");
   };
-
-  window.addEventListener("load", () => {
-    allDoctorsView();
-  });
 
   let getSpecialty = (e) => {
     setBtnVal(e.target.innerHTML);

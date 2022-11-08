@@ -6,11 +6,11 @@ function Ads(){
     const [data , setData] = useState(adsData);
 
     useEffect(() => {
-		const interval = setInterval(() => {
-			 setData([...data.reverse()]);
+			const interval = setInterval(() => {
+				setData([...data.reverse()]);
 			}, 6000);
-            return ()=> clearInterval(interval);
-		}, []);
+			return () => clearInterval(interval);
+		}, [data]);
         
     return (
 			<div className={`${styles.ads_container} p-2 mt-5`}>

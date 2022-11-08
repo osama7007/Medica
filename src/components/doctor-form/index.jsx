@@ -7,7 +7,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios';
 const DoctorForm = () => {
   const [save, setSaved] = useState("Save");
   const [componentSize, setComponentSize] = useState("default");

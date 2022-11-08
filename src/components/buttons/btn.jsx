@@ -1,7 +1,7 @@
 import styles from "./buttons.module.css";
 
 const Btn = (props) => {
-  let { action, title } = props;
+  let { action, title  } = props;
 
   return (
     <button
