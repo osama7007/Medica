@@ -66,6 +66,7 @@ function AllDoctors() {
 											src={doctor.pImage}
 											alt='doctor'
 											className='w-75 rounded'
+											loading="lazy"
 										/>
 									</Link>
 								</div>

@@ -29,6 +29,7 @@ const ArticleDetailes = () => {
           <img
             src={articles?.image}
             alt={articles?.title}
+            loading="lazy"
             className={`${styles.imgHeight} w-100 mb-3 rounded-4`}
           />
         </div>
