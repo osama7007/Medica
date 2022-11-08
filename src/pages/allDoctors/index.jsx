@@ -1,43 +1,43 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Btn from '../../components/buttons/btn';
-import PrimaryBtn from '../../components/buttons/PrimaryBtn';
-import './allDoctors.module.css';
+import React from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Appointment from "../../components/appointment";
+import Btn from "../../components/buttons/btn";
+import style from "./allDoctors.module.css";
 
 function AllDoctors() {
-	const navigate = useNavigate();
-	const [topDoctor, setTopDoctor] = useState([]);
-	const [btnVal, setBtnVal] = useState('');
+  const navigate = useNavigate();
+  const [topDoctor, setTopDoctor] = useState([]);
+  const [btnVal, setBtnVal] = useState("");
 
-	const docProfileNavigate = () => {
-		navigate('/patient');
-	};
+  const docProfileNavigate = () => {
+    navigate("/patient");
+  };
 
-	window.addEventListener('load', () => {
-		allDoctorsView();
-	});
+  window.addEventListener("load", () => {
+    allDoctorsView();
+  });
 
-	let getSpecialty = (e) => {
-		setBtnVal(e.target.innerHTML);
-		getDoctor();
-	};
+  let getSpecialty = (e) => {
+    setBtnVal(e.target.innerHTML);
+    getDoctor();
+  };
 
-	let getAllDoctors = () => {
-		allDoctorsView();
-	};
+  let getAllDoctors = () => {
+    allDoctorsView();
+  };
 
-	const allDoctorsView = () => {
-		fetch(`https://doctor4.herokuapp.com/all`)
-			.then((res) => res.json())
-			.then((json) => setTopDoctor(json));
-	};
+  const allDoctorsView = () => {
+    fetch(`https://doctor4.herokuapp.com/all`)
+      .then((res) => res.json())
+      .then((json) => setTopDoctor(json));
+  };
 
-	const getDoctor = () => {
-		fetch(`https://doctor4.herokuapp.com/${btnVal}`)
-			.then((res) => res.json())
-			.then((json) => setTopDoctor(json));
-	};
+  const getDoctor = () => {
+    fetch(`https://doctor4.herokuapp.com/${btnVal}`)
+      .then((res) => res.json())
+      .then((json) => setTopDoctor(json));
+  };
 
 	return (
 		<>

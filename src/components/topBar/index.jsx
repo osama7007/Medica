@@ -16,7 +16,7 @@ const TopBar = () => {
     
     return (
         <>
-            <section className= {`${style.container} p-3 ms-auto`}>
+            <section className= {`${style.container} me-5 p-3 ms-auto`}>
                 <div className="d-flex justify-content-between">
                         {/* <BiSearchAlt className='fs-2 text-blue mx-2 ' /> */}
                         <Search className="mt-1 text-start  "/>

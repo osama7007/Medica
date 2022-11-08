@@ -23,12 +23,12 @@ const Search = ({ className }) => {
     );
     setOptions([
       ...doctors.map((doctor, i) => ({
-        value: doctor.name.toLowerCase(),
+       // value: doctor.name.toLowerCase(),
         key: doctor.name + i,
         label: doctor.name,
       })),
       ...specialities.map((speciality) => ({
-        value: speciality.toLowerCase(),
+        //value: speciality.toLowerCase(),
         key: speciality,
         label: speciality,
       })),
