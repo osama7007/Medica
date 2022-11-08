@@ -2094,6 +2094,11 @@
   "resolved" "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   "version" "2.0.4"
 
+"@mobiscroll/react@https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.19.2.tgz":
+  "integrity" "sha512-CJANSrg562w6hCazDcI5j9DmlbRZAcycTxsl0jMdkz2mOXqtTzZEcrMhxsyONkfZqk37ZIbUY1UshT0bPnIOYA=="
+  "resolved" "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.19.2.tgz"
+  "version" "5.19.2"
+
 "@motionone/animation@^10.13.1":
   "integrity" "sha512-h+1sdyBP8vbxEBW5gPFDnj+m2DCqdlAuf2g6Iafb1lcMnqjsRXWlPw1AXgvUMXmreyhqmPbJqoNfIKdytampRQ=="
   "resolved" "https://registry.npmjs.org/@motionone/animation/-/animation-10.14.0.tgz"
