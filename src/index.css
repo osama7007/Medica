@@ -24,6 +24,10 @@ body {
   color: var(--main-color);
 }
 
+.bg-lightBlue {
+  background-color: var(--light-color);
+}
+
 .ant-select{
   width: 20em;
 }
