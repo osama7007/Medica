@@ -6,17 +6,27 @@ import style from './topBar.module.css';
 
 import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 const TopBar = () => {
     const items = [
         { label: 'item 1', key: 'item-1' }, 
         { label: 'item 2', key: 'item-2' },
-      ];
+  ];
+  const location = useLocation();
+  const { pathname } = location;
+  const [pageInView, setPageInView] = useState("");
+
+
+  useEffect(() => {
+    setPageInView(pathname.split("/")[1]);
+  }, [pathname]);
     
     return (
         <>
-            <section className= {`${style.container} me-5 p-3 ms-auto`}>
+            <section className= {`${style.container} me-5 p-3 ms-auto ${
+        ["", "login", "signup"].includes(pageInView) ? "d-none d-md-none" : ""
+      }`}>
                 <div className="d-flex justify-content-between">
                         {/* <BiSearchAlt className='fs-2 text-blue mx-2 ' /> */}
                         <Search className="mt-1 text-start  "/>
