@@ -14,6 +14,7 @@ import AllDoctors from "./pages/allDoctors";
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
 import DoctorForm from "./components/doctor-form";
+import Date from "./components/Appoinment";
 
 function App() {
   useDoctors();
@@ -35,6 +36,7 @@ function App() {
           <Route path="/articles/:id" element={<ArticleDetailes />} />
           <Route path="/doctor-profile/:id" element={<DoctorProfile />} />
           <Route path="/doctor-form/:id" element={<DoctorForm />} />
+          <Route path="/appoinment" element={<Date/>}/>
         </Routes>
       </Layout>
     </BrowserRouter>

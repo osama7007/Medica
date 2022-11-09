@@ -7,14 +7,14 @@ const Faq = () => {
   return (
     <section className="container py-5">
       <div className="row">
-        <div className="col">
+        <div className="col-lg-6 col-md-12">
           <FaqLottie />
           <h2 className="faqContent text-center mt-5 fw-bold">
             Frequently asked questions
           </h2>
         </div>
 
-        <div className="col">
+        <div className="col-lg-6 col-md-12">
           <Collapse accordion className=" Collapse shadow-sm rounded-4 fs-5">
             <Panel header="What are the payment options available ?" key="1">
               <p className="text-black-50">

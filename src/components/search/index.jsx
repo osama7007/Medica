@@ -14,6 +14,9 @@ const Search = ({ className }) => {
   const doctors = useSelector((state) => state.doctors.doctors);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log(value)
+  },[value])
   const setInitialStates = () => {
     let specialities = [];
     doctors.map((doctor) =>
@@ -23,12 +26,12 @@ const Search = ({ className }) => {
     );
     setOptions([
       ...doctors.map((doctor, i) => ({
-       // value: doctor.name.toLowerCase(),
+       value: doctor.name.toLowerCase(),
         key: doctor.name + i,
         label: doctor.name,
       })),
       ...specialities.map((speciality) => ({
-        //value: speciality.toLowerCase(),
+        value: speciality.toLowerCase(),
         key: speciality,
         label: speciality,
       })),

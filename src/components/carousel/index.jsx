@@ -8,6 +8,7 @@ import doctor3 from "../../assets/images/doctor3.png";
 import doctor2 from "../../assets/images/doctor2.png";
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   SwiperCore.use([Autoplay]);
 
@@ -26,7 +27,7 @@ export default () => {
             <h2 className="text-white text-capitalize mb-3">
               Choose the service and set the appropriate date
             </h2>
-            <p className="w-75">
+            <p className={styles.w75}>
               Book using the website, start your recovery journey now, no need
               to wait, choose the type of service and the appropriate time and
               get the full care
@@ -34,12 +35,12 @@ export default () => {
           </div>
 
           <div className={styles.imgContainer}>
-            <img src={doctor1} alt="doctor photo" className="img-fluid mt-5" />
+            <img src={doctor1} alt="doctorphoto" className={`img-fluid mt-5 ${styles.img}`} />
           </div>
         </SwiperSlide>
 
         <SwiperSlide className="d-flex align-items-center ">
-          <img src={doctor2} alt="doctor photo" className="w-50" style={{ marginTop: "19.5px" }} />
+          <img src={doctor2} alt="doctorphoto" className={`w-50 ${styles.img}`} style={{ marginTop: "19.5px" }} />
           <h2 className="text-white text-capitalize">
             thousands of doctors & experts to help your health!
           </h2>
@@ -48,7 +49,7 @@ export default () => {
         <SwiperSlide className="d-flex align-items-center">
           <img
             src={doctor3}
-            alt="doctor photo"
+            alt="doctorphoto"
             className="w-50"
             style={{ marginTop: "103px" }}
           />
@@ -64,9 +65,9 @@ export default () => {
           </h2>
           <img
             src={doctor4}
-            alt="doctor photo"
+            alt="doctorphoto"
             style={{ width: "60%" }}
-            className="mt-2"
+            className={`mt-2 ${styles.img}`}
           />
         </SwiperSlide>
       </Swiper>

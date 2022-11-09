@@ -27,7 +27,23 @@ body {
 .ant-select{
   width: 20em;
 }
+.ant-picker-calendar-mini .ant-picker-panel{
+  background-color: var(--light-color)!important;
 
+}
+.ant-picker-calendar-mini .ant-picker-calendar-header{
+  background-color: var(--light-color)!important;
+
+}
+.site-calendar-demo-card {
+  width: 480px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 5px;
+}
+.ant-picker-calendar-header .ant-picker-calendar-mode-switch {
+  display: flex;
+}
 
 ::-webkit-scrollbar {
   width: 7px;
