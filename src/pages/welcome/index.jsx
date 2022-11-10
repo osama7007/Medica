@@ -3,12 +3,15 @@ import styles from "./welcome.module.css";
 import Loader from "../../components/loader";
 import { useState } from "react";
 import WelcomeContent from "./WelcomeContent";
+import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 
 const Welcome = () => {
   const [loading, setLoading] = useState(true);
   const [transform, setTransform] = useState(false);
 
   const transformClass = transform ? styles.transform : "";
+
+  useAuthStateHandler();
 
   setTimeout(() => {
     setLoading(false);
@@ -20,7 +23,7 @@ const Welcome = () => {
 
   return (
     <>
-      {!loading &&  <WelcomeContent />}
+      {!loading && <WelcomeContent />}
       {loading && <Loader />}
 
       {/* {!loading && (

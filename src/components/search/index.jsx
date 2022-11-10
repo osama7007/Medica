@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import useDoctors from "../../hooks/useDoctors";
-import { slugify } from "../../utils/slugify";
-import PrimaryBtn from "../buttons/PrimaryBtn";
+import { slugifyDoctor } from "../../utils/slugify";
 const Search = ({ className }) => {
   const [value, setValue] = useState("Search...");
   const [options, setOptions] = useState([]);
@@ -22,15 +20,15 @@ const Search = ({ className }) => {
         : null
     );
     setOptions([
+      ...specialities.map((speciality) => ({
+        value: speciality?.toLowerCase(),
+        key: speciality + 1,
+        label: speciality,
+      })),
       ...doctors.map((doctor, i) => ({
-        value: doctor.name.toLowerCase(),
+        value: doctor?.name?.toLowerCase(),
         key: doctor.name + i,
         label: doctor.name,
-      })),
-      ...specialities.map((speciality) => ({
-        value: speciality.toLowerCase(),
-        key: speciality,
-        label: speciality,
       })),
     ]);
   };
@@ -41,9 +39,12 @@ const Search = ({ className }) => {
     }
   }, [doctors]);
 
-  const handleSearch = () => navigate(`/${slugify(value)}`);
+  const handleSearch = () =>
+    value[0] + value[1] === "dr"
+      ? navigate(`/doctors/${slugifyDoctor(value)}`)
+      : navigate(`/doctors?specialty=${value.toLowerCase()}`);
   return (
-    <div className={`w-100 d-flex   ${className}`}>
+    <div className={`w-100 d-flex  ${className}`}>
       <Select
         defaultActiveFirstOption={false}
         className={`${className} mt-2 py-1 mx-1`}
@@ -52,7 +53,7 @@ const Search = ({ className }) => {
         onChange={(value) => setValue(value)}
         showSearch
         showArrow={false}
-        tokenSeparators={[","]}
+        // tokenSeparators={[","]}
         options={options}
       />
       {/* <button
@@ -67,11 +68,9 @@ const Search = ({ className }) => {
         onClick={handleSearch}
         className="border-0 bg-white"
       >
-      <BiSearchAlt
-          className='fs-2 text-blue  mx-1 '
-        />
+        <BiSearchAlt className="fs-2 text-blue  mx-1 " />
       </button>
-                </div>
+    </div>
   );
 };
 export default Search;

@@ -9,12 +9,14 @@ import SideBar from "../components/sidebar";
 import TopBar from "../components/topBar";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Layout = ({ children }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
   const [pageInView, setPageInView] = useState("");
   const location = useLocation();
 
+  const isAuth = useSelector((state) => state.auth.isAuth);
   useEffect(() => {
     setPageInView(location.pathname.split("/")[1]);
   }, [location.pathname]);
@@ -31,11 +33,7 @@ const Layout = ({ children }) => {
           className={`${classes.content} ${
             isSidebarCollapsed ? "" : classes.open
           }
-          ${
-            ["", "login", "signup"].includes(pageInView)
-              ? ""
-              : classes.m_sidebar
-          }
+          ${isAuth ? classes.m_sidebar : ""}
       }`}
         >
           {children}

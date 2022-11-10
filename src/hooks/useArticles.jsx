@@ -8,13 +8,12 @@ const useArticles = () => {
   useEffect(() => {
     fetch("https://medical-articles.herokuapp.com/articles")
       .then((res) => res.json())
-      .then((json) => setAllArticles(json));
+      .then((data) => {
+        if (data.length > 0) {
+          dispatch(setArticles([...data]));
+        }
+      });
   }, []);
-  useEffect(() => {
-    if (allArticles.length > 0) {
-      dispatch(setArticles([...allArticles]));
-    }
-  }, [allArticles]);
 };
 
 export default useArticles;
