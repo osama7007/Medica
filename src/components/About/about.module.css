@@ -1,0 +1,17 @@
+.about_header{
+    background-color:var(--main-color);
+    padding: 10px;
+}
+.imgWrapper{
+    width: 150px;
+    height: 150px;
+}
+.about_footer{
+    background-color: var(--main-color);
+    height: 200px;
+}
+.about_content{
+    background-color: var(--light-color);
+    padding: 10px;
+    border-radius: 10px;
+}

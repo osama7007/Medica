@@ -5,8 +5,10 @@ import { VscHome } from "react-icons/vsc";
 import { SlEnvolope } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { FiBookmark } from "react-icons/fi";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import classes from "./sidebar.module.css";
+import { GiLoveInjection } from 'react-icons/gi';
 const SideBar = ({ collapsed, setCollapsed }) => {
   const [pageInView, setPageInView] = useState("");
   const location = useLocation();
@@ -31,19 +33,31 @@ const SideBar = ({ collapsed, setCollapsed }) => {
   };
 
   const items = [
-    getItem("Home", "home", <VscHome className="fs-3 me-3" />, () =>
-      clickHandler("/home")
-    ),
-    getItem("Messages", "messages", <SlEnvolope className="fs-3 me-3" />, () =>
-      clickHandler("/messages")
-    ),
-    getItem("Profile", "profile", <CgProfile className="fs-3 me-3 " />, () =>
-      clickHandler("/profile")
-    ),
-    getItem("Saved", "saved", <FiBookmark className="fs-3 me-3" />, () =>
-      clickHandler("/saved")
-    ),
-  ];
+		getItem('Home', 'home', <VscHome className='fs-3 me-3' />, () =>
+			clickHandler('/home'),
+		),
+		getItem('Messages', 'messages', <SlEnvolope className='fs-3 me-3' />, () =>
+			clickHandler('/messages'),
+		),
+		getItem('Profile', 'profile', <CgProfile className='fs-3 me-3 ' />, () =>
+			clickHandler('/profile'),
+		),
+		getItem('Saved', 'saved', <FiBookmark className='fs-3 me-3' />, () =>
+			clickHandler('/saved'),
+		),
+		getItem(
+			'About',
+			'about',
+			<BsFillQuestionCircleFill className='fs-3 me-3' />,
+			() => clickHandler('/about'),
+		),
+		getItem(
+			'NewDoctor',
+			'new-doctor',
+			<GiLoveInjection className='fs-3 me-3' />,
+			() => clickHandler('/new-doctor'),
+		),
+	];
 
   return (
     <Sider

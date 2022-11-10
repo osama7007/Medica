@@ -1,3 +1,4 @@
+
 import { Select } from "antd";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,14 +7,17 @@ import Heading from "../../components/heading";
 import { Skeleton } from "antd";
 import { motion } from 'framer-motion'
 
+
 function AllDoctors() {
   const navigate = useNavigate();
   const [topDoctor, setTopDoctor] = useState([]);
+
   const [val, setVal] = useState("All");
 
   useEffect(() => {
     getAllDoctors();
   }, [val]);
+
 
   const handleChange = (value) => {
     setVal(value);
