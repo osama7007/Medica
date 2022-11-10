@@ -8,6 +8,7 @@ import { FiBookmark } from "react-icons/fi";
 import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import classes from "./sidebar.module.css";
+import { GiLoveInjection } from 'react-icons/gi';
 const SideBar = ({ collapsed, setCollapsed }) => {
   const [pageInView, setPageInView] = useState("");
   const location = useLocation();
@@ -49,6 +50,12 @@ const SideBar = ({ collapsed, setCollapsed }) => {
 			'about',
 			<BsFillQuestionCircleFill className='fs-3 me-3' />,
 			() => clickHandler('/about'),
+		),
+		getItem(
+			'NewDoctor',
+			'new-doctor',
+			<GiLoveInjection className='fs-3 me-3' />,
+			() => clickHandler('/new-doctor'),
 		),
 	];
 
