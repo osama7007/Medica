@@ -5,7 +5,7 @@ import { FaStreetView } from "react-icons/fa";
 import Heading from "../heading";
 import DoctorImg from "../doctor_image";
 import DoctorIcons from "../icons";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Skeleton } from "antd";
 import axios from "axios";
 import PrimaryBtn from "../buttons/PrimaryBtn";
@@ -23,6 +23,11 @@ function DoctorProfile() {
   useEffect(() => {
     getDoctor();
   }, []);
+
+  const navigate = useNavigate();
+  const navigateappontment = () => {
+    navigate('/appoinment');
+  };
 
 
   return (
@@ -113,7 +118,7 @@ function DoctorProfile() {
           </div>
 
           <div className="text-center my-5">
-            <PrimaryBtn title="book appointment" />
+            <PrimaryBtn title="book appointment" action={navigateappontment} />
           </div>
         </>
       )}

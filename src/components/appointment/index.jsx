@@ -18,7 +18,7 @@ const Appointment = () => {
         <Option value="week">Week</Option>
         <Option value="month">Month</Option>
       </Select>
-      
+       
       <PickerWithType type={type} onChange={(value) => console.log(value)} />
       <br />
       <BlueBtn title="Done" />

@@ -5,6 +5,7 @@ import { Button, Checkbox, Form, Input } from "antd";
 
 import SecondaryBtn from "../buttons/SecondaryBtn";
 import TextArea from "antd/lib/input/TextArea";
+import PrimaryBtn from "../buttons/PrimaryBtn";
 const Date = () => {
   const onPanelChange = (value, mode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
@@ -128,8 +129,13 @@ const Date = () => {
                 </Form.Item>
               </div>
             </div>
-          </div>
-        </Form>
+                  </div>
+                  <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
+                      <PrimaryBtn title="Booking"/>
+        
+      </Form.Item>
+              </Form>
+              
       </section>
     </>
   );
