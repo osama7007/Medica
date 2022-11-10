@@ -1,16 +1,18 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { Select } from "antd";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
-import Appointment from "../../components/appointment";
-import Btn from "../../components/buttons/btn";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import Card from "../../components/card";
+import Heading from "../../components/heading";
 import { deSlugify, slugify, slugifyDoctor } from "../../utils/slugify";
-import style from "./allDoctors.module.css";
+import { Skeleton } from "antd";
+import { motion } from "framer-motion";
 
 const DoctorsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [doctors, setDoctors] = useState([]);
+  const [val, setVal] = useState("All");
   const allDoctors = useSelector((state) => state.doctors.doctors);
   const specialities = [
     "All Doctors",
@@ -38,81 +40,88 @@ const DoctorsPage = () => {
       navigate(`/doctors`);
     }
   };
+
+  useEffect(() => {
+    getSpecialty(val);
+  }, [val]);
+
+  const animations = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    exit: { scale: 0 },
+  };
   return (
-    <>
-      <div className="text-center mt-5 container w-75 mb-5">
-        {specialities.map((speciality, i) => (
-          <Btn
-            key={speciality + i + i}
-            action={(e) => getSpecialty(speciality)}
-            title={speciality}
-          />
-        ))}
+    <section className="container">
+      <div className="d-flex align-items-center justify-content-between m-5">
+        <Heading text={val} />
+        <Select
+          className="text-start"
+          defaultValue="All Doctors"
+          style={{
+            width: 300,
+          }}
+          onChange={(value) => setVal(value)}
+          options={[
+            {
+              value: "All Doctors",
+              label: "All Doctors",
+            },
+            {
+              value: "Dermatology",
+              label: "Dermatology",
+            },
+            {
+              value: "Pulmonologist",
+              label: "Pulmonologist",
+            },
+            {
+              value: "Otolaryngology",
+              label: "Otolaryngology",
+            },
+            {
+              value: "Pediatrics",
+              label: "Pediatrics",
+            },
+            {
+              value: "InternalMedicine",
+              label: "Internal Medicine",
+            },
+            {
+              value: "Psychiatry",
+              label: "Psychiatry",
+            },
+
+            {
+              value: "PlasticSurgery",
+              label: "Plastic Surgery",
+            },
+          ]}
+        />
       </div>
-      <div className="specialty_content">
-        {doctors.map((doctor) => {
-          return (
-            <div
-              key={doctor.id}
-              className=" row border m-auto shadow rounded  py-2 mb-4 w-75  d-flex justify-content-center align-items-center"
-            >
-              {/* <Link  */}
-              <Link
-                to={`/doctors/${slugifyDoctor(doctor.name)}`}
-                className=" m-auto col-lg-3 col-md-12 col-sm-12 text-decoration-none"
+      <div className=" mx-auto row ">
+        {!doctors.length && <Skeleton active />}
+        {doctors.length &&
+          doctors.map((doctor) => {
+            return (
+              <motion.div
+                {...animations}
+                layout
+                className="col-md-6"
+                key={doctor.id}
               >
-                <div className=" mb-3 w-75 ">
-                  <div className="fw-bold text-decoration-none text-dark">
-                    <img
-                      src={doctor.pImage}
-                      alt="doctor"
-                      className={`w-100 rounded ${style.doctorPic}`}
-                    />
-                  </div>
-                </div>
-                <div
-                  className="fw-bold  text-decoration-none text-dark"
-                  key={doctor.id}
-                >
-                  <h4 className="fw-bold mb-3">{doctor.name}</h4>
-                </div>
-                <h5>
-                  <span className="fw-bold fs-5">Rate:</span> {doctor.rate}/5
-                </h5>
-              </Link>
-              <Link
-                to={`/doctors/${slugifyDoctor(doctor.name)}`}
-                className="m-auto col-lg-3 col-md-12  col-sm-12 text-decoration-none"
-              >
-                <h5 className="mb-3">
-                  <span className="fw-bold fs-5">Grade: </span>
-                  {doctor.graduation.grade}
-                </h5>
-                <h5 className="mb-3">
-                  <span className="fw-bold fs-5"> Address: </span>{" "}
-                  {doctor.aAddress.city}
-                </h5>
-                <h5 className="mb-3">
-                  <span className="fw-bold fs-5"> Experience: </span>
-                  {doctor.experience}
-                </h5>
-                <h5 className="mb-3">
-                  <span className="fw-bold fs-5"> Waiting Time: </span>{" "}
-                  {doctor.waiting}
-                </h5>
-              </Link>
-              {/* </Link> */}
-              <div className=" col-lg-3 col-md-12  m-auto  col-sm-12">
-                <Appointment />
-                <span>
-                  <small className="appointment">Appointment reservation</small>
-                </span>
-              </div>
-            </div>
-          );
-        })}
+                <Card
+                  img={doctor.pImage}
+                  title={doctor.name}
+                  rate={doctor.rate}
+                  position={doctor.position}
+                  experince={doctor.experience}
+                  specialty={doctor.specialty}
+                />
+              </motion.div>
+            );
+          })}
       </div>
-    </>
+    </section>
   );
 };
 

@@ -14,6 +14,10 @@ import AllDoctors from "./pages/allDoctors";
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
 import DoctorForm from "./components/doctor-form";
+import About from "./components/About/About";
+import NewDoctor from "./components/new  doctor/NewDoctor";
+import Date from "./components/Appoinment";
+
 import { useSelector } from "react-redux";
 import useAuth from "./firebase/useAuthStateHandler";
 import useAuthStateHandler from "./firebase/useAuthStateHandler";
@@ -23,6 +27,7 @@ import {
   LoginRouteGuard,
   LogoutRouteGuard,
 } from "./utils/authRouteGuard";
+
 
 function App() {
   useDoctors();
@@ -49,6 +54,9 @@ function App() {
             <Route path="/articles/:id" element={<ArticleDetailes />} />
             <Route path="/doctors/:name" element={<DoctorProfile />} />
             <Route path="/doctor-form" element={<DoctorForm />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/new-doctor" element={<NewDoctor />} />
+            <Route path="/appoinment" element={<Date />} />
           </Route>
         </Routes>
       </Layout>

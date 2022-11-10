@@ -5,6 +5,7 @@ import { VscHome } from "react-icons/vsc";
 import { SlEnvolope } from "react-icons/sl";
 import { CgProfile } from "react-icons/cg";
 import { FiBookmark } from "react-icons/fi";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import classes from "./sidebar.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +15,8 @@ import { auth } from "../../firebase/firebase";
 import { logout } from "../../redux/authSlice";
 import { TbCalendar, TbStethoscope } from "react-icons/tb";
 import { MdArticle } from "react-icons/md";
+import { GiLoveInjection } from "react-icons/gi";
+
 const SideBar = ({ collapsed, setCollapsed }) => {
   const [pageInView, setPageInView] = useState("");
   const location = useLocation();
@@ -45,15 +48,9 @@ const SideBar = ({ collapsed, setCollapsed }) => {
     getItem("Home", "home", <VscHome className="fs-3 me-3" />, () =>
       clickHandler("/")
     ),
-    // getItem("Messages", "messages", <SlEnvolope className="fs-3 me-3" />, () =>
-    //   clickHandler("/messages")
-    // ),
     getItem("Profile", "profile", <CgProfile className="fs-3 me-3 " />, () =>
       clickHandler("/profile")
     ),
-    // getItem("Saved", "saved", <FiBookmark className="fs-3 me-3" />, () =>
-    //   clickHandler("/saved")
-    // ),
     getItem(
       "Our Doctors",
       "doctors",
@@ -68,6 +65,18 @@ const SideBar = ({ collapsed, setCollapsed }) => {
       "appointments",
       <TbCalendar className="fs-3 me-3" />,
       () => clickHandler("/appointments")
+    ),
+    getItem(
+      "New Doctor",
+      "new-doctor",
+      <GiLoveInjection className="fs-3 me-3" />,
+      () => clickHandler("/new-doctor")
+    ),
+    getItem(
+      "About",
+      "about",
+      <BsFillQuestionCircleFill className="fs-3 me-3" />,
+      () => clickHandler("/about")
     ),
     getItem("Logout", "logout", <BiLogOut className="fs-3 me-3" />, () => {
       signOut(auth).then(() => {

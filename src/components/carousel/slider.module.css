@@ -5,3 +5,22 @@
 .imgContainer {
   width: 600px;
 }
+.w75{
+  width: 75%;
+}
+@media(max-width:900px){
+  .imgContainer {
+   max-width: 600px;
+  }
+  .img{
+    display: none;
+  }
+  h2,p{
+    text-align: center;
+  }
+  
+  .w75{
+    text-align: center;
+    width: 100%;
+  }
+}

@@ -38,6 +38,7 @@ const Articles = () => {
                   <img
                     src={article.image}
                     alt="article"
+                    loading="lazy"
                     className={`${styles.trending} rounded-5 me-5 mb-3 `}
                   />
                 </div>
