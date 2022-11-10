@@ -1,40 +1,55 @@
-
 import { Select } from "antd";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 import Card from "../../components/card";
 import Heading from "../../components/heading";
+import { deSlugify, slugify, slugifyDoctor } from "../../utils/slugify";
 import { Skeleton } from "antd";
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-
-function AllDoctors() {
+const DoctorsPage = () => {
   const navigate = useNavigate();
-  const [topDoctor, setTopDoctor] = useState([]);
-
+  const location = useLocation();
+  const [doctors, setDoctors] = useState([]);
   const [val, setVal] = useState("All");
+  const allDoctors = useSelector((state) => state.doctors.doctors);
+  const specialities = [
+    "All Doctors",
+    ...new Set(allDoctors.map((doctor) => doctor.specialty)),
+  ];
 
   useEffect(() => {
-    getAllDoctors();
+    if (location.search === "") {
+      setDoctors(allDoctors);
+    } else {
+      console.log(deSlugify(location.search.split("=")[1]));
+      setDoctors(
+        allDoctors.filter(
+          (doctor) =>
+            doctor.specialty === deSlugify(location.search.split("=")[1])
+        )
+      );
+    }
+  }, [location.search, allDoctors]);
+
+  const getSpecialty = (value) => {
+    if (value !== "All Doctors") {
+      navigate(`/doctors?specialty=${slugify(value)}`);
+    } else {
+      navigate(`/doctors`);
+    }
+  };
+
+  useEffect(() => {
+    getSpecialty(val);
   }, [val]);
-
-
-  const handleChange = (value) => {
-    setVal(value);
-  };
-
-  const getAllDoctors = () => {
-    fetch(`https://doctor4.herokuapp.com/${val}`)
-      .then((res) => res.json())
-      .then((json) => setTopDoctor(json));
-  };
 
   const animations = {
     initial: { scale: 0 },
     animate: { scale: 1 },
     exit: { scale: 0 },
   };
-
   return (
     <section className="container">
       <div className="d-flex align-items-center justify-content-between m-5">
@@ -45,10 +60,10 @@ function AllDoctors() {
           style={{
             width: 300,
           }}
-          onChange={handleChange}
+          onChange={(value) => setVal(value)}
           options={[
             {
-              value: "All",
+              value: "All Doctors",
               label: "All Doctors",
             },
             {
@@ -84,12 +99,16 @@ function AllDoctors() {
         />
       </div>
       <div className=" mx-auto row ">
-        {!topDoctor.length && <Skeleton active />}
-
-        {topDoctor.length &&
-          topDoctor.map((doctor) => {
+        {!doctors.length && <Skeleton active />}
+        {doctors.length &&
+          doctors.map((doctor) => {
             return (
-              <motion.div {...animations}  layout className="col-md-6" key={doctor.id}>
+              <motion.div
+                {...animations}
+                layout
+                className="col-md-6"
+                key={doctor.id}
+              >
                 <Card
                   img={doctor.pImage}
                   title={doctor.name}
@@ -104,6 +123,6 @@ function AllDoctors() {
       </div>
     </section>
   );
-}
+};
 
-export default AllDoctors;
+export default DoctorsPage;
