@@ -10,13 +10,12 @@ import SecondaryBtn from "../../components/buttons/SecondaryBtn";
 
 const Google = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.authSlice.userData);
   const navigate = useNavigate();
   
 
   const handleGoogleSignup = () => {
     auth.signInWithPopup(googleProvider).then((res) => {
-      dispatch(setActiveUser());
+      // dispatch(setActiveUser());
       navigate("/home");
     });
   };

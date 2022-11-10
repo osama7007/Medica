@@ -1,5 +1,5 @@
 import { Form, Input, Checkbox } from "antd";
-import login from "../../assets/images/loginnn.gif";
+import loginnn from "../../assets/images/loginnn.gif";
 import "antd/dist/antd.css";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import FormInput from "../../components/input";
@@ -8,33 +8,40 @@ import { auth } from "../../firebase/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-
-
+import useLoginData from "../../firebase/useAuthStateHandler";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
+import useAuthStateHandler from "../../firebase/useAuthStateHandler";
+import styles from './login.module.css'
 const onChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
 };
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onFinish = async (values) => {
     const { EmailAddress, Password } = values;
     try {
-      await auth.signInWithEmailAndPassword(EmailAddress, Password);
-      navigate("/home");
-
-    }
-     catch (error) {
+      auth
+        .signInWithEmailAndPassword(EmailAddress, Password)
+        .then((user) => {
+          console.log("user : " + user);
+          navigate("/");
+        })
+    } catch (error) {
+      console.log(error.message);
       toast.error("Invalid Email or Password");
     }
   };
 
   return (
-    <section className="row container mx-3 align-items-center pt-5 mt-0">
-      <div className="col-md-8  text-center ">
-        <img src={login}  loading="lazy" alt="login" className="" />
+    <section className="container row m-auto align-items-center">
+      <div className={`col-md-7 ${styles.img}`}>
+        <img src={loginnn} alt="login" className={`w-75`} />
       </div>
-      <div className="col-md-4 shadow  rounded-2 mt-5 px-4 py-5">
+      <div className={` col-lg-4 shadow rounded-2 mt-5 px-4 py-5 ${styles.loginContainer}`}>
         <Form
           name="basic"
           initialValues={{ remember: true }}

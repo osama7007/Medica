@@ -3,8 +3,12 @@
     margin: 100px 0;
 }
 
-
-
 .icon {
     color: var(--main-color);
+}
+
+@media (max-width: 811px){
+    .content{
+        text-align: center;
+    }
 }

@@ -14,29 +14,50 @@ import AllDoctors from "./pages/allDoctors";
 import useArticles from "./hooks/useArticles";
 import DoctorProfile from "./components/dotctorProfile";
 import DoctorForm from "./components/doctor-form";
+import About from "./components/About/About";
+import NewDoctor from "./components/new  doctor/NewDoctor";
 import Date from "./components/Appoinment";
+
+import { useSelector } from "react-redux";
+import useAuth from "./firebase/useAuthStateHandler";
+import useAuthStateHandler from "./firebase/useAuthStateHandler";
+import {
+  IsAuthRouteGuard,
+  IsNotAuthRouteGuard,
+  LoginRouteGuard,
+  LogoutRouteGuard,
+} from "./utils/authRouteGuard";
+
 
 function App() {
   useDoctors();
   useArticles();
+  const unSub = useAuthStateHandler();
+
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/patient" element={<Patient />} />
-          <Route path="/patient-profile" element={<ProfilePatient />} />
-          <Route path="/top-rated" element={<TopRated />} />
-          <Route path="/doctors" element={<AllDoctors />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/articles/:id" element={<ArticleDetailes />} />
-          <Route path="/doctor-profile/:id" element={<DoctorProfile />} />
-          <Route path="/doctor-form/:id" element={<DoctorForm />} />
-          <Route path="/appoinment" element={<Date/>}/>
+          <Route path="/" element={isAuth ? <Home /> : <Welcome />} />
+          <Route element={<IsNotAuthRouteGuard />}>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
+          <Route element={<IsAuthRouteGuard />}>
+            <Route path="/patient" element={<Patient />} />
+            <Route path="/profile" element={<ProfilePatient />} />
+            <Route path="/top-rated" element={<TopRated />} />
+            <Route path="/doctors" element={<AllDoctors />} />
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/:id" element={<ArticleDetailes />} />
+            <Route path="/doctors/:name" element={<DoctorProfile />} />
+            <Route path="/doctor-form" element={<DoctorForm />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/new-doctor" element={<NewDoctor />} />
+            <Route path="/appoinment" element={<Date />} />
+          </Route>
         </Routes>
       </Layout>
     </BrowserRouter>

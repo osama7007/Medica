@@ -1,11 +1,24 @@
-/* @media (max-width: 800px) {
+.contanier {
+  width: 80%;
+  margin-left: 4em;
+}
+.overlay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+@media (max-width: 1200px) {
   .contanier {
-    width: 100%;
+    width: 90%;
+    margin-left: 0em;
+
   }
-  /* img {
+  .img {
     display: none;
-  } */
-/* .formBody {
+  } 
+.formBody {
     margin: 1rem 1rem;
-  } */
-/* } */
+  } 
+}

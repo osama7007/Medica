@@ -8,7 +8,7 @@ const index = () => {
 
     <section className={`${styles.container}  container p-5 rounded-4 `}>
       <div className="row">
-        <div className="col-lg-4 col-md-6">
+        <div className={`col-lg-4 col-md-6 ${styles.content}`}>
           <FaHandHoldingMedical className={`${styles.icon} fs-2 mb-4`} />
           <h2 className="mb-4 text-capitalize fw-bold" >All your healthcare needs</h2>
           <p className="text-black-50" >
@@ -16,7 +16,7 @@ const index = () => {
             Order your medicine and book a service or operation.
           </p>
         </div>
-        <div className="col-lg-4 col-md-6">
+        <div className={`col-lg-4 col-md-6 ${styles.content}`}>
           <BsFillPersonCheckFill className={`${styles.icon} fs-2 mb-4`} />
           <h2 className="mb-4 text-capitalize fw-bold">Verified  patient reviews and rating</h2>
           <p className="text-black-50" >
@@ -24,7 +24,7 @@ const index = () => {
             through Medica.
           </p>
         </div>
-        <div className="col-lg-4 col-md-6">
+        <div className={`col-lg-4 col-md-6 ${styles.content}`}>
           <BsCalendarDate  className={`${styles.icon} fs-2 mb-4`}/>
           <h2 className="mb-4 text-capitalize fw-bold">Your booking is confirmed</h2>
           <p className="text-black-50" >

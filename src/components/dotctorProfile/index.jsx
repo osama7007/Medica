@@ -9,20 +9,19 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Skeleton } from "antd";
 import axios from "axios";
 import PrimaryBtn from "../buttons/PrimaryBtn";
+import { useSelector } from "react-redux";
+import { deSlugifyDoctor } from "../../utils/slugify";
 
 function DoctorProfile() {
   const [doctor, setDoctor] = useState({});
   const params = useParams();
-
-  const getDoctor = () => {
-    axios(`https://doctor4.herokuapp.com/all/${params.id}`).then((data) => {
-      setDoctor(data.data);
-    });
-  };
-
-  useEffect(() => {
-    getDoctor();
-  }, []);
+ const allDoctors = useSelector((state) => state.doctors.doctors);
+ useEffect(() => {
+   const doctor = allDoctors.find(
+     (doctor) => doctor.name === deSlugifyDoctor(params.name)
+   );
+   setDoctor(doctor);
+ }, [params]);
 
   const navigate = useNavigate();
   const navigateappontment = () => {
