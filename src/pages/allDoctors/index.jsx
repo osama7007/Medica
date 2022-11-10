@@ -1,115 +1,109 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Appointment from "../../components/appointment";
-import Btn from "../../components/buttons/btn";
-import PrimaryBtn from "../../components/buttons/PrimaryBtn";
-import style from "./allDoctors.module.css";
+
+import { Select } from "antd";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Card from "../../components/card";
+import Heading from "../../components/heading";
+import { Skeleton } from "antd";
+import { motion } from 'framer-motion'
+
 
 function AllDoctors() {
   const navigate = useNavigate();
   const [topDoctor, setTopDoctor] = useState([]);
-  const [btnVal, setBtnVal] = useState("");
-  useEffect(()=>{
-	    allDoctorsView();
-  },[])
 
-  const docProfileNavigate = () => {
-    navigate("/patient");
+  const [val, setVal] = useState("All");
+
+  useEffect(() => {
+    getAllDoctors();
+  }, [val]);
+
+
+  const handleChange = (value) => {
+    setVal(value);
   };
 
-  let getSpecialty = (e) => {
-    setBtnVal(e.target.innerHTML);
-    getDoctor();
-  };
-
-  let getAllDoctors = () => {
-    allDoctorsView();
-  };
-
-  const allDoctorsView = () => {
-    fetch(`https://doctor4.herokuapp.com/all`)
+  const getAllDoctors = () => {
+    fetch(`https://doctor4.herokuapp.com/${val}`)
       .then((res) => res.json())
       .then((json) => setTopDoctor(json));
   };
 
-  const getDoctor = () => {
-    fetch(`https://doctor4.herokuapp.com/${btnVal}`)
-      .then((res) => res.json())
-      .then((json) => setTopDoctor(json));
+  const animations = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    exit: { scale: 0 },
   };
 
-	return (
-		<>
-			<div className='text-center mt-5 container w-75 mb-5'>
-				<Btn action={(e) => getAllDoctors(e)} title='All doctors' />
-				<Btn action={(e) => getSpecialty(e)} title='Dermatology' />
-				<Btn action={(e) => getSpecialty(e)} title='Pulmonologist' />
-				<Btn action={(e) => getSpecialty(e)} title='Otolaryngology' />
-				<Btn action={(e) => getSpecialty(e)} title='Pediatrics' />
-				<Btn action={(e) => getSpecialty(e)} title='InternalMedicine' />
-				<Btn action={(e) => getSpecialty(e)} title='Psychiatry' />
-				<Btn action={(e) => getSpecialty(e)} title='PlasticSurgery' />
-				<Btn title='More' />
-			</div>
-			<div className='specialty_content'>
-				{topDoctor.map((doctor) => {
-					return (
-						<div className=' container border shadow rounded px-3 py-3 mb-4 w-50 d-flex justify-content-center align-items-center'>
-							<div className='w-50 ms-2'>
-								<div className='w-50 mb-3 doctorPic'>
-									<Link
-										className='fw-bold text-decoration-none text-dark'
-										to={`/doctor-profile/${doctor.id}`}
-										key={doctor.id}>
-										<img
-											src={doctor.pImage}
-											alt='doctor'
-											className='w-75 rounded'
-											loading="lazy"
-										/>
-									</Link>
-								</div>
-								<Link
-									className='fw-bold  text-decoration-none text-dark'
-									to={`/doctor-profile/${doctor.id}`}
-									key={doctor.id}>
-									<h4 className='fw-bold' action={docProfileNavigate}>
-										{doctor.name}
-									</h4>
-								</Link>
-								<h5>
-									<span className='fw-bold fs-5'>Rate:</span> {doctor.rate}/5
-								</h5>
-								<h5>
-									<span className='fw-bold fs-5'>Grade: </span>
-									{doctor.graduation.grade}
-								</h5>
-							</div>
-							<div className='w-50  mt-2 '>
-								<h5 className='mb-4'>
-									<span className='fw-bold fs-5'> Address:</span>{' '}
-									{doctor.aAddress.city}
-								</h5>
-								<h5 className='mb-4'>
-									<span className='fw-bold fs-5'> Experience: </span>
-									{doctor.experience}
-								</h5>
-								<h5 className='mb-4'>
-								
-									<span className='fw-bold fs-5'> Waiting Time:</span>{' '}
-									{doctor.waiting}
-								</h5>
+  return (
+    <section className="container">
+      <div className="d-flex align-items-center justify-content-between m-5">
+        <Heading text={val} />
+        <Select
+          className="text-start"
+          defaultValue="All Doctors"
+          style={{
+            width: 300,
+          }}
+          onChange={handleChange}
+          options={[
+            {
+              value: "All",
+              label: "All Doctors",
+            },
+            {
+              value: "Dermatology",
+              label: "Dermatology",
+            },
+            {
+              value: "Pulmonologist",
+              label: "Pulmonologist",
+            },
+            {
+              value: "Otolaryngology",
+              label: "Otolaryngology",
+            },
+            {
+              value: "Pediatrics",
+              label: "Pediatrics",
+            },
+            {
+              value: "InternalMedicine",
+              label: "Internal Medicine",
+            },
+            {
+              value: "Psychiatry",
+              label: "Psychiatry",
+            },
 
-								<PrimaryBtn title=' Book Appointment' />
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</>
-	);
+            {
+              value: "PlasticSurgery",
+              label: "Plastic Surgery",
+            },
+          ]}
+        />
+      </div>
+      <div className=" mx-auto row ">
+        {!topDoctor.length && <Skeleton active />}
+
+        {topDoctor.length &&
+          topDoctor.map((doctor) => {
+            return (
+              <motion.div {...animations}  layout className="col-md-6" key={doctor.id}>
+                <Card
+                  img={doctor.pImage}
+                  title={doctor.name}
+                  rate={doctor.rate}
+                  position={doctor.position}
+                  experince={doctor.experience}
+                  specialty={doctor.specialty}
+                />
+              </motion.div>
+            );
+          })}
+      </div>
+    </section>
+  );
 }
 
 export default AllDoctors;

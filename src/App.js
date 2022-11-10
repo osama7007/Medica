@@ -16,6 +16,8 @@ import DoctorProfile from "./components/dotctorProfile";
 import DoctorForm from "./components/doctor-form";
 import About from "./components/About/About";
 import NewDoctor from "./components/new  doctor/NewDoctor";
+import Date from "./components/Appoinment";
+
 
 function App() {
   useDoctors();
@@ -39,6 +41,7 @@ function App() {
 					<Route path='/doctor-form/:id' element={<DoctorForm />} />
 					<Route path='/about' element={<About />} />
 					<Route path='/new-doctor' element={<NewDoctor />} />
+          <Route path="/appoinment" element={<Date/>}/>
 				</Routes>
 			</Layout>
 		</BrowserRouter>

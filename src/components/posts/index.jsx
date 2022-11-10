@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton } from "antd";
 
-
 const Posts = () => {
   const [input, setInput] = useState("");
   const [image, setImage] = useState("");
@@ -76,7 +75,7 @@ const Posts = () => {
       .doc(id)
       .delete()
       .then(() => {
-        toast.success("post deleted");
+        toast.success("post Deleted");
       });
   };
 
@@ -86,7 +85,7 @@ const Posts = () => {
         .doc(id)
         .update({
           comments: firebase.firestore.FieldValue.arrayUnion({
-            userName: "mohamed",
+            userName: "mohamed Gamal",
             comment: comment,
             createdAt: new Date(),
           }),
@@ -96,15 +95,15 @@ const Posts = () => {
 
   const addingLikeHandler = (id) => {
     db.collection("posts")
-    .doc(id)
-    .update({
-      likes: firebase.firestore.FieldValue.arrayUnion({
-        userName: "mohamed",
-        likes: 1,
-        createdAt: new Date()
-      }),
-    });
-  }
+      .doc(id)
+      .update({
+        likes: firebase.firestore.FieldValue.arrayUnion({
+          userName: "mohamed gamal",
+          likes: 1,
+          createdAt: new Date(),
+        }),
+      });
+  };
 
   return (
     <section className={`${styles.wrapper} w-100 ms-auto`}>
@@ -145,15 +144,9 @@ const Posts = () => {
       )}
 
       {!posts.length && (
-        <>
           <div className="shadow-sm p-5 rounded-4 mx-auto my-5 w-50">
             <Skeleton active />
           </div>
-
-          <div className="shadow-sm p-5 rounded-4   mx-auto w-50">
-            <Skeleton active />
-          </div>
-        </>
       )}
 
       {posts.map((post) => (
@@ -170,12 +163,25 @@ const Posts = () => {
           addingCommentHandler={addingCommentHandler}
           addingLikeHandler={addingLikeHandler}
           allComment={post.data.comments}
-          allLikes = {post.data.likes}
+          allLikes={post.data.likes}
           setComment={setComment}
           comment={comment}
         />
       ))}
-      <ToastContainer className={styles.toastContainer} />
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </section>
   );
 };

@@ -10,6 +10,7 @@ const SecondaryBtn = (props) => {
       border-0
       fw-bold
       me-4 shadow-sm
+      mb-2
        rounded-pill
          px-5 py-2
          `}
