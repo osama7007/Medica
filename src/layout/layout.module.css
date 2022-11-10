@@ -13,6 +13,9 @@
     min-height: calc(100vh - 77px - 45px);
     animation: margin 1s ease-in-out;
   }
+  .m_sidebar {
+    margin-left: 0px;
+  }
   .m_sidebar.open {
     margin-left: 0px;
     animation: all 1s ease-in-out 0.5s;

@@ -5,8 +5,8 @@ function PatientImg({ src }) {
     <>
       <img
         src={src}
-        alt="preview image"
-        className={`${styles.srcImg} w-50 mb-3  rounded-circle`}
+        alt="previewimage"
+        className={`${styles.srcImg} w-50 mb-3 rounded-circle`}
       />
     </>
   );

@@ -22,7 +22,7 @@ const Articles = () => {
   }, []);
 
   return (
-    <section className='w-75 container py-5'>
+    <section className=' container m-auto p-5'>
       <Heading text="trending" />
       <Trending className={styles.trendingCard} />
 
@@ -46,7 +46,7 @@ const Articles = () => {
                   <h6 className="text-dark fs-5 fw-bold">
                     {article.title}
                   </h6>
-                  <p className="fs-6 text-black-50 fw-bold">
+                  <p className="fs-6 text-black-50 fw-bold pe-5">
                     {article.description.split(" ").slice(0, 30).join(" ")}...
                   </p>
                   <Link

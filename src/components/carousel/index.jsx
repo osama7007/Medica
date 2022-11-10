@@ -50,7 +50,7 @@ export default () => {
           <img
             src={doctor3}
             alt="doctorphoto"
-            className="w-50"
+            className={`w-50 ${styles.img}`}
             style={{ marginTop: "103px" }}
           />
 

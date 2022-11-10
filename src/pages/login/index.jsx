@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 
+import styles from './login.module.css'
+
 const onChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
 };
@@ -37,11 +39,13 @@ const Login = () => {
   };
 
   return (
-    <section className="row container mx-3 align-items-center pt-5 mt-0">
-      <div className="col-md-8  text-center ">
-        <img src={loginnn} alt="login" className="" />
+
+    <section className="container row m-auto align-items-center">
+      <div className={`col-md-7 ${styles.img}`}>
+        <img src={loginnn} alt="login" className={`w-75`} />
+
       </div>
-      <div className="col-md-4 shadow  rounded-2 mt-5 px-4 py-5">
+      <div className={` col-lg-4 shadow rounded-2 mt-5 px-4 py-5 ${styles.loginContainer}`}>
         <Form
           name="basic"
           initialValues={{ remember: true }}

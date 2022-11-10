@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
+import styles from '../../pages/patient/patient.module.css'
+
 
 const DoctorForm = () => {
   const [save, setSaved] = useState("Save");
@@ -37,13 +39,13 @@ const DoctorForm = () => {
   };
 
   return (
-    <div className=" container formBody  d-flex justify-content-center align-items-center">
-      <div className=" w-25">
+    <div className={` d-flex justify-content-center align-items-center ${styles.contanier}`}>
+      <div className={`w-25 ${styles.img}`}>
         <img className="w-100" src={strip} alt=""></img>
       </div>
       <Form
         onFinish={onFinish}
-        className=" mb-5 ms-5 mt-4    w-75 fw-bold shadow rounded-2 "
+        className= {`mb-5 ms-5 mt-4 p-3 w-100 fw-bold shadow rounded-2 ${styles.formBody}`}
         labelCol={{
           span: 4,
         }}
@@ -96,7 +98,7 @@ const DoctorForm = () => {
         </Form.Item>
       </Form>
       <ToastContainer />
-      <div className="w-25 position-relative ms-3">
+      <div className={`w-25 ${styles.img} position-relative ms-3`}>
         <img
           className="w-100 position-absolute bottom-0 start-50 translate-middle"
           src={capsula}

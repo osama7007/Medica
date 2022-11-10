@@ -4,15 +4,21 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import { RiUserFollowFill } from "react-icons/ri";
 import BlueBtn from "../buttons/blueBtn";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ img, title, rate, position, experince, specialty }) => {
+  const navigate = useNavigate();
+  const navigateappontment = () => {
+    navigate('/appoinment');
+  };
+
   return (
     <motion.div
       layout
-      className={`${styles.cardContainer} d-flex align-items-center gap-5 shadow rounded-4 mb-5 py-5 ps-3`}
+      className={`${styles.cardContainer} m-auto shadow rounded-4 mb-5 py-5 px-3`}
     >
       <div>
-        <div className={`${styles.imgContainer} mb-2`}>
+        <div className={`${styles.imgContainer} mb-2 m-auto`}>
           <img src={img} alt={title} className=" rounded-4" />
         </div>
 
@@ -20,10 +26,10 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
         <p className="text-center text-uppercase text-blue bg-lightBlue p-2">
           {specialty}
         </p>
-      </div>
+      </div> 
 
-      <div>
-        <div className="d-flex align-items-center  text-center gap-5 mb-4">
+      <div className="ms-2">
+        <div className="d-flex align-items-center justify-content-around text-center gap-5 mb-4">
           <div>
             <BsFillFileEarmarkBarGraphFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{experince}</p>
@@ -41,9 +47,10 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
             <p className="text-blue fw-bold mb-1">{position}</p>
             <small className="text-black-50">Position</small>
           </div>
+
         </div>
         <div className="text-center">
-          <BlueBtn title="Book Appointment" />
+          <BlueBtn title="Book Appointment" action={navigateappontment} />
         </div>
       </div>
     </motion.div>

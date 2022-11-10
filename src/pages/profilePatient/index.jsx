@@ -29,8 +29,10 @@ const PatientProfile = () => {
     medications,
   } = useSelector((state) => state.auth);
   console.log(firstName, lastName, weight, height, blood, birthDay);
-  console.log(birthDay.seconds);
-  let  birth = new Date(birthDay.seconds).toLocaleDateString();
+
+  console.log(birthDay?.seconds);
+  let  birth = new Date(birthDay?.seconds).toLocaleDateString();
+
   console.log("birth : " +birth);
   const editProfileNavigate = () => {
     navigate("/patient");
@@ -75,7 +77,10 @@ const PatientProfile = () => {
   ];
 
   return (
-    <div className="w-75 container  mx-auto mt-5">
+
+    <>
+    <div className="container">
+
       <div>
         <div className={`${styles.profile_header}   `}>
           {/* <img
@@ -84,7 +89,9 @@ const PatientProfile = () => {
             className={`${styles.CoverImgPatient} w-100`}
           /> */}
           <div className={`${styles.PatientImg} mt-5  text-center`}>
-            <div className="   position-relative   rounded-circle ">
+
+            <div className="position-relative rounded-circle ">
+
               <label
                 class={`${styles.patient_img_select}   position-absolute`}
                 title="Upload image"
@@ -100,28 +107,39 @@ const PatientProfile = () => {
             </div>
           </div>
           <div>
-            <div className="container-fluid  d-flex justify-content-between   ">
-              <div className="d-flex container   ms-5">
+
+            <div className="container d-flex justify-content-between   ">
+              <div className="d-flex container ms-5">
+
                 <h2 className="fw-bold mt-5 me-2  patientName ">{` ${firstName} ${lastName}`}</h2>
                 {/* <button className="btn mt-5  btn-primary me-2">
                   Following
                 </button> */}
               </div>
-              <div className="mt-5">
+
+              <div className="mt-5 me-5">
+
                 <SecondaryBtn title={"Edit"} action={editProfileNavigate} />
               </div>
             </div>
           </div>
         </div>
       </div>
+
+    </div>
+      <div className="row  m-auto">
+        {/* <div className="  mb-5 mx-5 d-flex gap-4 justify-content-center align-items-center"> */}
+          <div className="col-11 mb-4">
+
       <div className=" container gap-3   ">
         <div className="  mb-5 mx-5 d-flex gap-4 justify-content-center align-items-center">
           <div className="w-75 col-8">
+
             <h3 className="mb-3 information text-primary ">
               Your Information ...
             </h3>
             <Table
-              className="shadow  "
+
               columns={columns}
               dataSource={data}
               size="middle"
@@ -130,17 +148,23 @@ const PatientProfile = () => {
           {/* <div className="w-25 col-4"> */}
           {/* <img className="w-100" src={patientIcon}></img> */}
           {/* </div> */}
-        </div>
-        <h3 className="mb-3 ms-5 text-primary ">
+
+        {/* </div> */}
+        <div className="col-11">
+        <h3 className="mb-3 text-primary ">
           Important Questions'answers ...
         </h3>
-        <div className="w-75 shadow container px-4  mx-5 pb-2 ">
+        <div className=" shadow p-3 ">
+
           <h5 className="mb-4 pt-3">Having surgery before :{surgeryBefore} </h5>
           <h5 className="mb-4"> genetic diseases : {geneticDiseases} </h5>
           <h5 className="mb-4"> Medications I take : {medications} </h5>
         </div>
+
+        </div>
       </div>
-    </div>
+    </>
+
   );
 };
 
