@@ -29,6 +29,7 @@ function DoctorProfile() {
   };
 
 
+
   return (
     <section className="py-4 container">
       {!doctor.name && (

@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import styles from '../../pages/patient/patient.module.css'
 
+
 const DoctorForm = () => {
   const [save, setSaved] = useState("Save");
   const [componentSize, setComponentSize] = useState("default");
