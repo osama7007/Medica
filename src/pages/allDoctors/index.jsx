@@ -12,7 +12,7 @@ const DoctorsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [doctors, setDoctors] = useState([]);
-  const [val, setVal] = useState("All");
+  const [val, setVal] = useState("All Doctors");
   const allDoctors = useSelector((state) => state.doctors.doctors);
   const specialities = [
     "All Doctors",
@@ -99,8 +99,7 @@ const DoctorsPage = () => {
         />
       </div>
       <div className=" mx-auto row ">
-        {!doctors.length && <Skeleton active />}
-        {doctors.length &&
+        {doctors.length ? (
           doctors.map((doctor) => {
             return (
               <motion.div
@@ -119,7 +118,10 @@ const DoctorsPage = () => {
                 />
               </motion.div>
             );
-          })}
+          })
+        ) : (
+          <Skeleton active />
+        )}
       </div>
     </section>
   );
