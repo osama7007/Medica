@@ -10,21 +10,16 @@ const useAuthStateHandler = () => {
   const [uid, setUid] = useState("");
   const [userData, setUserData] = useState({});
   const unSub = onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUid(user.uid);
-    }
+    setUid(user?.uid || "");
   });
   unSub();
 
   useEffect(() => {
     if (uid !== "") {
       const userRef = doc(db, "users", uid);
-      console.log("userRef", userRef);
       onSnapshot(userRef, (doc) => {
         if (doc.exists()) {
-          console.log("Document data:", doc.data());
           const data = doc.data();
-          console.log("data", data);
           const { firstName, lastName, userName, email, gender, category } =
             data;
           dispatch(
@@ -43,19 +38,20 @@ const useAuthStateHandler = () => {
               geneticDiseases: data?.geneticDiseases || "",
               medications: data?.medications || "",
               surgeryBefore: data?.surgeryBefore || "",
-              profileImg : data?.profileImg || "",
+              profileImg: data?.profileImg || "",
             })
           );
           localStorage.setItem(
             "auth",
             JSON.stringify({ isAuth: true, id: uid, ...data })
           );
-        } else {
-          dispatch(logout());
         }
-        // }
       });
     }
+    // else {
+    //   dispatch(logout());
+    //   localStorage.setItem("auth", JSON.stringify({ isAuth: false }));
+    // }
   }, [uid]);
 };
 

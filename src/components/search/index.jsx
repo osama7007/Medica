@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { slugifyDoctor } from "../../utils/slugify";
+import { slugify, slugifyDoctor } from "../../utils/slugify";
 const Search = ({ className }) => {
   const [value, setValue] = useState("Search...");
   const [options, setOptions] = useState([]);
@@ -13,8 +13,8 @@ const Search = ({ className }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(value)
-  },[value])
+    console.log(value);
+  }, [value]);
   const setInitialStates = () => {
     let specialities = [];
     doctors.map((doctor) =>
@@ -45,7 +45,7 @@ const Search = ({ className }) => {
   const handleSearch = () =>
     value[0] + value[1] === "dr"
       ? navigate(`/doctors/${slugifyDoctor(value)}`)
-      : navigate(`/doctors?specialty=${value.toLowerCase()}`);
+      : navigate(`/doctors?specialty=${slugify(value)}`);
   return (
     <div className={`w-100 d-flex  ${className}`}>
       <Select

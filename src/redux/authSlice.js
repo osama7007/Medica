@@ -49,6 +49,7 @@ const authSlice = createSlice({
       localStorage.setItem("auth", JSON.stringify({ ...initialState }));
     },
     logout: (state) => {
+      localStorage.removeItem("auth");
       state.isAuth = false;
       state.id = "";
       state.userName = "";
@@ -65,12 +66,15 @@ const authSlice = createSlice({
       state.medications = "";
       state.surgeryBefore = "";
       state.profileImg = ""
-      localStorage.setItem(
-        "auth",
-        JSON.stringify({
-          ...initialState,
-        })
-      );
+      console.log("logout");
+
+      // localStorage.setItem(
+      //   "auth",
+      //   JSON.stringify({
+      //     // ...initialState,
+      //     isAuth: false,
+      //   })
+      // );
     },
   },
 });
