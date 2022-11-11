@@ -10,6 +10,8 @@ import { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton } from "antd";
+import { useSelector } from "react-redux";
+
 
 const Posts = () => {
   const [input, setInput] = useState("");
@@ -17,8 +19,10 @@ const Posts = () => {
   const [comment, setComment] = useState([]);
   const [url, setUrl] = useState("");
   const [posts, setPosts] = useState([]);
-
   const imgPickerRef = useRef();
+
+  const userId = useSelector((state) => state.auth.id);
+  const { profileImg, userName } = useSelector((state) => state.auth);
 
   useEffect(() => {
     db.collection("posts")
@@ -32,15 +36,21 @@ const Posts = () => {
       });
   }, []);
 
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input || url) {
       db.collection("posts").add({
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        userName : userName,
+        userProfile: profileImg || '',
         image: url,
         comments: [],
         likes: [],
+        userId: userId,
       });
       setInput("");
       setUrl("");
@@ -85,7 +95,8 @@ const Posts = () => {
         .doc(id)
         .update({
           comments: firebase.firestore.FieldValue.arrayUnion({
-            userName: "mohamed Gamal",
+            commentProfile : profileImg,
+            userName: userName,
             comment: comment,
             createdAt: new Date(),
           }),
@@ -93,15 +104,13 @@ const Posts = () => {
     } else return;
   };
 
+
+
   const addingLikeHandler = (id) => {
     db.collection("posts")
       .doc(id)
       .update({
-        likes: firebase.firestore.FieldValue.arrayUnion({
-          userName: "mohamed gamal",
-          likes: 1,
-          createdAt: new Date(),
-        }),
+        likes: firebase.firestore.FieldValue.arrayUnion(userId),
       });
   };
 
@@ -110,11 +119,7 @@ const Posts = () => {
       <div
         className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-4`}
       >
-        <img
-          src="https://via.placeholder.com/150"
-          alt="avatar"
-          className={styles.profileImg}
-        />
+        <img src={profileImg} alt="avatar" className={styles.profileImg} />
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <input
             value={input}
@@ -144,9 +149,9 @@ const Posts = () => {
       )}
 
       {!posts.length && (
-          <div className="shadow-sm p-5 rounded-4 mx-auto my-5 w-50">
-            <Skeleton active />
-          </div>
+        <div className="shadow-sm p-5 rounded-4 mx-auto my-5 w-50">
+          <Skeleton active />
+        </div>
       )}
 
       {posts.map((post) => (
@@ -154,9 +159,10 @@ const Posts = () => {
           id={post.id}
           key={post.id}
           name={post.data.userName}
+          userProfile = {post.data.userProfile}
           timestamp={post.data.timestamp}
           postImg={post.data.image}
-          profileImg={post.data.profileImg}
+          userID={post.data.userId}
           message={post.data.message}
           likes={post.data.likes}
           deletePostHandler={deletePostHandler}

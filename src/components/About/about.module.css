@@ -1,6 +1,5 @@
-.about_header{
-    background-color:var(--main-color);
-    padding: 10px;
+.about_header {
+    margin-left: 100px;
 }
 .imgWrapper{
     width: 150px;

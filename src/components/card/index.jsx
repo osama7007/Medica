@@ -4,8 +4,14 @@ import { FaStarHalfAlt } from "react-icons/fa";
 import { RiUserFollowFill } from "react-icons/ri";
 import BlueBtn from "../buttons/blueBtn";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ img, title, rate, position, experince, specialty }) => {
+  const navigate = useNavigate()
+
+  const makeappointmentHandler = () => {
+    navigate('/appoinment')
+  }
   return (
     <motion.div
       layout
@@ -43,7 +49,7 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
           </div>
         </div>
         <div className="text-center">
-          <BlueBtn title="Book Appointment" />
+          <BlueBtn title="Book Appointment" action={makeappointmentHandler} />
         </div>
       </div>
     </motion.div>

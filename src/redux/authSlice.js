@@ -16,6 +16,7 @@ const initialState = JSON.parse(localStorage.getItem("auth")) || {
   geneticDiseases: "",
   medications: "",
   surgeryBefore: "",
+  profileImg : ""
 };
 
 const authSlice = createSlice({
@@ -44,6 +45,7 @@ const authSlice = createSlice({
         action.payload.geneticDiseases || state.geneticDiseases;
       state.medications = action.payload.medications || state.medications;
       state.surgeryBefore = action.payload.surgeryBefore || state.surgeryBefore;
+      state.profileImg = action.payload.profileImg || state.profileImg
       localStorage.setItem("auth", JSON.stringify({ ...initialState }));
     },
     logout: (state) => {
@@ -62,6 +64,7 @@ const authSlice = createSlice({
       state.geneticDiseases = "";
       state.medications = "";
       state.surgeryBefore = "";
+      state.profileImg = ""
       localStorage.setItem(
         "auth",
         JSON.stringify({

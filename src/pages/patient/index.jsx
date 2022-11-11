@@ -10,14 +10,18 @@ import { useSelector } from "react-redux";
 import { db } from "../../firebase/firebase";
 import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 import { doc, updateDoc } from "firebase/firestore";
+
 const Patient = () => {
   const [componentSize, setComponentSize] = useState("default");
   const [save, setSaved] = useState("Save");
+
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+
   const refreshAuth = useAuthStateHandler;
   const id = useSelector((state) => state.auth.id);
+
   const handleSubmit = (values) => {
     const {
       weight,
@@ -27,10 +31,8 @@ const Patient = () => {
       geneticDiseases,
       medications,
       surgeryBefore,
-		} = values;
-		console.log(values);
+    } = values;
     const docRef = doc(db, "users", id);
-    console.log(docRef);
     updateDoc(docRef, {
       weight,
       height,
@@ -75,13 +77,6 @@ const Patient = () => {
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item>
-        {/* <Form.Item label="First name">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Last name">
-          <Input />
-        </Form.Item> */}
-
         <Form.Item label="Weight" name="weight">
           <TreeSelect
             treeData={[
@@ -161,7 +156,7 @@ const Patient = () => {
         </Form.Item>
         <div className=" ms-5 w-100 " n>
           <h4 className="mb-3 fw-bold text-primary">
-            Important Questions ...?{" "}
+            Important Questions ...?
           </h4>
           <label className="fs-6 fw-bold">Have you had surgery before?</label>
           <Form.Item className="ms-3" name="surgeryBefore">
@@ -194,7 +189,19 @@ const Patient = () => {
           <PrimaryBtn title={save} />
         </Form.Item>
       </Form>
-      <ToastContainer />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <div className="w-25 position-relative ms-3">
         <img
           className="w-100 position-absolute bottom-0 start-50 translate-middle"

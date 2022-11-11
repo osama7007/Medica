@@ -43,6 +43,7 @@ const useAuthStateHandler = () => {
               geneticDiseases: data?.geneticDiseases || "",
               medications: data?.medications || "",
               surgeryBefore: data?.surgeryBefore || "",
+              profileImg : data?.profileImg || "",
             })
           );
           localStorage.setItem(
