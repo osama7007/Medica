@@ -5,7 +5,7 @@ import { FaStreetView } from "react-icons/fa";
 import Heading from "../heading";
 import DoctorImg from "../doctor_image";
 import DoctorIcons from "../icons";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Skeleton } from "antd";
 import axios from "axios";
 import PrimaryBtn from "../buttons/PrimaryBtn";
@@ -25,9 +25,11 @@ function DoctorProfile() {
     setDoctor(doctor);
   }, [params]);
 
-  const makeappointmentHandler = () => {
-    navigate("/appoinment");
+  const navigateappontment = () => {
+    navigate('/appoinment');
   };
+
+
 
   return (
     <section className="py-4 container">
@@ -113,10 +115,7 @@ function DoctorProfile() {
           </div>
 
           <div className="text-center my-5">
-            <PrimaryBtn
-              title="book appointment"
-              action={makeappointmentHandler}
-            />
+            <PrimaryBtn title="book appointment" action={navigateappontment} />
           </div>
         </>
       )}

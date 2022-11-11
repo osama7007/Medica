@@ -24,7 +24,7 @@ const ArticleDetailes = () => {
       ) : (
         ""
       )}
-      <div className="container p-3 w-75 text-center">
+      <div className="container py-2 text-center">
         <div className="w-75  m-auto">
           <img
             src={articles?.image}
@@ -34,7 +34,7 @@ const ArticleDetailes = () => {
           />
         </div>
         <h4 className="text-dark mb-4 fs-4 ">{articles?.title}</h4>
-        <p className={`${styles.content} w-75 mx-auto fs-5`}>
+        <p className={`${styles.content} m-4 fs-5`}>
           {articles?.description}
         </p>
       </div>

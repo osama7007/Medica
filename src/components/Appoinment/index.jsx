@@ -130,11 +130,13 @@ const Date = () => {
                 </Form.Item>
               </div>
             </div>
-          </div>
-          <div  className="text-center" >
-            <PrimaryBtn title="Book appointment" />
-          </div>
-        </Form>
+                  </div>
+                  <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
+                      <PrimaryBtn title="Booking"/>
+        
+      </Form.Item>
+              </Form>
+              
       </section>
 
       <ToastContainer
