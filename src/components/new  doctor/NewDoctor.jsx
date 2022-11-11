@@ -90,16 +90,16 @@ const animations = {
 								<Radio.Button value='large'>Large</Radio.Button>
 							</Radio.Group>
 						</Form.Item>
-						<Form.Item label='Works at' name='Works_at'>
+						<Form.Item label='Works at' name='Works_at' rules={[{ required: true, message: "Requierd" }]}>
 							<Input placeholder='Alkasr Eleiny' prefix={<UserOutlined />} />
 						</Form.Item>
-						<Form.Item label='specialty' name='specialty'>
+						<Form.Item label='specialty' name='specialty' rules={[{ required: true, message: "Requierd" }]}>
 							<Input placeholder='dermatology' prefix={<UserOutlined />} />
 						</Form.Item>
-						<Form.Item label='Phone' name='phone'>
+						<Form.Item label='Phone' name='phone' rules={[{ required: true, message: "Requierd" }]}>
 							<Input placeholder='012345678912' prefix={<UserOutlined />} />
 						</Form.Item>
-						<Form.Item label='National ID' name='national_id'>
+						<Form.Item label='National ID' name='national_id' rules={[{ required: true, message: "Requierd" }]}>
 							<Input
 								type='file'
 								accept='.pdf'
@@ -108,21 +108,22 @@ const animations = {
 							/>
 						</Form.Item>
 						<Form.Item label='Graduation' name='graduation'>
-							<Input placeholder='grade' prefix={<UserOutlined />} />
-							<Input placeholder='year' prefix={<UserOutlined />} />
-							<Input placeholder='university' prefix={<UserOutlined />} />
+							<Input placeholder='grade' prefix={<UserOutlined />} required/>
+							<Input placeholder='year' prefix={<UserOutlined />} required/>
+							<Input placeholder='university' prefix={<UserOutlined />} required/>
 						</Form.Item>
 						<Form.Item label='Address' name='Address'>
-							<Input placeholder='street' prefix={<UserOutlined />} />
-							<Input placeholder='city' prefix={<UserOutlined />} />
-							<Input placeholder='government' prefix={<UserOutlined />} />
-							<Input placeholder='country' prefix={<UserOutlined />} />
+							<Input placeholder='street' prefix={<UserOutlined />} required/>
+							<Input placeholder='city' prefix={<UserOutlined />} required/>
+							<Input placeholder='government' prefix={<UserOutlined />} required />
+							<Input placeholder='country' prefix={<UserOutlined />}  required/>
 						</Form.Item>
-						<Form.Item label='Biography' name='Biography'>
+						<Form.Item label='Biography' name='Biography' rules={[{ required: true, message: "Requierd" }]}>
 							<TextArea
 								rows={4}
 								placeholder='maxLength is 250'
 								maxLength={250}
+								required
 							/>
 						</Form.Item>
 						<Form.Item className='ms-5 d-flex align-items-center justify-content-center'>
@@ -139,7 +140,7 @@ const animations = {
 				</div>
 			)}
 			{save === 'Saved' && (
-				<motion.div {...animations} className={`shadow-sm rounded-4  `}>
+				<motion.div {...animations} className={`shadow-sm rounded-4`}>
 					<div className="heading m-auto w-25">
 					<Heading text='Under verification' />
 					</div>
