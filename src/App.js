@@ -28,6 +28,7 @@ import {
   LogoutRouteGuard,
 } from "./utils/authRouteGuard";
 import Appointment from "./pages/appointment";
+import NotFound from "./pages/notFound";
 
 
 function App() {
@@ -58,7 +59,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/new-doctor" element={<NewDoctor />} />
             <Route path="/appointment" element={<Date />} />
-            <Route path="/appointments" element ={<Appointment/>} />
+            <Route path="/appointments" element={<Appointment />} />
+            <Route path="*" element={<NotFound/>}/>
           </Route>
         </Routes>
       </Layout>
