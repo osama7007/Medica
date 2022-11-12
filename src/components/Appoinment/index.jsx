@@ -94,7 +94,7 @@ const DatePacker = () => {
           autoComplete="off"
         >
           <div className="row">
-            <div className="col-lg-6 col-md-12 mb-5">
+            <div className="col-lg-12 col-md-12 mb-5">
               <Heading text="Select Date" />
 
               <Form.Item name="calender" rules={[{ required: true }]}>
@@ -109,7 +109,7 @@ const DatePacker = () => {
               </Form.Item>
             </div>
 
-            <div className="col-lg-6 col-md-12 mb-5 ">
+            <div className="col-lg-12 col-md-12  mb-5 ">
               <div className="hour mb-5">
                 <Heading text="Select Hour" />
                 <Form.Item name="hour" rules={[{ required: true }]}>
