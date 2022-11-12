@@ -82,9 +82,9 @@ const Appointment = () => {
               </div>
             ) : (
               appointments.map((item, i) => (
-                <div className="mb-5" key={item.date + i}>
-                  <div className="row gap-5">
-                    <div className=" col-lg-8 col-md-12 m-auto text-center">
+                <div className="mb-5 " key={item.date + i}>
+                  <div className="row m-auto">
+                    <div className=" col-lg-7 col-md-12 text-center m-auto">
                       <div className="row shadow rounded-3 py-4 ">
                         <div className="col-md-4 mb-2">
                           <img
@@ -96,7 +96,7 @@ const Appointment = () => {
                             className={`rounded-5 ${styles.img}`}
                           />
                         </div>
-                        <div className="col-md-6 ms-auto mt-3 d-lg-flex  ">
+                        <div className="col-md-8 mt-3 d-lg-flex text-center ">
                           <div>
                             <h2>
                               {
@@ -104,12 +104,12 @@ const Appointment = () => {
                                   ?.name
                               }
                             </h2>
-                            <p>
+                            <p className="text-primary fs-5">
                               at {item.date} {item.time}
                             </p>
                           </div>
-                          <div className="d-flex align-items-center">
-                            <a href="tel:1222">
+                          <div className={`${styles.icon}d-flex align-items-center`}>
+                            <a href="tel:1968">
                               <TbPhoneCall className="fs-1 text-primary shadow p-1 rounded-5 ms-lg-3 mb-3" />
                             </a>
 
@@ -175,6 +175,7 @@ const Appointment = () => {
               </div>
             </div>
           </Tabs.TabPane>
+
           <Tabs.TabPane tab="Cancelled" key="tab3" className="text-center">
             {canceledAppointments?.length === 0 ? (
               <div className="d-none">
@@ -186,8 +187,8 @@ const Appointment = () => {
             ) : (
               canceledAppointments.map((item, i) => (
                 <div className="d-block">
-                  <div className="row gap-5">
-                    <div className=" col-lg-8 col-md-12 m-auto text-center">
+                  <div className="row m-auto">
+                  <div className=" col-lg-7 col-md-12 text-center m-auto">
                       <div className="row shadow rounded-3 py-4 ">
                         <div className="col-md-4 mb-2">
                           <img
@@ -197,7 +198,7 @@ const Appointment = () => {
                           />
                         </div>
 
-                        <div className="col-md-6 ms-auto mt-3 d-lg-flex  ">
+                        <div className="col-md-8 mt-3 d-lg-flex text-center ">
                           <div>
                             <h2>
                               {

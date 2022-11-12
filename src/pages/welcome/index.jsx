@@ -23,7 +23,7 @@ const Welcome = () => {
       {loading && <Loader />}
 
       {/* {loading && (
-        <div className={`${transformClass} container pt-4`}>
+        <div className={`container pt-4`}>
           <div className={styles.img}>
             <WelcomeLottie />
           </div>

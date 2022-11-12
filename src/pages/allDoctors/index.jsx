@@ -52,7 +52,9 @@ const DoctorsPage = () => {
   };
   return (
     <section className="container">
-      <div className="d-flex flex-column flex-md-row align-items-center justify-content-between m-5">
+      <div className="d-flex flex-column 
+      flex-md-row align-items-center
+       justify-content-between m-5">
         <Heading text={val} />
         <Select
           className="text-start"
