@@ -9,7 +9,7 @@ input[type="file"] {
 
 .patient_img_select {
   cursor: pointer;
-  right: 10px;
+  right: -50px;
   bottom: 10px;
   z-index: 100;
 }

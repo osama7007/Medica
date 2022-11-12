@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import "./profilePatient.module.css";
 import { useSelector } from "react-redux";
-import { db } from "../../firebase/firebase";
+import { db, storge } from "../../firebase/firebase";
 import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -16,8 +16,8 @@ const PatientProfile = () => {
   const [image, setImage] = useState('');
 
   const navigate = useNavigate();
-  const refreshAuth = useAuthStateHandler;
   const id = useSelector((state) => state.auth.id);
+  const docRef = doc(db, "users", id);
 
   const {
     firstName,
@@ -33,21 +33,31 @@ const PatientProfile = () => {
   } = useSelector((state) => state.auth);
 
   let birth = new Date(birthDay?.seconds).toLocaleDateString();
-
   const editProfileNavigate = () => {
     navigate("/patient");
   };
 
   const onImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      setImage(URL.createObjectURL(event.target.files[0]));
-      const docRef = doc(db, "users", id);
-      updateDoc(docRef, {
-        profileImg: image,
-      }).then(() => {
-        refreshAuth();
-      });
+    let pickedImg;
+    if (event.target.files && event.target.files.length > 0) {
+      pickedImg = event.target.files[0];
+      setImage(pickedImg);
     }
+  };
+
+  const upload = () => {
+    const uploadImage = storge.ref("userImages").child("images/" + id).put(image);
+    uploadImage.on("state_changed", () => {
+      storge
+        .ref("userImages/images")
+        .child(id)
+        .getDownloadURL()
+        .then((imageUrl) => {
+          updateDoc(docRef, {
+            profileImg: imageUrl,
+          });
+        });
+    });
   };
 
   const columns = [
@@ -106,7 +116,7 @@ const PatientProfile = () => {
       <div className="d-flex align-items-end justify-content-evenly m-5">
         <div>
           <div className={`${styles.imgContainer} mb-3 position-relative`}>
-            <PatientImg src={!profileImg ? PatientDefaultImg : profileImg} />
+            <PatientImg src={profileImg ? profileImg : PatientDefaultImg} />
 
             <label
               className={`${styles.patient_img_select}  position-absolute`}
@@ -118,6 +128,9 @@ const PatientProfile = () => {
                 onChange={onImageChange}
                 className="filetype"
               />
+              <button className="btn btn-primary" onClick={upload}>
+                save
+              </button>
             </label>
           </div>
 

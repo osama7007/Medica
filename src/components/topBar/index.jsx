@@ -27,7 +27,7 @@ const TopBar = () => {
         <Search className="mt-1 text-start  " />
         <div className="d-flex align-items-center ">
           <Dropdown
-            // onClick={(e) => e.stopPropagation()}
+            // onClick={(e) => e.preventDefault()}
             className="me-2 "
             menu={{
               items,
