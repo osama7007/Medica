@@ -68,7 +68,7 @@ function NewDoctor() {
 					</div>
 					<Form
 						onFinish={onFinish}
-						className=' mb-5 ms-5 mt-4    w-75 fw-bold shadow rounded-2 '
+						className=' mb-5 ms-5 mt-4 p-5 w-75 fw-bold shadow rounded-2 '
 						labelCol={{
 							span: 4,
 						}}
@@ -83,7 +83,7 @@ function NewDoctor() {
 						onValuesChange={onFormLayoutChange}
 						size={componentSize}>
 						<h2 className='text-center fw-bold mt-4 mb-5 text-decoration-underline text-primary '>
-							Manage Profile
+							Fill Information
 						</h2>
 						<Form.Item label='Form Size' name='size'>
 							<Radio.Group>

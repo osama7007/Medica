@@ -37,7 +37,7 @@ const FollowDoctor = () => {
   }, []);
   return (
     <section className={styles.following}>
-      <h4 className="mb-3 ms-2">You may also like</h4>
+      <h4 className="mb-3 ms-2">You might also like</h4>
       <section className={`${styles.conWidth}  shadow  px-3 py-4 rounded-3`}>
         {doctor.length === 0 ? <SkeletonComponent /> : ""}
         {doctor.map((doc, id) => {
