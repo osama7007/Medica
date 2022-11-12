@@ -4,7 +4,6 @@ import { FcGoogle } from "react-icons/fc";
 import { auth, googleProvider } from "../../firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveUser } from "../../redux/authSlice";
 import { Link } from "react-router-dom";
 import SecondaryBtn from "../../components/buttons/SecondaryBtn";
 

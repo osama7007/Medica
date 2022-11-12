@@ -53,7 +53,6 @@ const RegisterForm = () => {
       toast.error("Email Already Exist");
     }
   };
-
   return (
     <>
       <Form
