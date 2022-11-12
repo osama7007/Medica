@@ -20,14 +20,16 @@ const TopBar = () => {
 
   return (
     <section
-      className={`${style.container} me-5 p-3 ms-auto ${
+      className={`${style.container} me-5 py-3  ms-auto ${
         isAuth ? "d-block" : "d-none"
       } `}
     >
       <div className="d-flex justify-content-between">
-        <Search className="mt-1 text-start  " />
-        <div className="d-flex align-items-end justify-content-end w-100 ">
-          <p className="me-2 fw-bold text-capitalize" >{`${firstName} ${lastName}`}</p>
+        <Search className={`mt-1 text-start ${style.search} `} />
+        <div
+          className={` align-items-end justify-content-end w-100 ${style.user} `}
+        >
+          <p className="me-2 fw-bold text-capitalize">{`${firstName} ${lastName}`}</p>
           <Link to="/profile">
             <img
               src={profileImg ? profileImg : defaultImg}
