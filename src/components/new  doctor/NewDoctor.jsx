@@ -1,4 +1,4 @@
-import styles from "./NewDoctor.module.css";
+// import styles from "./NewDoctor.module.css";
 
 import { Form, Input, Radio } from "antd";
 import React, { useState } from "react";
@@ -13,6 +13,8 @@ import underVerify from "../../assets/images/80162-document-check-true.json";
 import axios from "axios";
 import { motion } from "framer-motion";
 import Heading from "../heading";
+import styles from '../../pages/patient/patient.module.css';
+
 
 function NewDoctor() {
   const [save, setSaved] = useState("Save");
@@ -61,14 +63,13 @@ function NewDoctor() {
 
 		<>
 			{save !== 'Saved' && (
-				<div
-					className={`${styles.new_doctor} container formBody  d-flex justify-content-center align-items-center`}>
-					<div className=' w-25'>
+    <div className={` d-flex justify-content-center align-items-center ${styles.contanier}`}>
+      <div className={`w-25 ${styles.img}`}>
 						<img className='w-100' src={strip} alt=''></img>
 					</div>
 					<Form
 						onFinish={onFinish}
-						className=' mb-5 ms-5 mt-4    w-75 fw-bold shadow rounded-2 '
+						className= {`mb-5 ms-5 mt-4 p-3 w-100 fw-bold shadow rounded-2 ${styles.formBody}`}
 						labelCol={{
 							span: 4,
 						}}
@@ -132,7 +133,7 @@ function NewDoctor() {
 						</Form.Item>
 					</Form>
 					<ToastContainer />
-					<div className='w-25 position-relative ms-3'>
+					<div className={`w-25 ${styles.img} position-relative ms-3`}>
 						<img
 							className='w-100 position-absolute bottom-0 start-50 translate-middle'
 							src={capsula}
