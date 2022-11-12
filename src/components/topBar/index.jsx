@@ -14,7 +14,6 @@ const TopBar = () => {
   ];
 
   const isAuth = useSelector((state) => state.auth.isAuth);
-  // const profileImg = useSelector((state) => state.auth.profileImg)
   const { firstName, profileImg, lastName } = useSelector(
     (state) => state.auth
   );
