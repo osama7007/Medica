@@ -1,5 +1,5 @@
 .heading {
-    width: fit-content;
+  width: fit-content;
 }
 
 .heading::after {
@@ -7,8 +7,15 @@
   position: absolute;
   bottom: -10px;
   left: 50%;
-  transform: translate(-50% , -50%);
+  transform: translate(-50%, -50%);
   width: 30%;
   height: 2px;
   background-color: var(--main-color);
+}
+
+@media (max-width: 992px) {
+  .heading {
+    text-align: center;
+    width: 100%;
+  }
 }

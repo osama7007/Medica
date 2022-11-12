@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { login, logout, setLoginData } from "../redux/authSlice";
 const useAuthStateHandler = () => {
+  
   const dispatch = useDispatch();
-
   const [uid, setUid] = useState("");
   const [userData, setUserData] = useState({});
   const unSub = onAuthStateChanged(auth, (user) => {

@@ -1,6 +1,9 @@
 .swiperContainer {
   background-image: linear-gradient(208.18deg, #67c3f3 9.05%, #498cef 76.74%);
 }
+.slide {
+  padding: 0rem 4rem;
+}
 
 .imgContainer {
   width: 600px;
@@ -14,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 6rem;
   }
   .text {
     text-align: center;
@@ -39,5 +42,15 @@
     text-align: center;
     margin: auto;
     width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .slide {
+    padding: 1.5rem 4.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .slide {
+    padding: 0.75rem 1.5rem;
   }
 }

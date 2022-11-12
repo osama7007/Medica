@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 
-import styles from './login.module.css'
+import styles from "./login.module.css";
 
 const onChange = (e) => {
   console.log(`checked = ${e.target.checked}`);
@@ -26,12 +26,10 @@ const Login = () => {
   const onFinish = async (values) => {
     const { EmailAddress, Password } = values;
     try {
-      auth
-        .signInWithEmailAndPassword(EmailAddress, Password)
-        .then((user) => {
-          console.log("user : " + user);
-          navigate("/");
-        })
+      auth.signInWithEmailAndPassword(EmailAddress, Password).then((user) => {
+        console.log("user : " + user);
+        navigate("/");
+      });
     } catch (error) {
       console.log(error.message);
       toast.error("Invalid Email or Password");
@@ -39,36 +37,45 @@ const Login = () => {
   };
 
   return (
-
-    <section className="container row m-auto align-items-center">
+    <section className="container w-auto row m-auto align-items-center ">
       <div className={`col-md-7 ${styles.img}`}>
         <img src={loginnn} alt="login" className={`w-75`} />
-
       </div>
-      <div className={` col-lg-4 shadow rounded-2 mt-5 px-4 py-5 ${styles.loginContainer}`}>
-        <Form
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          autoComplete="off"
+      <div className="col-lg-4">
+        <div
+          className={`shadow w-auto rounded-2 mt-5 px-4 py-5 d-flex flex-column justify-content-center align-items-center  ${styles.loginContainer}`}
         >
-          <div>
-            <FormInput label="Email Address" name="EmailAddress" type="email" />
-
+          <Form
+            name="basic"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            autoComplete="off"
+            className="w-100 d-flex flex-column justify-content-center align-items-center"
+          >
+            <div className="">
+              <form-label>Email</form-label>
+              <Form.Item
+                name="EmailAddress"
+                hasFeedback
+                // rules={[{ required: true }, { min: 8 }]}
+                // style={{ width: "300px" }}
+              >
+                <Input />
+              </Form.Item>
+            </div>
             <div className="mb-5">
               <form-label>password</form-label>
-
               <Form.Item
                 name="Password"
                 hasFeedback
                 rules={[{ required: true }, { min: 8 }]}
-                style={{ width: "300px" }}
+                // style={{ width: "300px" }}
               >
                 <Input.Password />
               </Form.Item>
             </div>
 
-            <div className="d-flex mb-3">
+            <div className="d-flex justify-content-center mb-3">
               <Checkbox className="me-4 mt-2" onChange={onChange}>
                 Remember me
               </Checkbox>
@@ -76,26 +83,26 @@ const Login = () => {
                 <PrimaryBtn title={"Log in"} />
               </Form.Item>
             </div>
-          </div>
-        </Form>
+          </Form>
 
-        <p className="text-black-50 ms-5">
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </p>
+          <p className="text-black-50 ">
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </p>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          limit={3}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        limit={3}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </section>
   );
 };
