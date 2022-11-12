@@ -4,6 +4,7 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { useState } from "react";
 import styles from "./posts.module.css";
 
+
 const Comment = ({
   addingCommentHandler,
   addingLikeHandler,
@@ -11,9 +12,12 @@ const Comment = ({
   setComment,
   allComment,
   allLikes,
+  userProfile
 }) => {
   const [liked, setLiked] = useState(false);
   const [showComment, setShowComment] = useState(false);
+
+
 
   return (
     <section className="px-4">
@@ -56,7 +60,7 @@ const Comment = ({
           className={`${styles.commentForm} d-flex align-items-center gap-2 pb-3`}
         >
           <img
-            src="https://via.placeholder.com/150"
+            src={userProfile}
             alt="avatar"
             className={styles.profileImg}
           />
@@ -71,7 +75,7 @@ const Comment = ({
         allComment.map((comment) => (
           <div key={id} className="d-flex align-items-center gap-2">
             <img
-              src="https://via.placeholder.com/150"
+              src={comment.commentProfile}
               alt="avatar"
               className={styles.profileImg}
             />

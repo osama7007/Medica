@@ -5,11 +5,12 @@ import mohamed from '../../assets/images/About/mohamed.jpg';
 import sandro from '../../assets/images/About/sandro.jpg';
 import alaa from "../../assets/images/About/alaa.jpg"
 import dina from "../../assets/images/About/dina.jpg"
+import Heading from '../heading'
 function About() {
   return (
-		<div className={`${styles.about_container}`}>
-			<div className={`${styles.about_header} text-center mb-5`}>
-				<h3 className='text-light'> ABOUT US </h3>
+		<div className={`${styles.about_container}  `}>
+			<div className={`${styles.about_header}  my-5`}>
+				<Heading text='about us' />
 			</div>
 			<div
 				className={`${styles.about_images} d-flex flex-wrap align-items-center justify-content-center gap-5  mb-5`}>

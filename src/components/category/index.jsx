@@ -40,59 +40,27 @@ const Category = () => {
         speed={1500}
         className="py-5"
       >
-        <SwiperSlide
-          className={`${styles.container}   rounded-4 shadow d-flex flex-column justify-content-center `}
-        >
-          <CategoryItem title="Dermatology" img={derma} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow`}
-        >
-          <CategoryItem title="Pulmonologist" img={pulmono} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Otolaryngology" img={otolaryngology} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container} rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Pediatrics" img={Pediatrics} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Internal Medicine" img={internal} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Dermatology" img={derma} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Ophthalmology" img={eye} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="Psychiatry" img={Psychiatry} />
-        </SwiperSlide>
-
-        <SwiperSlide
-          className={`${styles.container}  rounded-4 shadow d-flex flex-column justify-content-center`}
-        >
-          <CategoryItem title="plastic Surgery" img={plasticSurgery} />
-        </SwiperSlide>
+        {[
+          { title: "Dermatology", img: derma },
+          { title: "Pulmonology", img: pulmono },
+          { title: "Otolaryngology", img: otolaryngology },
+          { title: "Pediatrics", img: Pediatrics },
+          { title: "Internal Medicine", img: internal },
+          { title: "Ophthalmology", img: eye },
+          { title: "Psychiatry", img: Psychiatry },
+          { title: "Plastic Surgery", img: plasticSurgery },
+        ].map((item, index) => (
+          <SwiperSlide
+            className={`${styles.container} rounded-4 shadow ${
+              item.title !== "Pulmonology"
+                ? "d-flex flex-column justify-content-center"
+                : ""
+            } `}
+            key={item.img + index}
+          >
+            <CategoryItem title={item.title} img={item.img} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );

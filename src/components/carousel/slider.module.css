@@ -5,22 +5,39 @@
 .imgContainer {
   width: 600px;
 }
-.w75{
+.w75 {
+  margin: auto;
   width: 75%;
 }
-@media(max-width:900px){
-  .imgContainer {
-   max-width: 600px;
+@media (max-width: 992px) {
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
   }
-  .img{
+  .text {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .imgContainer {
+    max-width: 600px;
     display: none;
   }
-  h2,p{
+  .img {
+    display: none;
+  }
+  h2,
+  p {
     text-align: center;
   }
-  
-  .w75{
+
+  .w75 {
     text-align: center;
+    margin: auto;
     width: 100%;
   }
 }

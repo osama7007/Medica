@@ -1,20 +1,20 @@
 import styles from "./NewDoctor.module.css";
-import { Form, Input, Radio } from 'antd';
-import React, { useState } from 'react';
-import strip from '../../assets/images/strip-tablet.gif';
-import capsula from '../../assets/images/capsule.gif';
-import PrimaryBtn from '../../components/buttons/PrimaryBtn';
-import { UserOutlined } from '@ant-design/icons';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Lottie from 'react-lottie';
-import underVerify from "../../assets/images/80162-document-check-true.json"
-import axios from 'axios';
-import { motion } from 'framer-motion';
+
+import { Form, Input, Radio } from "antd";
+import React, { useState } from "react";
+import strip from "../../assets/images/strip-tablet.gif";
+import capsula from "../../assets/images/capsule.gif";
+import PrimaryBtn from "../../components/buttons/PrimaryBtn";
+import { UserOutlined } from "@ant-design/icons";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Lottie from "react-lottie";
+import underVerify from "../../assets/images/80162-document-check-true.json";
+import axios from "axios";
+import { motion } from "framer-motion";
 import Heading from "../heading";
 
 function NewDoctor() {
-
   const [save, setSaved] = useState("Save");
   const [componentSize, setComponentSize] = useState("default");
 
@@ -25,29 +25,29 @@ function NewDoctor() {
 
   const about = {};
   const defaultOptions = {
-		loop: true,
-		autoplay: true,
-		animationData: underVerify,
-		rendererSettings: {
-			preserveAspectRatio: 'xMidYMid slice',
-		},
-	};
-const animations = {
-	initial: { scale: 0 },
-	animate: { scale: 1 },
-	exit: { scale: 0 },
-	transition: { delay: .5 },
-	duration:5,
-};
+    loop: true,
+    autoplay: true,
+    animationData: underVerify,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+  const animations = {
+    initial: { scale: 0 },
+    animate: { scale: 1 },
+    exit: { scale: 0 },
+    transition: { delay: 0.5 },
+    duration: 5,
+  };
 
   let onFinish = (values) => {
     about.Works_at = values.Works_at || "";
     about.specialty = values.specialty || "";
     about.phone = values.phone || "";
-    about.national_id = values.national_id || '';
-    about.graduation = values.graduation || '';
-    about.Address = values.Address || '';
-    about.Biography = values.Biography || '';
+    about.national_id = values.national_id || "";
+    about.graduation = values.graduation || "";
+    about.Address = values.Address || "";
+    about.Biography = values.Biography || "";
     setSaved("Saved");
     if (save === "Save") toast.success("Saved successfully");
     //postData(`https://doctor4.herokuapp.com/all`);
@@ -58,6 +58,7 @@ const animations = {
   };
 
   return (
+
 		<>
 			{save !== 'Saved' && (
 				<div
@@ -151,6 +152,7 @@ const animations = {
 			)}
 		</>
 	);
+
 }
 
-export default NewDoctor
+export default NewDoctor;

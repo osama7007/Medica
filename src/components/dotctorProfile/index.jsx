@@ -5,24 +5,30 @@ import { FaStreetView } from "react-icons/fa";
 import Heading from "../heading";
 import DoctorImg from "../doctor_image";
 import DoctorIcons from "../icons";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Skeleton } from "antd";
 import axios from "axios";
 import PrimaryBtn from "../buttons/PrimaryBtn";
+import { useSelector } from "react-redux";
+import { deSlugifyDoctor } from "../../utils/slugify";
 
 function DoctorProfile() {
   const [doctor, setDoctor] = useState({});
+  const navigate = useNavigate();
   const params = useParams();
 
-  const getDoctor = () => {
-    axios(`https://doctor4.herokuapp.com/all/${params.id}`).then((data) => {
-      setDoctor(data.data);
-    });
+  const allDoctors = useSelector((state) => state.doctors.doctors);
+  useEffect(() => {
+    const doctor = allDoctors.find(
+      (doctor) => doctor.name === deSlugifyDoctor(params.name)
+    );
+    setDoctor(doctor);
+  }, [params]);
+
+  const navigateappontment = () => {
+    navigate('/appoinment');
   };
 
-  useEffect(() => {
-    getDoctor();
-  }, []);
 
 
   return (
@@ -35,9 +41,7 @@ function DoctorProfile() {
 
       {doctor.name && (
         <>
-          <div
-            className=' d-flex justify-content-center gap-4 align-items-center mb-3'
-          >
+          <div className=" d-flex justify-content-center gap-4 align-items-center mb-3">
             <div className={`${styles.doctorImg} text-center mb-4  `}>
               <div className="doctor_img_wrapper w-100 h-100  rounded-circle  ">
                 <DoctorImg src={doctor.pImage} />
@@ -51,9 +55,7 @@ function DoctorProfile() {
             </div>
           </div>
 
-          <div
-            className=' d-flex justify-content-center  mb-5 align-items-center gap-5 text-center'
-          >
+          <div className=" d-flex justify-content-center  mb-5 align-items-center gap-5 text-center">
             <DoctorIcons
               experience={doctor.experience}
               rate={doctor.rate}
@@ -64,7 +66,7 @@ function DoctorProfile() {
           <div className="d-flex container gap-5 align-items-center">
             <div className="w-50 shadow-sm p-4 rounded-4">
               <Heading text="about me" />
-              <p className="pt-3" >
+              <p className="pt-3">
                 <span className="text-blue fw-bold me-1"> {doctor.name} </span>
                 is the top most
                 <span className="text-blue fw-bold mx-1">
@@ -113,7 +115,7 @@ function DoctorProfile() {
           </div>
 
           <div className="text-center my-5">
-            <PrimaryBtn title="book appointment" />
+            <PrimaryBtn title="book appointment" action={navigateappontment} />
           </div>
         </>
       )}

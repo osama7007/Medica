@@ -8,9 +8,14 @@ import styles from "./form.module.css";
 import { auth, createUserDocument } from "../../firebase/firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authSlice";
+import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 
-const RegisterForm = ({ userAuth }) => {
+const RegisterForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const refreshAuthState = useAuthStateHandler();
 
   const options = [
     { value: "Male", label: "Male" },
@@ -24,21 +29,30 @@ const RegisterForm = ({ userAuth }) => {
 
   const onFinish = async (values) => {
     const { FirstName, LastName, EmailAddress, UserName, Password } = values;
+    const Gender = values.Gender.value;
+    const Category = values.Category.value;
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         EmailAddress,
         Password
       );
-      await createUserDocument(user, { FirstName, LastName, UserName });
-      userAuth(true);
-      setTimeout(() => {
-        navigate("/home");
-      }, 3000);
+      if (user) {
+        const newUser = await createUserDocument(user, {
+          firstName: FirstName,
+          lastName: LastName,
+          userName: UserName,
+          category: Category,
+          gender: Gender,
+        });
+        setTimeout(() => {
+          refreshAuthState();
+          navigate("/");
+        }, 3000);
+      }
     } catch (error) {
       toast.error("Email Already Exist");
     }
   };
-
   return (
     <>
       <Form

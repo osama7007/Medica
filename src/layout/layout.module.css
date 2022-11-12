@@ -2,17 +2,19 @@
   min-height: calc(100vh - 69px);
   animation: all 1s ease-in-out 0.5s;
 }
-.m_sidebar.open {
-  margin-left: 200px;
-  animation: all 1s ease-in-out 0.5s;
-}
 .m_sidebar {
-  margin-left: 80px;
+  margin-left: 200px;
+}
+.m_sidebar.open {
+  animation: all 1s ease-in-out 0.5s;
 }
 @media screen and (max-width: 768px) {
   .content {
     min-height: calc(100vh - 77px - 45px);
     animation: margin 1s ease-in-out;
+  }
+  .m_sidebar {
+    margin-left: 0px;
   }
   .m_sidebar.open {
     margin-left: 0px;

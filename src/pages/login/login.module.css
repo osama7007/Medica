@@ -1,3 +1,18 @@
-.loginContainer {
-    background-color: var(--main-color);
+@media(max-width:1200px){
+    .loginContainer {
+        width: 45%;
+    }
 }
+@media(max-width:900px){
+    .img{
+        display: none;
+    }
+    /* .loginContainer {
+        width: 70%;
+    } */
+}
+/* @media(max-width:1000px){
+    .loginContainer {
+        width: 80%;
+    }
+} */

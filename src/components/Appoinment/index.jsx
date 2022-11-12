@@ -1,10 +1,11 @@
 import Heading from "../heading";
-import { Calendar, DatePicker, Select, TimePicker } from "antd";
+import { Calendar,  Select } from "antd";
 import styles from "./appoinment.module.css";
-import { Button, Checkbox, Form, Input } from "antd";
-
-import SecondaryBtn from "../buttons/SecondaryBtn";
+import { Form } from "antd";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import TextArea from "antd/lib/input/TextArea";
+import PrimaryBtn from "../buttons/PrimaryBtn";
 const Date = () => {
   const onPanelChange = (value, mode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
@@ -25,6 +26,7 @@ const Date = () => {
   ];
   const onFinish = (values) => {
     console.log("Success:", values);
+    toast.success("Appointment Added ");
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -50,7 +52,7 @@ const Date = () => {
               <Form.Item
                 name="calender"
                 rules={[
-                  { required: true, message: "Please input your username!" },
+                  { required: true },
                 ]}
               >
                 <div className="site-calendar-demo-card mt-4">
@@ -128,9 +130,28 @@ const Date = () => {
                 </Form.Item>
               </div>
             </div>
-          </div>
-        </Form>
+                  </div>
+                  <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
+                      <PrimaryBtn title="Booking"/>
+        
+      </Form.Item>
+              </Form>
+              
       </section>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        limit={3}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };
