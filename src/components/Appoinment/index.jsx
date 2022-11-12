@@ -6,7 +6,23 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TextArea from "antd/lib/input/TextArea";
 import PrimaryBtn from "../buttons/PrimaryBtn";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { deSlugifyDoctor } from "../../utils/slugify";
 const Date = () => {
+  // const [doctor, setDoctor] = useState({});
+  // // const navigate = useNavigate();
+  // const params = useParams();
+
+  // const allDoctors = useSelector((state) => state.doctors.doctors);
+  // useEffect(() => {
+  //   const doctor = allDoctors.find(
+  //     (doctor) => doctor.name === deSlugifyDoctor(params.name)
+  //   );
+  //   setDoctor(doctor);
+  // }, [params]);
+
   const onPanelChange = (value, mode) => {
     console.log(value.format("YYYY-MM-DD"), mode);
   };
@@ -57,7 +73,7 @@ const Date = () => {
               >
                 <div className="site-calendar-demo-card mt-4">
                   <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-                </div>{" "}
+                </div>
               </Form.Item>
             </div>
 

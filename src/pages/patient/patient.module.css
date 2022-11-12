@@ -1,6 +1,7 @@
 .contanier {
   width: 80%;
   margin-left: 4em;
+  /* margin:auto */
 }
 .overlay{
   display: flex;
@@ -9,10 +10,10 @@
   height: 100vh;
   width: 100%;
 }
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .contanier {
     width: 90%;
-    margin-left: 0em;
+    margin: auto;
 
   }
   .img {

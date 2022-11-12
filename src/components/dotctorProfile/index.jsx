@@ -39,13 +39,14 @@ function DoctorProfile() {
 
       {doctor?.name && (
         <>
-          <div className=" d-flex justify-content-center gap-4 align-items-center mb-3">
-            <div className={`${styles.doctorImg} text-center mb-4  `}>
-              <div className="doctor_img_wrapper w-100 h-100  rounded-circle  ">
+          <div className=" d-flex flex-xl-row flex-lg-row flex-md-row flex-column w-75 m-auto justify-content-around
+            align-items-center mb-3">
+            <div className={`${styles.doctorImg} text-center mb-4 `}>
+              <div className="doctor_img_wrapper w-100 h-100 m-autorounded-circle  ">
                 <DoctorImg src={doctor?.pImage} />
               </div>
             </div>
-            <div>
+            <div className="">
               <h2>{doctor?.name}</h2>
               <p className={`${styles.specialty} text-center`}>
                 {doctor?.specialty}
@@ -53,7 +54,7 @@ function DoctorProfile() {
             </div>
           </div>
 
-          <div className=" d-flex justify-content-center  mb-5 align-items-center gap-5 text-center">
+          <div className=" d-flex m-auto row justify-content-center   mb-5 align-items-center gap-5 text-center">
             <DoctorIcons
               experience={doctor?.experience}
               rate={doctor?.rate}
@@ -61,8 +62,8 @@ function DoctorProfile() {
             />
           </div>
 
-          <div className="d-flex container gap-5 align-items-center">
-            <div className="w-50 shadow-sm p-4 rounded-4">
+          <div className="d-flex row flex-lg-row flex-md-row flex-column m-auto  container justify-content-around gap-3  align-items-center">
+            <div className="col-lg-5 col-md-5 col-12 shadow-sm p-4 rounded-4 m-auto">
               <Heading text="about me" />
               <p className="pt-3">
                 <span className="text-blue fw-bold me-1"> {doctor?.name} </span>
@@ -91,9 +92,9 @@ function DoctorProfile() {
               </p>
             </div>
 
-            <div className="w-50 shadow-sm p-4 rounded-4">
+            <div className="col-lg-5 col-md-5 col-12 shadow-sm p-4 rounded-4 m-auto">
               <Heading text="contact info" />
-              <div className="d-flex align-items-center justify-content-between px-4 pt-3 text-center">
+              <div className="d-flex flex-lg-row m-auto flex-md-column align-items-center justify-content-between px-4 pt-3 text-center">
                 <div>
                   <HiPhone className="text-blue fw-bold fs-2 mb-3" />
                   <p className="fw-bold">{doctor?.phone}</p>
