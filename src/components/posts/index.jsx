@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Skeleton } from "antd";
 import { useSelector } from "react-redux";
+import defaultImg from "../../assets/images/profile.webp";
+
 
 
 const Posts = () => {
@@ -119,7 +121,7 @@ const Posts = () => {
       <div
         className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-4`}
       >
-        <img src={profileImg} alt="avatar" className={styles.profileImg} />
+        <img src={profileImg ? profileImg : defaultImg} alt="avatar" className={styles.profileImg} />
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <input
             value={input}

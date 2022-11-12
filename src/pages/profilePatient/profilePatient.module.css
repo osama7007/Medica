@@ -9,10 +9,13 @@ input[type="file"] {
 
 .patient_img_select {
   cursor: pointer;
-  right: -50px;
+  right: 0px;
   bottom: 10px;
   z-index: 100;
 }
+
+
+
 
 td:first-child {
   font-weight: 700;

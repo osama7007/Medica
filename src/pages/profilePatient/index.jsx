@@ -9,11 +9,12 @@ import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import "./profilePatient.module.css";
 import { useSelector } from "react-redux";
 import { db, storge } from "../../firebase/firebase";
-import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 import { doc, updateDoc } from "firebase/firestore";
+import { FaCheck } from "react-icons/fa";
 
 const PatientProfile = () => {
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
+  const [showBtn, setShowBtn] = useState(false);
 
   const navigate = useNavigate();
   const id = useSelector((state) => state.auth.id);
@@ -42,12 +43,20 @@ const PatientProfile = () => {
     if (event.target.files && event.target.files.length > 0) {
       pickedImg = event.target.files[0];
       setImage(pickedImg);
+      setShowBtn(true);
+
+      setTimeout(() => {
+        setShowBtn(false);
+      }, 3500);
     }
   };
 
   const upload = () => {
-    const uploadImage = storge.ref("userImages").child("images/" + id).put(image);
-    uploadImage.on("state_changed", () => {
+    const uploadImage = storge
+      .ref("userImages")
+      .child("images/" + id)
+      .put(image);
+      uploadImage.on("state_changed", () => {
       storge
         .ref("userImages/images")
         .child(id)
@@ -128,13 +137,17 @@ const PatientProfile = () => {
                 onChange={onImageChange}
                 className="filetype"
               />
-              <button className="btn btn-primary" onClick={upload}>
-                save
-              </button>
+              {showBtn ? (
+                <button className="btn btn-primary" onClick={upload}>
+                  <FaCheck />
+                </button>
+              ) : (
+                ""
+              )}
             </label>
           </div>
 
-          <h2 className="fw-bold">{` ${firstName} ${lastName}`}</h2>
+          <h2 className="fw-bold text-capitalize">{`${firstName} ${lastName}`}</h2>
         </div>
 
         <div>
