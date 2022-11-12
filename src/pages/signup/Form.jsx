@@ -40,7 +40,7 @@ const RegisterForm = ({ setIsSubmitted }) => {
           firstName: FirstName,
           lastName: LastName,
           userName: UserName,
-          category: Category,
+          category: "Patient",
           gender: Gender,
         });
         setIsSubmitted(true);
@@ -119,7 +119,8 @@ const RegisterForm = ({ setIsSubmitted }) => {
           className={`${styles.inputWrapper} d-flex align-items-center justify-content-between ps-5 pe-5`}
         >
           <FormSelect label="Gender" name="Gender" option={options} />
-          <FormSelect label="Category" name="Category" option={Category} />
+          {/* <FormSelect label="Category" name="Category" option={Category} /> */}
+          <Checkbox> Accept all Terms & Conditions</Checkbox>
         </div>
 
         <div
@@ -129,9 +130,7 @@ const RegisterForm = ({ setIsSubmitted }) => {
             rules={[{ required: true, message: "checkBox is Requierd" }]}
             name="accept"
             valuePropName="checked"
-          >
-            <Checkbox> Accept all Terms & Conditions</Checkbox>
-          </Form.Item>
+          ></Form.Item>
 
           <Form.Item>
             <PrimaryBtn title={"Sign Up"} />

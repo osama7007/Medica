@@ -26,20 +26,18 @@ function DoctorProfile() {
   }, [params]);
 
   const navigateappontment = () => {
-    navigate('/appoinment');
+    navigate("/appoinment");
   };
-
-
 
   return (
     <section className="py-4 container">
-      {!doctor.name && (
+      {!doctor?.name && (
         <div className="container mt-5 w-50">
           <Skeleton active />
         </div>
       )}
 
-      {doctor.name && (
+      {doctor?.name && (
         <>
           <div className=" d-flex justify-content-center gap-4 align-items-center mb-3">
             <div className={`${styles.doctorImg} text-center mb-4  `}>
@@ -48,7 +46,7 @@ function DoctorProfile() {
               </div>
             </div>
             <div>
-              <h2>{doctor.name}</h2>
+              <h2>{doctor?.name}</h2>
               <p className={`${styles.specialty} text-center`}>
                 {doctor.specialty}
               </p>
@@ -57,9 +55,9 @@ function DoctorProfile() {
 
           <div className=" d-flex justify-content-center  mb-5 align-items-center gap-5 text-center">
             <DoctorIcons
-              experience={doctor.experience}
-              rate={doctor.rate}
-              position={doctor.position}
+              experience={doctor?.experience}
+              rate={doctor?.rate}
+              position={doctor?.position}
             />
           </div>
 
@@ -67,26 +65,26 @@ function DoctorProfile() {
             <div className="w-50 shadow-sm p-4 rounded-4">
               <Heading text="about me" />
               <p className="pt-3">
-                <span className="text-blue fw-bold me-1"> {doctor.name} </span>
+                <span className="text-blue fw-bold me-1"> {doctor?.name} </span>
                 is the top most
                 <span className="text-blue fw-bold mx-1">
-                  {doctor.specialty}
+                  {doctor?.specialty}
                 </span>
                 specialist in Christ Hospital at
                 <span className="text-blue fw-bold mx-1">
-                  {doctor.aAddress.government}
+                  {doctor?.aAddress.government}
                 </span>
                 , graduated in
                 <span className="text-blue fw-bold mx-1">
-                  {doctor.graduation.year}
+                  {doctor?.graduation.year}
                 </span>
                 from
                 <span className="text-blue fw-bold mx-1">
-                  {doctor.graduation.university}
+                  {doctor?.graduation.university}
                 </span>
                 with
                 <span className="text-blue fw-bold mx-1">
-                  {doctor.graduation.grade}
+                  {doctor?.graduation.grade}
                 </span>
                 Grade , Achieved several awards for the wonderful contribution
                 in medical fields.
@@ -98,17 +96,17 @@ function DoctorProfile() {
               <div className="d-flex align-items-center justify-content-between px-4 pt-3 text-center">
                 <div>
                   <HiPhone className="text-blue fw-bold fs-2 mb-3" />
-                  <p className="fw-bold">{doctor.phone}</p>
+                  <p className="fw-bold">{doctor?.phone}</p>
                 </div>
 
                 <div>
                   <HiLocationMarker className="text-blue fw-bold fs-2 mb-3" />
-                  <p className="fw-bold">{doctor.aAddress.city}</p>
+                  <p className="fw-bold">{doctor?.aAddress.city}</p>
                 </div>
 
                 <div>
                   <FaStreetView className="text-blue fw-bold fs-2 mb-3" />
-                  <p className="fw-bold">{doctor.aAddress.street}</p>
+                  <p className="fw-bold">{doctor?.aAddress.street}</p>
                 </div>
               </div>
             </div>

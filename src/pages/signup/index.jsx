@@ -5,6 +5,7 @@ import Google from "./Google";
 import Thanks from "../../components/thankyou";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
@@ -25,7 +26,11 @@ const SignUp = () => {
           </div>
           <div className={`${styles.form} col shadow-sm ms-3 rounded-2 `}>
             <RegisterForm setIsSubmitted={setIsSubmitted} />
-            <Google />
+            <div className=" text-center container-fluid">
+              <p className="text-black-50 mt-4">
+                Already have an account? <Link to="/login">Log in</Link>
+              </p>
+            </div>
           </div>
         </>
       )}

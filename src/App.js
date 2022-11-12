@@ -30,11 +30,10 @@ import {
 import Appointment from "./pages/appointment";
 import NotFound from "./pages/notFound";
 
-
 function App() {
   useDoctors();
   useArticles();
-  const unSub = useAuthStateHandler();
+  useAuthStateHandler();
 
   const isAuth = useSelector((state) => state.auth.isAuth);
 
@@ -60,7 +59,7 @@ function App() {
             <Route path="/new-doctor" element={<NewDoctor />} />
             <Route path="/appointment" element={<Date />} />
             <Route path="/appointments" element={<Appointment />} />
-            <Route path="*" element={<NotFound/>}/>
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Layout>
