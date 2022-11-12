@@ -15,9 +15,11 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
   return (
     <motion.div
       layout
-      className={`${styles.cardContainer} m-auto shadow rounded-4 mb-5 py-5 px-3`}
+
+      className={`${styles.cardContainer} row align-items-center justify-content-center shadow rounded-4 mb-5 py-1 ps-2 mx-2`}
     >
-      <div>
+      <div className="col-lg-6 "> 
+
         <div className={`${styles.imgContainer} mb-2 m-auto`}>
           <img src={img} alt={title} className=" rounded-4" />
         </div>
@@ -28,8 +30,10 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
         </p>
       </div> 
 
-      <div className="ms-2">
-        <div className="d-flex align-items-center justify-content-around text-center gap-5 mb-4">
+
+      <div className="col-lg-6">
+        <div className="d-flex flex-wrap justify-content-center align-items-center  text-center gap-5 mb-4">
+
           <div>
             <BsFillFileEarmarkBarGraphFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{experince}</p>

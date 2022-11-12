@@ -71,6 +71,11 @@ body {
   cursor: pointer;
 }
 
+.card_cardContainer__OWljs {
+   height: auto !important ;  
+}
+
 .imgBorder {
   border: 3px solid var(--light-color);
+
 }
