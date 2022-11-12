@@ -44,10 +44,6 @@ const PatientProfile = () => {
       pickedImg = event.target.files[0];
       setImage(pickedImg);
       setShowBtn(true);
-
-      setTimeout(() => {
-        setShowBtn(false);
-      }, 3500);
     }
   };
 
@@ -56,7 +52,7 @@ const PatientProfile = () => {
       .ref("userImages")
       .child("images/" + id)
       .put(image);
-      uploadImage.on("state_changed", () => {
+    uploadImage.on("state_changed", () => {
       storge
         .ref("userImages/images")
         .child(id)
@@ -67,6 +63,7 @@ const PatientProfile = () => {
           });
         });
     });
+    setShowBtn(false);
   };
 
   const columns = [
@@ -137,14 +134,14 @@ const PatientProfile = () => {
                 onChange={onImageChange}
                 className="filetype"
               />
-              {showBtn ? (
-                <button className="btn btn-primary" onClick={upload}>
-                  <FaCheck />
-                </button>
-              ) : (
-                ""
-              )}
             </label>
+            {showBtn ? (
+              <button className="btn btn-primary position-absolute end-25  bottom-0 ms-1" onClick={upload}>
+                <FaCheck />
+              </button>
+            ) : (
+              ""
+            )}
           </div>
 
           <h2 className="fw-bold text-capitalize">{`${firstName} ${lastName}`}</h2>

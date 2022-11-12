@@ -3,6 +3,9 @@ import { SlLike } from "react-icons/sl";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { useState } from "react";
 import styles from "./posts.module.css";
+import { useSelector } from "react-redux";
+import defaultImg from "../../assets/images/profile.webp";
+
 
 
 const Comment = ({
@@ -16,6 +19,7 @@ const Comment = ({
 }) => {
   const [liked, setLiked] = useState(false);
   const [showComment, setShowComment] = useState(false);
+  const profileImg = useSelector((state) => state.auth.profileImg)
 
 
 
@@ -60,7 +64,7 @@ const Comment = ({
           className={`${styles.commentForm} d-flex align-items-center gap-2 pb-3`}
         >
           <img
-            src={userProfile}
+            src={profileImg ? profileImg : defaultImg}
             alt="avatar"
             className={styles.profileImg}
           />
