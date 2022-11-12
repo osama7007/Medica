@@ -28,16 +28,14 @@ body {
   background-color: var(--light-color);
 }
 
-.ant-select{
+.ant-select {
   width: 20em;
 }
-.ant-picker-calendar-mini .ant-picker-panel{
-  background-color: var(--light-color)!important;
-
+.ant-picker-calendar-mini .ant-picker-panel {
+  background-color: var(--light-color) !important;
 }
-.ant-picker-calendar-mini .ant-picker-calendar-header{
-  background-color: var(--light-color)!important;
-
+.ant-picker-calendar-mini .ant-picker-calendar-header {
+  background-color: var(--light-color) !important;
 }
 .site-calendar-demo-card {
   width: 480px;
@@ -48,10 +46,10 @@ body {
 .ant-picker-calendar-header .ant-picker-calendar-mode-switch {
   display: flex;
 }
-.swiper-button-next, .swiper-button-prev{
+.swiper-button-next,
+.swiper-button-prev {
   display: none !important;
 }
-
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -77,5 +75,13 @@ body {
 
 .imgBorder {
   border: 3px solid var(--light-color);
-
+}
+.ant-input-affix-wrapper {
+  max-width: 80vw !important;
+  width: min(300px, 100%) !important;
+  min-width: 250px !important;
+}
+.ant-form-item-control-input-content {
+  max-width: 100% !important;
+  width: 100% !important;
 }

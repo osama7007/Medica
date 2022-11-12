@@ -19,7 +19,7 @@ export default () => {
         loop
         spaceBetween={50}
         slidesPerView={1}
-        className="px-5"
+    
       >
         <SwiperSlide
           className={`w-100 h-100 d-flex align-items-center justify-content-center ${styles.slide} `}

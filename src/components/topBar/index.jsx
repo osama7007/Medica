@@ -3,7 +3,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import styles from "../followDoctor/followDoctor.module.css";
 import style from "./topBar.module.css";
 import defaultImg from "../../assets/images/doctor_profile/default_profile_img.png";
-import { Dropdown, message, Space } from "antd";
+import { Dropdown, Space } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -15,7 +15,7 @@ const TopBar = () => {
 
   const isAuth = useSelector((state) => state.auth.isAuth);
 
-  const profileImg = useSelector((state) => state.auth.profileImg);
+  const profileImg = useSelector((state) => state.auth.profileImg)
 
   return (
     <section

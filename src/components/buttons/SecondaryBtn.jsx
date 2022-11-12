@@ -12,7 +12,6 @@ const SecondaryBtn = (props) => {
       me-4 shadow-sm
       mb-2
        rounded-pill
-         px-5 py-2
          `}
       onClick={action}
     >

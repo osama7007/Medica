@@ -1,5 +1,6 @@
 .primaryBtn {
   background-color: var(--main-color);
+  padding: 10px 20px;
 }
 .primaryBtn:hover {
   background-color: var(--main-color);
@@ -16,6 +17,7 @@
 .secondaryBtn {
   background-color: var(--light-color);
   color: var(--main-color);
+  padding: 10px 20px;
 }
 .secondaryBtn:hover {
   background-color: var(--main-color);
@@ -24,4 +26,12 @@
 .active{
   color:white;
   background : var(--main-color);
+}
+@media  (max-width: 576px) {
+  .primaryBtn {
+    padding: 5px 10px;
+  }
+  .secondaryBtn {
+    padding: 5px 10px;
+  }
 }

@@ -5,7 +5,7 @@ const PrimaryBtn = (props) => {
 
   return (
 		<button
-			className={`${styles.primaryBtn} border-0 text-uppercase fw-bold shadow-sm  me-4  rounded-pill px-5 py-2 text-white`}
+			className={`${styles.primaryBtn} border-0 text-uppercase fw-bold shadow-sm  me-4  rounded-pill text-white`}
 			onClick={action}
 			disabled={disabled === "Saved" ? true : false}>
 			{title}

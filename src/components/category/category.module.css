@@ -23,6 +23,7 @@
   color: var(--main-color);
   transition: all 0.2s ease-in-out;
 }
+
 @media (max-width: 576px) {
   .container {
     max-width: 100%;

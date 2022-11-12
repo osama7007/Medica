@@ -1,7 +1,7 @@
 import styles from "./buttons.module.css";
 
 const Btn = (props) => {
-  let { action, title  } = props;
+  let { action, title } = props;
 
   return (
     <button
@@ -11,7 +11,7 @@ const Btn = (props) => {
       fw-bold
       me-2 shadow
        rounded-pill
-         px-4 py-2 mb-2
+          mb-2
          `}
       onClick={action}
     >
@@ -21,4 +21,3 @@ const Btn = (props) => {
 };
 
 export default Btn;
-
