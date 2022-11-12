@@ -83,7 +83,7 @@ const DoctorsPage = () => {
               label: "Pediatrics",
             },
             {
-              value: "InternalMedicine",
+              value: "Internal Medicine",
               label: "Internal Medicine",
             },
             {
@@ -92,7 +92,7 @@ const DoctorsPage = () => {
             },
 
             {
-              value: "PlasticSurgery",
+              value: "Plastic Surgery",
               label: "Plastic Surgery",
             },
           ]}

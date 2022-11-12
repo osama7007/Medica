@@ -26,10 +26,15 @@ const Login = () => {
   const onFinish = async (values) => {
     const { EmailAddress, Password } = values;
     try {
-      auth.signInWithEmailAndPassword(EmailAddress, Password).then((user) => {
-        console.log("user : " + user);
-        navigate("/");
-      });
+      auth
+        .signInWithEmailAndPassword(EmailAddress, Password)
+        .then((user) => {
+          console.log("user : " + user);
+          navigate("/");
+        })
+        .catch((error) => {
+          toast.error("Invalid Email or Password");
+        });
     } catch (error) {
       console.log(error.message);
       toast.error("Invalid Email or Password");

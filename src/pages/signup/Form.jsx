@@ -12,10 +12,9 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/authSlice";
 import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 
-const RegisterForm = () => {
+const RegisterForm = ({ setIsSubmitted }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const refreshAuthState = useAuthStateHandler();
 
   const options = [
     { value: "Male", label: "Male" },
@@ -35,7 +34,7 @@ const RegisterForm = () => {
       const { user } = await auth.createUserWithEmailAndPassword(
         EmailAddress,
         Password
-      );
+      )
       if (user) {
         const newUser = await createUserDocument(user, {
           firstName: FirstName,
@@ -44,10 +43,10 @@ const RegisterForm = () => {
           category: Category,
           gender: Gender,
         });
+        setIsSubmitted(true);
         setTimeout(() => {
-          refreshAuthState();
           navigate("/");
-        }, 3000);
+        }, 3500);
       }
     } catch (error) {
       toast.error("Email Already Exist");
