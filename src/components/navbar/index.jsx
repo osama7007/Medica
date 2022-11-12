@@ -1,5 +1,7 @@
 import { Header } from "antd/lib/layout/layout";
+import useSelection from "antd/lib/table/hooks/useSelection";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import BurgerMenu from "./burger-menu";
 import MobileNavbar from "./mobile-navbar";
@@ -23,13 +25,14 @@ const Navbar = () => {
   const location = useLocation();
   const { pathname } = location;
   const pageInView = pathname.split("/")[1];
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
   return (
     <Header
-      className={`text-blue sticky-top bg-white shadow-sm h-auto d-blcck d-md-none ${
+      className={`text-blue p-0 sticky-top bg-white shadow-sm h-auto d-blcck d-md-none ${
         classes.Header
       } ${
-        ["", "login", "signup"].includes(pageInView) ? "d-none d-md-none" : ""
+        isAuth ? "d-block d-md-none" : "d-none"
       }`}
     >
       <nav className="navbar navbar-expand-md text-blue py-3 px-3">

@@ -3,6 +3,9 @@ import { SlLike } from "react-icons/sl";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { useState } from "react";
 import styles from "./posts.module.css";
+import { useSelector } from "react-redux";
+import defaultImg from "../../assets/images/profile.webp";
+
 
 
 const Comment = ({
@@ -12,11 +15,10 @@ const Comment = ({
   setComment,
   allComment,
   allLikes,
-  userProfile
+  activeLikes
 }) => {
-  const [liked, setLiked] = useState(false);
   const [showComment, setShowComment] = useState(false);
-
+  const profileImg = useSelector((state) => state.auth.profileImg)
 
 
   return (
@@ -30,10 +32,9 @@ const Comment = ({
       </div>
       <hr />
       <div className="d-flex align-items-center justify-content-between px-5">
-        <div className={` ${styles.iconWrapper} ${liked ? styles.liked : ""}`}>
+        <div className={` ${styles.iconWrapper} ${!activeLikes ? styles.liked : ""}`}>
           <SlLike
             onClick={() => {
-              setLiked(true);
               addingLikeHandler(id);
             }}
             className={styles.likeIcon}
@@ -60,7 +61,7 @@ const Comment = ({
           className={`${styles.commentForm} d-flex align-items-center gap-2 pb-3`}
         >
           <img
-            src={userProfile}
+            src={profileImg ? profileImg : defaultImg}
             alt="avatar"
             className={styles.profileImg}
           />
@@ -75,7 +76,7 @@ const Comment = ({
         allComment.map((comment) => (
           <div key={id} className="d-flex align-items-center gap-2">
             <img
-              src={comment.commentProfile}
+              src={comment.commentProfile ? comment.commentProfile : defaultImg}
               alt="avatar"
               className={styles.profileImg}
             />

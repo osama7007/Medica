@@ -47,7 +47,7 @@
   transform: translate(50px, 0px);
   background-color: var(--main-color);
 }
-@media only screen and (max-width: 925px) {
+@media only screen and (max-width: 767px) {
   .menuBtn {
     display: flex;
   }

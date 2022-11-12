@@ -1,30 +1,40 @@
 import Heading from "../heading";
-import { Calendar,  Select } from "antd";
+import { Calendar, Select } from "antd";
 import styles from "./appoinment.module.css";
 import { Form } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TextArea from "antd/lib/input/TextArea";
 import PrimaryBtn from "../buttons/PrimaryBtn";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { deSlugify, deSlugifyDoctor } from "../../utils/slugify";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { deSlugifyDoctor } from "../../utils/slugify";
-const Date = () => {
-  // const [doctor, setDoctor] = useState({});
-  // // const navigate = useNavigate();
-  // const params = useParams();
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import firebase from "firebase/compat/app";
+import useDoctors from "../../hooks/useDoctors";
+const DatePacker = () => {
+  const location = useLocation();
+  const [docName, setDocName] = useState("");
+  const [docId, setDocId] = useState("");
 
-  // const allDoctors = useSelector((state) => state.doctors.doctors);
-  // useEffect(() => {
-  //   const doctor = allDoctors.find(
-  //     (doctor) => doctor.name === deSlugifyDoctor(params.name)
-  //   );
-  //   setDoctor(doctor);
-  // }, [params]);
+  useDoctors();
+  const doctors = useSelector((state) => state.doctors.doctors);
 
-  const onPanelChange = (value, mode) => {
-    console.log(value.format("YYYY-MM-DD"), mode);
+  const userId = useSelector((state) => state.auth.id);
+  useEffect(() => {
+    if (doctors.length > 0) {
+      console.log(deSlugifyDoctor(location.search.split("=")[1]));
+      setDocName(deSlugifyDoctor(location.search.split("=")[1]));
+      const doctor = doctors.find((doc) => doc.name === docName);
+      setDocId(doctor?.id);
+    }
+  }, [doctors]);
+
+  const onPanelChange = (value) => {
+    console.log(value.format("YYYY-MM-DD"));
   };
   const Hours = [
     "1:15 Pm",
@@ -40,9 +50,31 @@ const Date = () => {
     "7:30 Pm",
     "8:00 Pm",
   ];
-  const onFinish = (values) => {
+
+  const onFinish = (values, errors) => {
+    const currentDate = new Date();
+    const date = new Date(values.calender._d);
+    if (date < currentDate) {
+      toast.error("Please select a valid date");
+      return;
+    }
+
     console.log("Success:", values);
     toast.success("Appointment Added ");
+    console.log(values, docId, userId);
+    console.log(values.calender);
+
+    const colRef = db
+      .collection("users")
+      .doc(userId)
+      .update({
+        appointments: firebase.firestore.FieldValue.arrayUnion({
+          doctorId: docId,
+          date: values.calender._d.toLocaleDateString("en-GB"),
+          time: values.hour,
+        }),
+      });
+    console.log(colRef);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -65,15 +97,15 @@ const Date = () => {
             <div className="col-lg-6 col-md-12 mb-5">
               <Heading text="Select Date" />
 
-              <Form.Item
-                name="calender"
-                rules={[
-                  { required: true },
-                ]}
-              >
-                <div className="site-calendar-demo-card mt-4">
-                  <Calendar fullscreen={false} onPanelChange={onPanelChange} />
-                </div>
+              <Form.Item name="calender" rules={[{ required: true }]}>
+                {/* <div className="site-calendar-demo-card mt-4"> */}
+                <Calendar
+                  fullscreen={false}
+                  onChange={onPanelChange}
+                  onPanelChange={onPanelChange}
+                  name="calender"
+                />
+                {/* </div>{" "} */}
               </Form.Item>
             </div>
 
@@ -84,6 +116,7 @@ const Date = () => {
                   <Select
                     showSearch
                     style={{ width: 425 }}
+                    name="hour"
                     className="mt-4"
                     placeholder="Search to Select"
                     optionFilterProp="children"
@@ -97,35 +130,35 @@ const Date = () => {
                     }
                     options={[
                       {
-                        value: "1",
+                        value: "1:15 Pm",
                         label: "1:15 Pm",
                       },
                       {
-                        value: "2",
+                        value: "2:20 Pm",
                         label: "2:20 Pm",
                       },
                       {
-                        value: "3",
+                        value: "3:30 Pm",
                         label: "3:30 Pm",
                       },
                       {
-                        value: "4",
+                        value: "4:00 Pm",
                         label: "4:00 Pm",
                       },
                       {
-                        value: "5",
+                        value: "5:00 Pm",
                         label: "5:00 Pm",
                       },
                       {
-                        value: "6",
+                        value: "5:30 Pm",
                         label: "5:30 Pm",
                       },
                       {
-                        value: "7",
+                        value: "6:00 Pm",
                         label: "6:00 Pm",
                       },
                       {
-                        value: "8",
+                        value: "7:00 Pm",
                         label: "7:00 Pm",
                       },
                     ]}
@@ -138,6 +171,7 @@ const Date = () => {
                 <Form.Item name="problem" rules={[{ required: true }]}>
                   <div className="mt-4 m-auto">
                     <TextArea
+                      name="problem"
                       rows={7}
                       placeholder="maxLength is 400"
                       maxLength={400}
@@ -146,13 +180,11 @@ const Date = () => {
                 </Form.Item>
               </div>
             </div>
-                  </div>
-                  <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
-                      <PrimaryBtn title="Booking"/>
-        
-      </Form.Item>
-              </Form>
-              
+          </div>
+          <Form.Item wrapperCol={{ offset: 10, span: 20 }}>
+            <PrimaryBtn title="Booking" />
+          </Form.Item>
+        </Form>
       </section>
 
       <ToastContainer
@@ -172,4 +204,4 @@ const Date = () => {
   );
 };
 
-export default Date;
+export default DatePacker;

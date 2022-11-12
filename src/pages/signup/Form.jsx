@@ -21,9 +21,12 @@ const RegisterForm = ({ setIsSubmitted }) => {
     { value: "Female", label: "Female" },
   ];
 
+  
   const onFinish = async (values) => {
     const { FirstName, LastName, EmailAddress, UserName, Password } = values;
     const Gender = values.Gender.value;
+
+
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         EmailAddress,
@@ -124,7 +127,9 @@ const RegisterForm = ({ setIsSubmitted }) => {
           </Form.Item>
         </div>
 
-        <Form.Item>
+
+        <Form.Item className="w-100 text-center" >
+
           <PrimaryBtn title={"Sign Up"} />
         </Form.Item>
       </Form>

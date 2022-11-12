@@ -9,9 +9,11 @@ import { slugifyDoctor } from "../../utils/slugify";
 
 const Card = ({ img, title, rate, position, experince, specialty }) => {
   const navigate = useNavigate();
+
   const navigateappontment = () => {
-    navigate("/appointment");
+    navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
   };
+  
 
   return (
     <motion.div

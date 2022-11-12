@@ -26,7 +26,7 @@ function DoctorProfile() {
   }, [params]);
 
   const navigateappontment = () => {
-    navigate('/appointment');
+    navigate("/appointment");
   };
 
   return (

@@ -18,7 +18,8 @@ const PostItem = ({
   allLikes,
   id,
   userID,
-  userProfile
+  userProfile,
+  activeLikes
 }) => {
   const animations = {
     initial: { scale: 0 },
@@ -76,6 +77,7 @@ const PostItem = ({
         addingLikeHandler={addingLikeHandler}
         name={name}
         userProfile={userProfile}
+        activeLikes={activeLikes}
       />
     </motion.div>
   );

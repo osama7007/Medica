@@ -2,6 +2,7 @@ import styles from "./posts.module.css";
 import PrimaryBtn from "../buttons/PrimaryBtn";
 import { useState } from "react";
 import { db } from "../../firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import firebase from "../../../node_modules/firebase/compat";
 import PostItem from "./PostItem";
@@ -13,16 +14,14 @@ import { Skeleton } from "antd";
 import { useSelector } from "react-redux";
 import defaultImg from "../../assets/images/profile.webp";
 
-
-
 const Posts = () => {
   const [input, setInput] = useState("");
   const [image, setImage] = useState("");
   const [comment, setComment] = useState([]);
+  const [activeLikes , setActiveLikes] = useState(true)
   const [url, setUrl] = useState("");
   const [posts, setPosts] = useState([]);
   const imgPickerRef = useRef();
-
   const userId = useSelector((state) => state.auth.id);
   const { profileImg, userName } = useSelector((state) => state.auth);
 
@@ -38,17 +37,14 @@ const Posts = () => {
       });
   }, []);
 
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input || url) {
       db.collection("posts").add({
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        userName : userName,
-        userProfile: profileImg || '',
+        userName: userName,
+        userProfile: profileImg || "",
         image: url,
         comments: [],
         likes: [],
@@ -97,7 +93,7 @@ const Posts = () => {
         .doc(id)
         .update({
           comments: firebase.firestore.FieldValue.arrayUnion({
-            commentProfile : profileImg,
+            commentProfile: profileImg,
             userName: userName,
             comment: comment,
             createdAt: new Date(),
@@ -106,22 +102,41 @@ const Posts = () => {
     } else return;
   };
 
-
-
   const addingLikeHandler = (id) => {
-    db.collection("posts")
-      .doc(id)
-      .update({
-        likes: firebase.firestore.FieldValue.arrayUnion(userId),
-      });
+    const docRef = doc(db, "posts", id);
+    getDoc(docRef).then((doc) => {
+      if (doc.exists()) {
+        setActiveLikes(true)
+        const likes = doc.data().likes;
+        if (likes.includes(userId)) {
+          db.collection("posts")
+            .doc(id)
+            .update({
+              likes: firebase.firestore.FieldValue.arrayRemove(userId),
+            });
+        } else {
+          setActiveLikes(false)
+          db.collection("posts")
+            .doc(id)
+            .update({
+              likes: firebase.firestore.FieldValue.arrayUnion(userId),
+            });
+        }
+      }
+    });
   };
+
 
   return (
     <section className={`${styles.wrapper} w-100 ms-auto`}>
       <div
-        className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-4`}
+        className={`${styles.inputContainer} shadow-sm d-flex align-items-center justify-content-center gap-2 gap-md-4`}
       >
-        <img src={profileImg ? profileImg : defaultImg} alt="avatar" className={styles.profileImg} />
+        <img
+          src={profileImg ? profileImg : defaultImg}
+          alt="avatar"
+          className={styles.profileImg}
+        />
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <input
             value={input}
@@ -136,7 +151,7 @@ const Posts = () => {
               className="d-none"
               ref={imgPickerRef}
               onChange={handleImg}
-              accept=".jpg,.png,.jpeg"
+              accept=".jpg , .png , .jpeg"
             />
             <FcGallery className="fs-3 mt-2 pe-2" />
           </label>
@@ -161,7 +176,7 @@ const Posts = () => {
           id={post.id}
           key={post.id}
           name={post.data.userName}
-          userProfile = {post.data.userProfile}
+          userProfile={post.data.userProfile}
           timestamp={post.data.timestamp}
           postImg={post.data.image}
           userID={post.data.userId}
@@ -174,6 +189,7 @@ const Posts = () => {
           allLikes={post.data.likes}
           setComment={setComment}
           comment={comment}
+          activeLikes={activeLikes}
         />
       ))}
 
