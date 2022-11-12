@@ -102,17 +102,12 @@ const DoctorsPage = () => {
         {doctors.length ? (
           doctors.map((doctor) => {
             return (
-<<<<<<< Updated upstream
               <motion.div
                 {...animations}
                 layout
                 className="col-xl-5 col-md-12"
                 key={doctor.id}
               >
-=======
-
-              <motion.div {...animations}  layout className="col-xl-5 col-md-12" key={doctor.id}>
->>>>>>> Stashed changes
                 <Card
                   img={doctor.pImage}
                   title={doctor.name}
