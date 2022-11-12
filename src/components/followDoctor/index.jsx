@@ -62,7 +62,7 @@ const FollowDoctor = () => {
               </Link>
               <div className="col-2">
                 <button
-                  className="btn btn-primary"
+                  className={`${ buttonText[id] ?'btn-secondary ': 'btn-primary'} btn `}
                   key={`button-${id}`}
                   onClick={() => {
                     handleFollowClick(id);

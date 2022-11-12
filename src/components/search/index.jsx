@@ -2,6 +2,7 @@ import { Select } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import { CgSearchLoading } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { slugify, slugifyDoctor } from "../../utils/slugify";
@@ -71,7 +72,9 @@ const Search = ({ className }) => {
         onClick={handleSearch}
         className="border-0 bg-white"
       >
-        <BiSearchAlt className="fs-2 text-blue  mx-1 " />
+        {
+          <BiSearchAlt className={`fs-2 ${value !== "Search..."?  "text-blue": "text-secondray" }  mx-1 `} />
+        }
       </button>
     </div>
   );
