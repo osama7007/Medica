@@ -6,15 +6,9 @@
 }
 @media (max-width: 1200px) {
   .cardContainer {
-    width: 400px;
-  }
- 
-}
-@media (max-width: 600px) {
-  .cardContainer {
-    height: 530px;
-    max-width: 500px;
-    display: block;
+ min-height: 320px;
+  min-width: 550px;
+  display:block;
   }
  
 }
