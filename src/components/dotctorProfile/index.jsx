@@ -42,13 +42,13 @@ function DoctorProfile() {
           <div className=" d-flex justify-content-center gap-4 align-items-center mb-3">
             <div className={`${styles.doctorImg} text-center mb-4  `}>
               <div className="doctor_img_wrapper w-100 h-100  rounded-circle  ">
-                <DoctorImg src={doctor.pImage} />
+                <DoctorImg src={doctor?.pImage} />
               </div>
             </div>
             <div>
               <h2>{doctor?.name}</h2>
               <p className={`${styles.specialty} text-center`}>
-                {doctor.specialty}
+                {doctor?.specialty}
               </p>
             </div>
           </div>
