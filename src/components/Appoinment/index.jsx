@@ -35,7 +35,7 @@ const Date = () => {
 
   return (
     <>
-      <section className="container py-5">
+      <section className="container  py-5">
         <Form
           name="basic"
           labelCol={{ span: 8 }}

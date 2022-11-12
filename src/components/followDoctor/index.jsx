@@ -68,7 +68,7 @@ const FollowDoctor = () => {
                     handleFollowClick(id);
                   }}
                 >
-                  {buttonText[id] ? "following" : "follow"}
+                  {buttonText[id] ? "Following" : "Follow"}
                 </button>
               </div>
             </div>

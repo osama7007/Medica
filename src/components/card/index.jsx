@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Card = ({ img, title, rate, position, experince, specialty }) => {
   const navigate = useNavigate();
   const navigateappontment = () => {
-    navigate('/appoinment');
+    navigate('/appointment');
   };
 
   return (

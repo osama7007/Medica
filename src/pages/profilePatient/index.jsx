@@ -9,9 +9,8 @@ import PrimaryBtn from "../../components/buttons/PrimaryBtn";
 import "./profilePatient.module.css";
 import { useSelector } from "react-redux";
 import { db, storge } from "../../firebase/firebase";
-import useAuthStateHandler from "../../firebase/useAuthStateHandler";
 import { doc, updateDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { FaCheck } from "react-icons/fa";
 
 const PatientProfile = () => {
   const [image, setImage] = useState("");
@@ -57,7 +56,7 @@ const PatientProfile = () => {
       .ref("userImages")
       .child("images/" + id)
       .put(image);
-    uploadImage.on("state_changed", () => {
+      uploadImage.on("state_changed", () => {
       storge
         .ref("userImages/images")
         .child(id)
@@ -140,7 +139,7 @@ const PatientProfile = () => {
               />
               {showBtn ? (
                 <button className="btn btn-primary" onClick={upload}>
-                  save
+                  <FaCheck />
                 </button>
               ) : (
                 ""
@@ -148,7 +147,7 @@ const PatientProfile = () => {
             </label>
           </div>
 
-          <h2 className="fw-bold text-capitalize">{` ${firstName} ${lastName}`}</h2>
+          <h2 className="fw-bold text-capitalize">{`${firstName} ${lastName}`}</h2>
         </div>
 
         <div>
