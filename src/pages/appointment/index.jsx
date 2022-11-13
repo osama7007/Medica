@@ -12,6 +12,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { deSlugify, slugify, slugifyDoctor } from "../../utils/slugify";
 import Review from "../../components/review";
+import { toast, ToastContainer } from "react-toastify";
 
 const Appointment = () => {
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ const Appointment = () => {
           auth?.canceled.length > 0
             ? [...auth?.canceled, appointment]
             : [appointment],
+      }).then(() => {
+        toast.info("Appointment Cancel");
       });
     };
   };
@@ -280,6 +283,19 @@ const Appointment = () => {
             )}
           </Tabs.TabPane>
         </Tabs>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={1000}
+          limit={3}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </section>
     </>
   );
