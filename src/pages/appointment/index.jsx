@@ -56,6 +56,46 @@ const Appointment = () => {
       navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
     };
   };
+  const reschedule = (title, id, index, date, time) => {
+    return () => {
+      navigate(
+        `/appointment?doctor=${slugifyDoctor(
+          title
+        )}?id=${id}&index=${index}&date=${date}&time=${time}`
+      );
+    };
+  };
+  const compeleteHandler = (index) => {
+    return () => {
+      if (appointments) {
+        console.log("compeleteHandler", index);
+        const appointment = appointments[index];
+        console.log(appointment);
+        const docName = doctors.filter(
+          (doctor) => doctor.id === appointment?.doctorId
+        )[0]?.name;
+
+        const docRef = doc(db, "users", auth?.id);
+        const newAppointments = appointments.filter(
+          (appointment, i) => i !== index
+        );
+
+        console.log("newAppointments", newAppointments);
+        updateDoc(docRef, {
+          appointments: newAppointments,
+        });
+        updateDoc(docRef, {
+          compeleted:
+            auth?.compeleted?.length > 0
+              ? [...auth?.compeleted, appointment]
+              : [appointment],
+        }).then(() => {
+          toast.info(`Appointment with ${docName} completed`);
+        });
+      }
+    };
+  };
+
   return (
     <>
       <section className="container">
@@ -146,14 +186,20 @@ const Appointment = () => {
                             action={handleCancel(i)}
                           />
                           <PrimaryBtn
-                            title="Reschedule"
-                            action={() =>
-                              navigateAppointPage(
-                                doctors.find((doc) => doc.id === item.doctorId)
-                                  ?.name
-                              )
-                            }
+                            title="Mark as Compeleted"
+                            action={compeleteHandler(i)}
                           />
+                          {/* <PrimaryBtn
+                            title="Reschedule"
+                            action={reschedule(
+                              doctors.find((doc) => doc?.id === item?.doctorId)
+                                ?.name,
+                              item?.doctorId,
+                              i,
+                              item.date,
+                              item.time
+                            )}
+                          /> */}
                         </div>
                       </div>
                     </div>
@@ -210,7 +256,7 @@ const Appointment = () => {
                             title="Book Again"
                             action={navigateAppointPage(
                               doctors.find((doc) => doc?.id === item?.doctorId)
-                                .name
+                                ?.name
                             )}
                           />
                           <PrimaryBtn
