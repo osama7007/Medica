@@ -257,7 +257,7 @@ const Appointment = () => {
                             className={`rounded-5 ${styles.img}`}
                           />
                         </div>
-                        <div className="col-md-8 mt-3 d-lg-flex text-center ">
+                        <div className="col-md-8 mt-3 d-lg-flex text-center">
                           <div>
                             <h2>
                               {
