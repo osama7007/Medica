@@ -1,11 +1,20 @@
-@media(min-width:700px){
-    .container{
-        width: 63%;
-        }
+.container {
+  width: 63%;
 }
-@media(max-width:700px){
-    .container{
-        margin: 0 auto;
-        max-width: 100%;
-        }
+.user {
+  display: flex;
+  
+}
+@media (max-width: 768px) {
+  .container {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .user {
+    display: none;
+    background: #000;
+  }
+  .search{
+    width: 100%;
+  }
 }

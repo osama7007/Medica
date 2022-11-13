@@ -21,20 +21,17 @@ const RegisterForm = ({ setIsSubmitted }) => {
     { value: "Female", label: "Female" },
   ];
 
-  const Category = [
-    { value: "Doctor", label: "Doctor" },
-    { value: "Patient", label: "Patient" },
-  ];
-
+  
   const onFinish = async (values) => {
     const { FirstName, LastName, EmailAddress, UserName, Password } = values;
     const Gender = values.Gender.value;
-    const Category = values.Category.value;
+
+
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
         EmailAddress,
         Password
-      )
+      );
       if (user) {
         const newUser = await createUserDocument(user, {
           firstName: FirstName,
@@ -120,22 +117,21 @@ const RegisterForm = ({ setIsSubmitted }) => {
         >
           <FormSelect label="Gender" name="Gender" option={options} />
           {/* <FormSelect label="Category" name="Category" option={Category} /> */}
-          <Checkbox> Accept all Terms & Conditions</Checkbox>
-        </div>
 
-        <div
-          className={`${styles.inputWrapper} d-flex align-items-center justify-content-between ps-5 pe-5`}
-        >
           <Form.Item
             rules={[{ required: true, message: "checkBox is Requierd" }]}
             name="accept"
             valuePropName="checked"
-          ></Form.Item>
-
-          <Form.Item>
-            <PrimaryBtn title={"Sign Up"} />
+          >
+            <Checkbox> Accept all Terms & Conditions</Checkbox>
           </Form.Item>
         </div>
+
+
+        <Form.Item className="w-100 text-center" >
+
+          <PrimaryBtn title={"Sign Up"} />
+        </Form.Item>
       </Form>
       <ToastContainer
         position="top-right"

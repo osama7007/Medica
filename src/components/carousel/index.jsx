@@ -14,7 +14,7 @@ export default () => {
   return (
     <section className={`${styles.swiperContainer} text-white shadow`}>
       <Swiper
-        // autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3000 }}
         speed={1000}
         loop
         spaceBetween={50}

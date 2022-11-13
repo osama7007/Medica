@@ -16,7 +16,10 @@ const initialState = JSON.parse(localStorage.getItem("auth")) || {
   geneticDiseases: "",
   medications: "",
   surgeryBefore: "",
-  profileImg : ""
+  profileImg: "",
+  appointments: [],
+  canceled: [],
+  completed: [],
 };
 
 const authSlice = createSlice({
@@ -45,7 +48,10 @@ const authSlice = createSlice({
         action.payload.geneticDiseases || state.geneticDiseases;
       state.medications = action.payload.medications || state.medications;
       state.surgeryBefore = action.payload.surgeryBefore || state.surgeryBefore;
-      state.profileImg = action.payload.profileImg || state.profileImg
+      state.profileImg = action.payload.profileImg || state.profileImg;
+      state.appointments = action.payload.appointments || state.appointments;
+      state.canceled = action.payload.canceled || state.canceled;
+      state.completed = action.payload.completed || state.completed;
       localStorage.setItem("auth", JSON.stringify({ ...initialState }));
     },
     logout: (state) => {
@@ -65,7 +71,10 @@ const authSlice = createSlice({
       state.geneticDiseases = "";
       state.medications = "";
       state.surgeryBefore = "";
-      state.profileImg = ""
+      state.profileImg = "";
+      state.appointments = [];
+      state.canceled = [];
+      state.completed = [];
       console.log("logout");
 
       // localStorage.setItem(

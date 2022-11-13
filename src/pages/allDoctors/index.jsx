@@ -52,7 +52,9 @@ const DoctorsPage = () => {
   };
   return (
     <section className="container">
-      <div className="d-flex align-items-center justify-content-between m-5">
+      <div className="d-flex flex-column 
+      flex-md-row align-items-center
+       justify-content-between m-5">
         <Heading text={val} />
         <Select
           className="text-start"
@@ -98,12 +100,11 @@ const DoctorsPage = () => {
           ]}
         />
       </div>
-      <div className=" m-auto row gap-5 ">
+      <div className=" row m-auto">
         {doctors.length ? (
           doctors.map((doctor) => {
             return (
-
-              <motion.div {...animations}  layout className="col-xl-5 col-md-12" key={doctor.id}>
+              <motion.div {...animations}  layout className="col-xl-6 col-md-12" key={doctor.id}>
                 <Card
                   img={doctor.pImage}
                   title={doctor.name}
