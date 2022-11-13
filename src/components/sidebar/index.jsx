@@ -16,6 +16,7 @@ import { logout } from "../../redux/authSlice";
 import { TbCalendar, TbStethoscope } from "react-icons/tb";
 import { MdArticle } from "react-icons/md";
 import { GiLoveInjection } from "react-icons/gi";
+import { ImCalculator } from "react-icons/im";
 
 const SideBar = ({ collapsed, setCollapsed }) => {
   const [pageInView, setPageInView] = useState("");
@@ -71,6 +72,12 @@ const SideBar = ({ collapsed, setCollapsed }) => {
       "new-doctor",
       <GiLoveInjection className="fs-3 me-3" />,
       () => clickHandler("/new-doctor")
+    ),
+    getItem(
+      " health calculator",
+      " health calculator",
+      <ImCalculator className="fs-3 me-3" />,
+      () => clickHandler("/calculator")
     ),
     getItem(
       "About",
