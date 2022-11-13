@@ -29,6 +29,7 @@ import {
 } from "./utils/authRouteGuard";
 import Appointment from "./pages/appointment";
 import NotFound from "./pages/notFound";
+import Calculator from "./pages/Calcuator";
 
 function App() {
   useDoctors();
@@ -59,6 +60,7 @@ function App() {
             <Route path="/new-doctor" element={<NewDoctor />} />
             <Route path="/appointment" element={<Date />} />
             <Route path="/appointments" element={<Appointment />} />
+            <Route path="/calculator" element={<Calculator />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

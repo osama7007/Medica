@@ -10,7 +10,7 @@
     height: 200px;
 }
 .about_content{
-    background-color: var(--light-color);
+    box-shadow: 0 0 5px 3px #ddd;
     padding: 10px;
     border-radius: 10px;
 }

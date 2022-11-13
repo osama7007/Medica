@@ -2,7 +2,6 @@ import { Select } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { BiSearchAlt } from "react-icons/bi";
-import { CgSearchLoading } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { slugify, slugifyDoctor } from "../../utils/slugify";
