@@ -6,7 +6,7 @@ function DoctorImg({src}) {
 			<img
 				src={src}
 				alt='preview image'
-				className={`${styles.srcImg} rounded-circle`}
+				className={`${styles.srcImg}  rounded-circle`}
 			/>
 		</>
 	);

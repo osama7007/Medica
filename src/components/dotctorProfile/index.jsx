@@ -39,14 +39,16 @@ function DoctorProfile() {
 
       {doctor?.name && (
         <>
-          <div className=" d-flex flex-xl-row flex-lg-row flex-md-row flex-column w-75 m-auto justify-content-around
-            align-items-center mb-3">
+          <div
+            className=" d-flex align-items-center flex-xl-row flex-lg-row flex-md-row flex-column  justify-content-center gap-3
+             mb-3"
+          >
             <div className={`${styles.doctorImg} text-center mb-4 `}>
-              <div className="doctor_img_wrapper w-100 h-100 m-autorounded-circle  ">
+              <div className="doctor_img_wrapper w-100 h-100  rounded-circle  ">
                 <DoctorImg src={doctor?.pImage} />
               </div>
             </div>
-            <div className="">
+            <div className="ps-3">
               <h2>{doctor?.name}</h2>
               <p className={`${styles.specialty} text-center`}>
                 {doctor?.specialty}
@@ -54,7 +56,7 @@ function DoctorProfile() {
             </div>
           </div>
 
-          <div className=" d-flex m-auto row justify-content-center   mb-5 align-items-center gap-5 text-center">
+          <div className=" d-flex m-auto row justify-content-center gap-2 mb-5 align-items-center  text-center">
             <DoctorIcons
               experience={doctor?.experience}
               rate={doctor?.rate}

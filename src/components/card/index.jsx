@@ -13,7 +13,6 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
   const navigateappontment = () => {
     navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
   };
-  
 
   return (
     <motion.div
@@ -21,10 +20,10 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
       className={`${styles.cardContainer} 
       w-100 
       row
-        align-items-center
-     justify-content-center
+      align-items-center
+      justify-content-center
       shadow
-     rounded-4 mb-2 py-2 m-auto
+      rounded-4 mb-2 py-2 m-auto
     
      `}
     >
@@ -60,19 +59,19 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
          align-items-center
          text-center mb-4`}
         >
-          <div className=" col-4 col-lg-3">
+          <div className=" col-4">
             <BsFillFileEarmarkBarGraphFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{experince}</p>
             <small className="text-black-50">Experience</small>
           </div>
 
-          <div className=" col-4 col-lg-3">
+          <div className=" col-4 ">
             <FaStarHalfAlt className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{rate}</p>
             <small className="text-black-50">Rating</small>
           </div>
 
-          <div className=" col-4 col-lg-3">
+          <div className=" col-4 ">
             <RiUserFollowFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{position}</p>
             <small className="text-black-50">Position</small>

@@ -105,7 +105,7 @@ const DoctorsPage = () => {
           doctors.map((doctor) => {
             return (
 
-              <motion.div {...animations}  layout className="col-xl-6 col-md-12" key={doctor.id}>
+              <motion.div {...animations}  layout className="col-xl-6 mb-3 col-md-12" key={doctor.id}>
                 <Card
                   img={doctor.pImage}
                   title={doctor.name}

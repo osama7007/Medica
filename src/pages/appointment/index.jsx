@@ -9,7 +9,14 @@ import styles from "./appointment.module.css";
 import { useSelector } from "react-redux";
 import { db } from "../../firebase/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { deSlugify, slugify, slugifyDoctor } from "../../utils/slugify";
+import Review from "../../components/review";
+
 const Appointment = () => {
+  const navigate = useNavigate();
+  const [showReview, setShowReview] = useState(false);
+
   const onChange = (key) => {
     console.log(key);
   };
@@ -38,6 +45,10 @@ const Appointment = () => {
             : [appointment],
       });
     };
+  };
+
+  const navigateAppointPage = (title, index) => {
+    navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
   };
   return (
     <>
@@ -108,7 +119,9 @@ const Appointment = () => {
                               at {item.date} {item.time}
                             </p>
                           </div>
-                          <div className={`${styles.icon}d-flex align-items-center`}>
+                          <div
+                            className={`${styles.icon}d-flex align-items-center`}
+                          >
                             <a href="tel:1968">
                               <TbPhoneCall className="fs-1 text-primary shadow p-1 rounded-5 ms-lg-3 mb-3" />
                             </a>
@@ -126,7 +139,15 @@ const Appointment = () => {
                             title="Cancel Appointment"
                             action={handleCancel(i)}
                           />
-                          <PrimaryBtn title="Reschedule" />
+                          <PrimaryBtn
+                            title="Reschedule"
+                            action={() =>
+                              navigateAppointPage(
+                                doctors.find((doc) => doc.id === item.doctorId)
+                                  ?.name
+                              )
+                            }
+                          />
                         </div>
                       </div>
                     </div>
@@ -143,8 +164,8 @@ const Appointment = () => {
               </div>
               <h4>You don't have an appointment completed yet</h4>
             </div>
-            <div className="d-block">
-              <div className="row gap-5">
+            <div>
+              <div className="row">
                 <div className=" col-lg-8 col-md-12 m-auto text-center">
                   <div className="row shadow rounded-3 py-4 ">
                     <div className="col-md-4 mb-2">
@@ -154,7 +175,7 @@ const Appointment = () => {
                         className={`rounded-5 ${styles.img}`}
                       />
                     </div>
-                    <div className="col-md-6 ms-auto mt-3 d-lg-flex  ">
+                    <div className="col-md-7 ms-auto mt-3 d-lg-flex  ">
                       <div>
                         <h2>Doctor Name</h2>
                         <button className="btn btn-success bg-transparent text-success">
@@ -168,8 +189,18 @@ const Appointment = () => {
                     </div>
                     <div className="border-top pt-2">
                       <SecondaryBtn title="Book Again" />
-                      <PrimaryBtn title="Leave a review" />
+                      <PrimaryBtn
+                        title="Leave a review"
+                        action={() => {
+                          setShowReview(!showReview);
+                        }}
+                      />
                     </div>
+                    {showReview && (
+                      <div>
+                        <Review />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -178,7 +209,7 @@ const Appointment = () => {
 
           <Tabs.TabPane tab="Cancelled" key="tab3" className="text-center">
             {canceledAppointments?.length === 0 ? (
-              <div className="d-none">
+              <div>
                 <div className="m-3">
                   <img src={empty} alt="no dates" className="w-25 " />
                 </div>
@@ -186,13 +217,16 @@ const Appointment = () => {
               </div>
             ) : (
               canceledAppointments.map((item, i) => (
-                <div className="d-block">
+                <div className="mb-5" key={item.date + i}>
                   <div className="row m-auto">
-                  <div className=" col-lg-7 col-md-12 text-center m-auto">
+                    <div className=" col-lg-7 col-md-12 text-center m-auto">
                       <div className="row shadow rounded-3 py-4 ">
                         <div className="col-md-4 mb-2">
                           <img
-                            src={doctors.find((doc) => doc?.id === item?.doctorId)?.pImage}
+                            src={
+                              doctors.find((doc) => doc?.id === item?.doctorId)
+                                ?.pImage
+                            }
                             alt="doctor-img"
                             className={`rounded-5 ${styles.img}`}
                           />
@@ -210,7 +244,7 @@ const Appointment = () => {
                             <button className="btn btn-danger bg-transparent text-danger">
                               Cancelled
                             </button>
-                            <p>{item.date}</p>
+                            <p className="mt-2">{item.date}</p>
                           </div>
                           <div>
                             <TbPhoneCall className="fs-1 text-primary shadow p-1 rounded-5 ms-lg-3 mb-3" />
