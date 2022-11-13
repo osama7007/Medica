@@ -18,51 +18,67 @@ const Card = ({ img, title, rate, position, experince, specialty }) => {
   return (
     <motion.div
       layout
-      className={`${styles.cardContainer} d-flex align-items-center justify-content-between shadow rounded-4 mb-2 px-2 ps-3  mx-2`}
+      className={`${styles.cardContainer} 
+      w-100 
+      row
+        align-items-center
+     justify-content-center
+      shadow
+     rounded-4 mb-2 py-2 m-auto
+    
+     `}
     >
-      <div>
-        <Link to={`/doctors/${slugifyDoctor(title)}`} className=" col-2 ">
-          <div className={`${styles.imgContainer} mb-2`}>
-            <img src={img} alt={title} className=" rounded-4" />
+      <div className="col-lg-4 mt-3 col d-flex flex-column justify-content-center align-content-center">
+        <Link to={`/doctors/${slugifyDoctor(title)}`} className=" col-lg-2">
+          <div className={`${styles.imgContainer} m-auto`}>
+            <img src={img} alt={title} className="rounded-4" />
           </div>
         </Link>
-        <Link
-          to={`/doctors/${slugifyDoctor(title)}`}
-          className=" col-2 text-decoration-none text-dark "
-        >
-          <p className="fw-bold fs-5 mb-1 text-center ">{title}</p>
-        </Link>
-        <Link
-          to={`/doctors/${slugifyDoctor(title)}`}
-          className=" col-2 text-decoration-none text-dark "
-        >
-          <p className="text-center text-uppercase text-blue bg-lightBlue p-2">
-            {specialty}
-          </p>
-        </Link>
+        <div className="text-wrapper m-auto">
+          <Link
+            to={`/doctors/${slugifyDoctor(title)}`}
+            className=" text-decoration-none text-dark "
+          >
+            <p className="fw-bold fs-5 mb-1 text-center ">{title}</p>
+          </Link>
+          <Link
+            to={`/doctors/${slugifyDoctor(title)}`}
+            className=" text-decoration-none text-dark "
+          >
+            <p className="text-center text-uppercase text-blue bg-lightBlue p-2">
+              {specialty}
+            </p>
+          </Link>
+        </div>
       </div>
 
-      <div>
-        <div className="d-flex flex-wrap align-items-center gap-4 text-center mb-4">
-          <div>
+      <div className="col-lg-6 col ms-lg-0 ms-sm-4">
+        <div
+          className={`
+        row
+        justify-content-center
+         align-items-center
+         text-center mb-4`}
+        >
+          <div className=" col-4 col-lg-3">
             <BsFillFileEarmarkBarGraphFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{experince}</p>
             <small className="text-black-50">Experience</small>
           </div>
 
-          <div>
+          <div className=" col-4 col-lg-3">
             <FaStarHalfAlt className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{rate}</p>
             <small className="text-black-50">Rating</small>
           </div>
 
-          <div>
+          <div className=" col-4 col-lg-3">
             <RiUserFollowFill className={styles.icons} />
             <p className="text-blue fw-bold mb-1">{position}</p>
             <small className="text-black-50">Position</small>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center mb-3">
           <BlueBtn title="Book Appointment" action={navigateappontment} />
         </div>
       </div>
