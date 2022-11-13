@@ -46,7 +46,7 @@ const SideBar = ({ collapsed, setCollapsed }) => {
   // our doctors
   //
   const items = [
-    getItem("Home", "home", <VscHome className="fs-3 me-3" />, () =>
+    getItem("Home", "", <VscHome className="fs-3 me-3" />, () =>
       clickHandler("/")
     ),
     getItem("Profile", "profile", <CgProfile className="fs-3 me-3 " />, () =>
@@ -75,7 +75,7 @@ const SideBar = ({ collapsed, setCollapsed }) => {
     ),
     getItem(
       " health calculator",
-      " health calculator",
+      "calculator",
       <ImCalculator className="fs-3 me-3" />,
       () => clickHandler("/calculator")
     ),

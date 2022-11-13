@@ -24,6 +24,7 @@ const Appointment = () => {
   const auth = useSelector((state) => state.auth);
   const appointments = auth?.appointments || [];
   const canceledAppointments = auth?.canceled || [];
+  const completedAppointments = auth?.compeleted || [];
 
   const handleCancel = (index) => {
     return () => {
@@ -47,8 +48,10 @@ const Appointment = () => {
     };
   };
 
-  const navigateAppointPage = (title, index) => {
-    navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
+  const navigateAppointPage = (title) => {
+    return () => {
+      navigate(`/appointment?doctor=${slugifyDoctor(title)}`);
+    };
   };
   return (
     <>
@@ -158,53 +161,73 @@ const Appointment = () => {
           </Tabs.TabPane>
 
           <Tabs.TabPane tab="Completed" key="Completed" className="text-center">
-            <div className="d-none">
-              <div className="m-3">
-                <img src={empty} alt="no dates" className="w-25 " />
+            {completedAppointments?.length === 0 ? (
+              <div>
+                <div className="m-3">
+                  <img src={empty} alt="no dates" className="w-25 " />
+                </div>
+                <h4>You don't have an appointment completed yet</h4>
               </div>
-              <h4>You don't have an appointment completed yet</h4>
-            </div>
-            <div>
-              <div className="row">
-                <div className=" col-lg-8 col-md-12 m-auto text-center">
-                  <div className="row shadow rounded-3 py-4 ">
-                    <div className="col-md-4 mb-2">
-                      <img
-                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                        alt="doctor-img"
-                        className={`rounded-5 ${styles.img}`}
-                      />
-                    </div>
-                    <div className="col-md-7 ms-auto mt-3 d-lg-flex  ">
-                      <div>
-                        <h2>Doctor Name</h2>
-                        <button className="btn btn-success bg-transparent text-success">
-                          Completed
-                        </button>
-                        <p>Date</p>
+            ) : (
+              completedAppointments.map((item, i) => (
+                <div>
+                  <div className="row">
+                    <div className=" col-lg-8 col-md-12 m-auto text-center">
+                      <div className="row shadow rounded-3 py-4 ">
+                        <div className="col-md-4 mb-2">
+                          <img
+                            src={
+                              doctors.find((doc) => doc?.id === item?.doctorId)
+                                ?.pImage
+                            }
+                            alt="doctor-img"
+                            className={`rounded-5 ${styles.img}`}
+                          />
+                        </div>
+                        <div className="col-md-7 ms-auto mt-3 d-lg-flex  ">
+                          <div>
+                            <h2>
+                              {
+                                doctors.find(
+                                  (doc) => doc?.id === item?.doctorId
+                                )?.name
+                              }
+                            </h2>
+                            <button className="btn btn-success bg-transparent text-success">
+                              Completed
+                            </button>
+                            <p>{item.date}</p>
+                          </div>
+                          <div>
+                            <TbPhoneCall className="fs-1 text-primary shadow p-1 rounded-5 ms-lg-3 mb-3" />
+                          </div>
+                        </div>
+                        <div className="border-top pt-2">
+                          <SecondaryBtn
+                            title="Book Again"
+                            action={navigateAppointPage(
+                              doctors.find((doc) => doc?.id === item?.doctorId)
+                                .name
+                            )}
+                          />
+                          <PrimaryBtn
+                            title="Leave a review"
+                            action={() => {
+                              setShowReview(!showReview);
+                            }}
+                          />
+                        </div>
+                        {showReview && (
+                          <div>
+                            <Review />
+                          </div>
+                        )}
                       </div>
-                      <div>
-                        <TbPhoneCall className="fs-1 text-primary shadow p-1 rounded-5 ms-lg-3 mb-3" />
-                      </div>
                     </div>
-                    <div className="border-top pt-2">
-                      <SecondaryBtn title="Book Again" />
-                      <PrimaryBtn
-                        title="Leave a review"
-                        action={() => {
-                          setShowReview(!showReview);
-                        }}
-                      />
-                    </div>
-                    {showReview && (
-                      <div>
-                        <Review />
-                      </div>
-                    )}
                   </div>
                 </div>
-              </div>
-            </div>
+              ))
+            )}
           </Tabs.TabPane>
 
           <Tabs.TabPane tab="Cancelled" key="tab3" className="text-center">
@@ -231,7 +254,6 @@ const Appointment = () => {
                             className={`rounded-5 ${styles.img}`}
                           />
                         </div>
-
                         <div className="col-md-8 mt-3 d-lg-flex text-center ">
                           <div>
                             <h2>

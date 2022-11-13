@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setDoctors } from "../redux/doctorsSlice";
 
 const useDoctors = () => {
   const [allDoctors, setAllDoctors] = useState([]);
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   useEffect(() => {
-    fetch("https://doctor4.herokuapp.com/all")
-      .then((res) => res.json())
-      .then((json) => setAllDoctors(json));
+    if (auth.isAuth) {
+      fetch("https://doctor4.herokuapp.com/all")
+        .then((res) => res.json())
+        .then((json) => setAllDoctors(json));
+    }
   }, []);
 
   useEffect(() => {

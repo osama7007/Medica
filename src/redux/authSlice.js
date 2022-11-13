@@ -19,7 +19,8 @@ const initialState = JSON.parse(localStorage.getItem("auth")) || {
   profileImg: "",
   appointments: [],
   canceled: [],
-  completed: [],
+  compeleted: [],
+  notified: false,
 };
 
 const authSlice = createSlice({
@@ -51,7 +52,7 @@ const authSlice = createSlice({
       state.profileImg = action.payload.profileImg || state.profileImg;
       state.appointments = action.payload.appointments || state.appointments;
       state.canceled = action.payload.canceled || state.canceled;
-      state.completed = action.payload.completed || state.completed;
+      state.compeleted = action.payload.compeleted || state.compeleted;
       localStorage.setItem("auth", JSON.stringify({ ...initialState }));
     },
     logout: (state) => {
@@ -74,7 +75,7 @@ const authSlice = createSlice({
       state.profileImg = "";
       state.appointments = [];
       state.canceled = [];
-      state.completed = [];
+      state.compeleted = [];
       console.log("logout");
 
       // localStorage.setItem(
@@ -85,8 +86,11 @@ const authSlice = createSlice({
       //   })
       // );
     },
+    setNotified: (state) => {
+      state.notified = true;
+    },
   },
 });
 
-export const { login, logout, setLoginData } = authSlice.actions;
+export const { login, logout, setLoginData, setNotified } = authSlice.actions;
 export default authSlice.reducer;

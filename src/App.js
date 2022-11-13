@@ -30,11 +30,15 @@ import {
 import Appointment from "./pages/appointment";
 import NotFound from "./pages/notFound";
 import Calculator from "./pages/Calcuator";
+import useCompeltedTime from "./hooks/useCompletedTime";
+import useNotifyAppoint from "./hooks/useNotifyAppoint";
 
 function App() {
   useDoctors();
   useArticles();
   useAuthStateHandler();
+  useNotifyAppoint();
+  useCompeltedTime();
 
   const isAuth = useSelector((state) => state.auth.isAuth);
 

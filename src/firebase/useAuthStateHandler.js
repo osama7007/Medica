@@ -34,7 +34,7 @@ const useAuthStateHandler = () => {
               weight: data?.weight || "",
               appointments: data?.appointments || [],
               canceled: data?.canceled || [],
-              completed: data?.completed || [],
+              compeleted: data?.compeleted || [],
               height: data?.height || "",
               birthDay: data?.birthDay || "",
               blood: data?.blood || "",
