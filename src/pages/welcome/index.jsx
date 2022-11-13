@@ -16,7 +16,7 @@ const Welcome = () => {
   // setTimeout(() => {
   //   setTransform(true);
   // }, 6000);
-  
+
   return (
     <>
       {!loading && <WelcomeContent />}
